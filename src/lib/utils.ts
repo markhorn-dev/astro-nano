@@ -1,3 +1,5 @@
+// lib/utils.ts
+
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -37,4 +39,17 @@ export function dateRange(startDate: Date, endDate?: Date | string): string {
   }
 
   return `${startMonth}${startYear} - ${endMonth}${endYear}`;
+}
+
+export function getRatingEmoji(rating: 'low' | 'medium' | 'high'): string {
+  switch (rating) {
+    case 'low':
+      return '🟢';
+    case 'medium':
+      return '🟡';
+    case 'high':
+      return '🔴';
+    default:
+      return '';
+  }
 }
