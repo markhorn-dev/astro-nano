@@ -2,6 +2,7 @@
 title: "Hydroponic Chili Project"
 description: "Growing Chilies in a Glass Jar."
 date: "Apr 6 2024"
+demoURL: "../blog/"
 timeInvestmentRating: "medium"  
 necessityRating: "low"
 statusRating: "in-progress" #'in-progress' | 'on-hold' | 'completed' | 'delayed' | 'upcoming' | 'cancelled' | 'under-review' | 'needs-attention' | 'awaiting-feedback' | 'testing-phase' | 'polishing'
