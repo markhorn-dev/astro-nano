@@ -28,7 +28,9 @@ const projects = defineCollection({
     date: z.coerce.date(),
     draft: z.boolean().optional(),
     demoURL: z.string().optional(),
-    repoURL: z.string().optional()
+    repoURL: z.string().optional(),
+    timeInvestmentRating: z.union([z.literal("low"), z.literal("medium"), z.literal("high")]),
+    necessityRating: z.union([z.literal("low"), z.literal("medium"), z.literal("high")])
   }),
 });
 

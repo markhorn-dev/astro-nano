@@ -1,12 +1,13 @@
 ---
+import { getRatingEmoji } from "src/lib/utils";
 import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
-import ArrowCard from "@components/ArrowCard.astro";
 import { PROJECTS } from "@consts";
+import ProjectArrowCard from "@components/ProjectArrowCard.astro";
 
 const projects = (await getCollection("projects"))
-  .filter(project => !project.data.draft)
+  .filter((project) => !project.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
@@ -20,7 +21,20 @@ const projects = (await getCollection("projects"))
         {
           projects.map((project) => (
             <li>
-              <ArrowCard entry={project}/>
+              <ProjectArrowCard
+                entry={project}
+                timeInvestmentRating={project.data.timeInvestmentRating}
+                necessityRating={project.data.necessityRating}
+              />
+              <div class="mt-2">
+                <span>Time Consumption: </span>
+                {project.data.timeInvestmentRating &&
+                  getRatingEmoji(project.data.timeInvestmentRating)}
+              </div>
+              <div>
+                <span>Necessity: </span>
+                {getRatingEmoji(project.data.necessityRating)}
+              </div>
             </li>
           ))
         }

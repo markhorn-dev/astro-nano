@@ -1,10 +1,13 @@
 ---
-title: "Astro Sphere"
-description: "Portfolio and blog build with astro."
-date: "Mar 18 2024"
+title: "Develop optimized knækbrød recipe"
+description: "A spray-on knækbrød for the masses."
+date: "Apr 5 2024"
 demoURL: "https://astro-sphere-demo.vercel.app"
 repoURL: "https://github.com/markhorn-dev/astro-sphere"
+timeInvestmentRating: "low"  
+necessityRating: "low"        
 ---
+
 
 ![Astro Sphere Lighthouse Score](/astro-sphere.jpg)
 

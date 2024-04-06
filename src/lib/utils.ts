@@ -50,6 +50,35 @@ export function getRatingEmoji(rating: 'low' | 'medium' | 'high'): string {
     case 'high':
       return '🔴';
     default:
-      return '';
+      return '❓ (needs rating)';
+  }
+}
+
+export function getStatusEmoji(category: 'in-progress' | 'on-hold' | 'completed' | 'delayed' | 'upcoming' | 'cancelled' | 'under-review' | 'needs-attention' | 'awaiting-feedback' | 'testing-phase' | 'polishing'): string {
+  switch (category) {
+    case 'in-progress':
+      return '🏃‍➡️';
+    case 'on-hold':
+      return '⏸️';
+    case 'completed':
+      return '✅';
+    case 'delayed':
+      return '⌛';
+    case 'upcoming':
+      return '📅';
+    case 'cancelled':
+      return '❌';
+    case 'under-review':
+      return '🧐';
+    case 'needs-attention':
+      return '🔍';
+    case 'awaiting-feedback':
+      return '🗣️';
+    case 'testing-phase':
+      return '🧪';
+    case 'polishing':
+      return '✨';
+    default:
+      return '❓ (needs category)';
   }
 }
