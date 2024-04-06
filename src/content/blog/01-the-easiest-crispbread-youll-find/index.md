@@ -26,35 +26,34 @@ But I thought that there must be a better way. So I have created a spray-on-vers
 - 50 g Whole grain wheat flour (I used Graham flour)
 - 15 g Psyllium husk
 - 5 g Baking powder (1 tsp)
-- 5-6 g Fine/medium salt
+- 3-6 g Fine/medium fine salt
 - Approximately 175 ml water - to be sprayed!
 
 ## Instructions:
-### Preparation:
-1. Preheat the oven to 150 degrees Celsius.
-2. Prepare baking tray: Spray or spread a little oil on parchment paper on a baking tray. Ensure the oil is evenly distributed. Then spray plenty of water over the oil, allowing it to bead on top. This helps to moisten the bottom of the crispbread so do not skimp on water here. The oil helps the crispbread release easily when it needs to be flipped in the oven later.
+### Preparation
 
-### Mixing dry ingredients:
-1. In a bowl, mix together quinoa, sunflower seeds, chia seeds, sesame seeds, wheat flour, psyllium husk, baking powder, and salt.
+1. **Preheat** the oven to 150 degrees Celsius.
+2. **Prepare baking tray**: Spray or spread a little oil on parchment paper on a baking tray. Ensure the oil is evenly distributed. Then spray plenty of water over the oil, allowing it to bead on top. This helps to moisten the bottom of the crispbread so do not skimp on water here. The oil helps the crispbread release easily when it needs to be flipped in the oven later.
 
-### Spread the dough:
-1. Pour the dry mixture onto the baking tray and spread it evenly. Spray thoroughly with water, covering the entire tray, maintaining a distance of about 7 centimeters. Ensure there are no dry areas, especially around the edges and sides. Gently press around the dough with a spatula or hands to make the layer even. It's better to use too much water than too little!
 
-### Let the dough rest:
-1. Allow the dough to rest for 10 minutes, allowing the fibers to absorb the water and form a gel that holds the crispbread together.
+3. **Mix dry ingredients**: In a bowl, mix together quinoa, sunflower seeds, chia seeds, sesame seeds, wheat flour, psyllium husk, baking powder, and salt.
 
-### Before baking:
-1. Smooth out the dough with a hand or spatula, spraying with water as needed, especially on any dry areas.
 
-### Baking:
+4. **Spread and wet the ingredients**: Pour the dry mixture onto the baking tray and spread it evenly. Spray thoroughly with water, covering the entire tray, maintaining a distance of about 7 centimeters. Ensure there are no dry areas, especially around the edges and sides. 
+5. **Get it even**: Gently press and even out the dough with a spatula or hands to make the layer even. It's better to use too much water than too little!
+
+
+6. **Let the dough rest**: Allow the dough to rest for 10 minutes, allowing the fibers to absorb the water and form a gel that holds the crispbread together.
+7. **Smooth** out the dough with a hand or spatula, spraying with water as needed, especially on any dry areas.
+
+### Baking and post-processing
 1. Place the baking tray in the preheated oven. Start baking for 20 minutes, but keep an eye on it. I baked mine for 25 minutes. When the dough is completely cohesive and the sunflower seeds on top are lightly browned, it's time to flip the dough. It should be easy to remove from the parchment paper, but it will be hot!
 2. Give the crispbread 5 minutes on the other side in the oven. If you're in a hurry, you can take the crispbread out and let it cool. If you have time, you can let the crispbread finish heating in a turned-off oven for about an hour.
+3. Let cool. This will make the crispbread completely crispy.
+4. Break into suitable pieces once completely crisp.
 
-### Let cool:
-1. Let cool. This will make the crispbread completely crispy.
-2. Break into suitable pieces.
-
-### Notes:
+## Notes:
 - Baking time may vary depending on the amount of water in the dough. I used a total of 175 ml of water via spray.
 - It's the fibers from psyllium husk and chia seeds, especially, that form a gel that holds the dough together.
 - If you eat a lot of this crispbread, remember to drink extra water, as it has a very high fiber content.
+- Don't under-water your dough! You will just get dry, floury patches.
