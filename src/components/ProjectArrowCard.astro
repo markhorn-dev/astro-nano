@@ -43,19 +43,17 @@ const { entry, timeInvestmentRating, necessityRating, statusRating } =
         </div>
         <div class="text-sm">
             <span>Status: </span>
-            {getStatusEmoji(statusRating)} / ({
-                getStatusDescriptor(statusRating)
-            })
+            {getStatusEmoji(statusRating)} / {getStatusDescriptor(statusRating)}
         </div>
         <div class="text-sm">
             <span>Time Consumption: </span>
             {getRatingEmoji(timeInvestmentRating)}
-            / ({getRatingDescriptor(timeInvestmentRating)})
+            / {getRatingDescriptor(timeInvestmentRating)}
         </div>
         <div class="text-sm">
             <span>Necessity: </span>
             {getRatingEmoji(necessityRating)}
-            / ({getRatingDescriptor(necessityRating)})
+            / {getRatingDescriptor(necessityRating)}
         </div>
     </div>
     <svg
