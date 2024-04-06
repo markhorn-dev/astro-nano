@@ -1,11 +1,11 @@
 ---
-title: "Develop optimized knækbrød recipe"
+title: "Develop an optimized crispbread/knækbrød recipe"
 description: "A spray-on knækbrød for the masses."
 date: "Apr 5 2024"
 demoURL: "../blog/01-the-easiest-crispbread-youll-find"
 timeInvestmentRating: "low"  
 necessityRating: "low"
-statusRating: "polishing" #'in-progress' | 'on-hold' | 'completed' | 'delayed' | 'upcoming' | 'cancelled' | 'under-review' | 'needs-attention' | 'awaiting-feedback' | 'testing-phase' | 'polishing'
+statusRating: "completed" #'in-progress' | 'on-hold' | 'completed' | 'delayed' | 'upcoming' | 'cancelled' | 'under-review' | 'needs-attention' | 'awaiting-feedback' | 'testing-phase' | 'polishing'
 ---
 
 
@@ -23,3 +23,7 @@ I think it should be possible to create a spray-on version that requires less cl
 
 ### Notes
 It is best to use a food safe sprayer for oil and water. If I can't find a food grade water sprayer, try a cheap oil sprayer, but put water inside.
+
+# Updates
+## Update 1
+First experiment worked pretty well. It seems really important to get the entire dough wet. Next time I will make sure to wet the baking sheet first so that the underside will be wetted to.
