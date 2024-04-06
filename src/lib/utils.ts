@@ -1,3 +1,5 @@
+// lib/utils.ts
+
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -37,4 +39,88 @@ export function dateRange(startDate: Date, endDate?: Date | string): string {
   }
 
   return `${startMonth}${startYear} - ${endMonth}${endYear}`;
+}
+
+export function getRatingDescriptor(rating: 'low' | 'medium' | 'high'): string {
+  switch (rating) {
+    case 'low':
+      return 'Low';
+    case 'medium':
+      return 'Medium';
+    case 'high':
+      return 'High';
+    default:
+      return 'Unknown';
+  }
+}
+
+export function getRatingEmoji(rating: 'low' | 'medium' | 'high'): string {
+  switch (rating) {
+    case 'low':
+      return '🟢';
+    case 'medium':
+      return '🟡';
+    case 'high':
+      return '🔴';
+    default:
+      return '❓';
+  }
+}
+
+export function getStatusEmoji(category: undefined | 'in-progress' | 'on-hold' | 'completed' | 'delayed' | 'upcoming' | 'cancelled' | 'under-review' | 'needs-attention' | 'awaiting-feedback' | 'testing-phase' | 'polishing'): string {
+  switch (category) {
+    case 'in-progress':
+      return '🏃‍➡️';
+    case 'on-hold':
+      return '⏸️';
+    case 'completed':
+      return '✅';
+    case 'delayed':
+      return '⌛';
+    case 'upcoming':
+      return '📅';
+    case 'cancelled':
+      return '❌';
+    case 'under-review':
+      return '🧐';
+    case 'needs-attention':
+      return '🔍';
+    case 'awaiting-feedback':
+      return '🗣️';
+    case 'testing-phase':
+      return '🧪';
+    case 'polishing':
+      return '✨';
+    default:
+      return '❓';
+  }
+}
+
+export function getStatusDescriptor(category: undefined | 'in-progress' | 'on-hold' | 'completed' | 'delayed' | 'upcoming' | 'cancelled' | 'under-review' | 'needs-attention' | 'awaiting-feedback' | 'testing-phase' | 'polishing'): string {
+  switch (category) {
+    case 'in-progress':
+      return 'Work in Progress';
+    case 'on-hold':
+      return 'On Hold';
+    case 'completed':
+      return 'Completed';
+    case 'delayed':
+      return 'Delayed';
+    case 'upcoming':
+      return 'Upcoming';
+    case 'cancelled':
+      return 'Cancelled';
+    case 'under-review':
+      return 'Under Review';
+    case 'needs-attention':
+      return 'Needs Attention';
+    case 'awaiting-feedback':
+      return 'Awaiting Feedback';
+    case 'testing-phase':
+      return 'Testing Phase';
+    case 'polishing':
+      return 'Polishing';
+    default:
+      return 'Unknown Status';
+  }
 }
