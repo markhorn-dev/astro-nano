@@ -1,64 +1,33 @@
-![Astro Nano](_astro_nano.png)
+# The Jacob Experiments Site
 
-Astro Nano is a static, minimalist, lightweight, lightning fast portfolio and blog theme.
+This repository holds the Astro Nano-based 'Jacob Experiments' site. 
 
-Built with Astro, Tailwind and Typescript, an no frameworks.
+Here is what you can expect.
 
-It was designed as an even more minimal theme than my popular theme [Astro Sphere](https://github.com/markhorn-dev/astro-sphere)
+Welcome to Jacob Experiments! This is a world of diverse projects spanning software ventures, culinary experiments, DIY fixes, and a few innovative creations.
 
-## 🚀 Deploy your own
+Join me on this journey as I share my project ideas, document their progress, and unveil the results. From coding challenges to kitchen triumphs, and plenty of failures along the way. I'm here to explore, learn, and share every step.
 
-[![Deploy with Vercel](_deploy_vercel.svg)](https://vercel.com/new/clone?repository-url=https://github.com/markhorn-dev/astro-nano)  [![Deploy with Netlify](_deploy_netlify.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/markhorn-dev/astro-nano)
+Reach out if something catches your eye or share your thoughts.
 
-## 📋 Features
+## Recent Posts
 
-- ✅ 100/100 Lighthouse performance
-- ✅ Responsive
-- ✅ Accessible
-- ✅ SEO-friendly
-- ✅ Typesafe
-- ✅ Minimal style
-- ✅ Light/Dark Theme
-- ✅ Animated UI
-- ✅ Tailwind styling
-- ✅ Auto generated sitemap
-- ✅ Auto generated RSS Feed
-- ✅ Markdown support
-- ✅ MDX Support (components in your markdown)
+You can find the recent posts in the blog.
 
-## 💯 Lighthouse score
-![Astro Nano Lighthouse Score](_lighthouse.png)
+## Recent Projects
 
-## 🕊️ Lightweight
-No frameworks or added bulk
+You can find the recent projects on the projects page.
 
-## ⚡︎ Fast
-Rendered in ~40ms on localhost
+## Work Experience
 
-## 📄 Configuration
+You can see my work experience on my [GitHub](https://github.com/jfelding).
 
-The blog posts on the demo serve as the documentation and configuration.
+## Let's Connect
 
-## 💻 Commands
+If you want to get in touch with me about something or just to say hi, reach out on social media.
 
-All commands are run from the root of the project, from a terminal:
+You can find me on:
 
-Replace npm with your package manager of choice. `npm`, `pnpm`, `yarn`, `bun`, etc
+- [LinkedIn](https://www.linkedin.com/in/jacob-ungar-felding/)
+- [GitHub](https://github.com/jfelding)
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run dev:network`     | Starts local dev server on local network         |
-| `npm run sync`            | Generates TypeScript types for all Astro modules.|
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run preview:network` | Preview build on local network                   |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-| `npm run lint`            | Run ESLint                                       |
-| `npm run lint:fix`        | Auto-fix ESLint issues                           |
-
-## 🏛️ License
-
-MIT
