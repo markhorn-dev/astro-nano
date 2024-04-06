@@ -1,14 +1,28 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { getRatingEmoji } from "src/lib/utils";
+import { getRatingEmoji, getStatusEmoji } from "src/lib/utils";
 
 type Props = {
     entry: CollectionEntry<"blog"> | CollectionEntry<"projects">;
-    timeInvestmentRating: "low" | "medium" | "high"; // New prop for time consumption rating
-    necessityRating: "low" | "medium" | "high"; // New prop for necessity rating
+    timeInvestmentRating: "low" | "medium" | "high";
+    necessityRating: "low" | "medium" | "high";
+    statusRating:
+        | undefined
+        | "in-progress"
+        | "on-hold"
+        | "completed"
+        | "delayed"
+        | "upcoming"
+        | "cancelled"
+        | "under-review"
+        | "needs-attention"
+        | "awaiting-feedback"
+        | "testing-phase"
+        | "polishing";
 };
 
-const { entry, timeInvestmentRating, necessityRating } = Astro.props;
+const { entry, timeInvestmentRating, necessityRating, statusRating } =
+    Astro.props;
 ---
 
 <a
@@ -21,6 +35,10 @@ const { entry, timeInvestmentRating, necessityRating } = Astro.props;
         </div>
         <div class="text-sm">
             {entry.data.description}
+        </div>
+        <div class="text-sm">
+            <span>Status: </span>
+            {getStatusEmoji(statusRating)}
         </div>
         <div class="text-sm">
             <span>Time Consumption: </span>

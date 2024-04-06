@@ -54,7 +54,7 @@ export function getRatingEmoji(rating: 'low' | 'medium' | 'high'): string {
   }
 }
 
-export function getStatusEmoji(category: 'in-progress' | 'on-hold' | 'completed' | 'delayed' | 'upcoming' | 'cancelled' | 'under-review' | 'needs-attention' | 'awaiting-feedback' | 'testing-phase' | 'polishing'): string {
+export function getStatusEmoji(category: undefined | 'in-progress' | 'on-hold' | 'completed' | 'delayed' | 'upcoming' | 'cancelled' | 'under-review' | 'needs-attention' | 'awaiting-feedback' | 'testing-phase' | 'polishing'): string {
   switch (category) {
     case 'in-progress':
       return '🏃‍➡️';

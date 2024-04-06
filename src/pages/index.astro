@@ -106,6 +106,7 @@ const work = await Promise.all(
               <li>
                 <ProjectArrowCard
                   entry={project}
+                  statusRating={project.data.statusRating}
                   timeInvestmentRating={project.data.timeInvestmentRating}
                   necessityRating={project.data.necessityRating}
                 />

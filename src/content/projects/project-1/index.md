@@ -5,7 +5,8 @@ date: "Apr 5 2024"
 demoURL: "https://astro-sphere-demo.vercel.app"
 repoURL: "https://github.com/markhorn-dev/astro-sphere"
 timeInvestmentRating: "low"  
-necessityRating: "low"        
+necessityRating: "low"
+statusRating: "polishing" #'in-progress' | 'on-hold' | 'completed' | 'delayed' | 'upcoming' | 'cancelled' | 'under-review' | 'needs-attention' | 'awaiting-feedback' | 'testing-phase' | 'polishing'
 ---
 
 
