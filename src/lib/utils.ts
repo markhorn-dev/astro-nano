@@ -41,6 +41,19 @@ export function dateRange(startDate: Date, endDate?: Date | string): string {
   return `${startMonth}${startYear} - ${endMonth}${endYear}`;
 }
 
+export function getRatingDescriptor(rating: 'low' | 'medium' | 'high'): string {
+  switch (rating) {
+    case 'low':
+      return 'Low';
+    case 'medium':
+      return 'Medium';
+    case 'high':
+      return 'High';
+    default:
+      return 'Unknown';
+  }
+}
+
 export function getRatingEmoji(rating: 'low' | 'medium' | 'high'): string {
   switch (rating) {
     case 'low':
@@ -50,7 +63,7 @@ export function getRatingEmoji(rating: 'low' | 'medium' | 'high'): string {
     case 'high':
       return '🔴';
     default:
-      return '❓ (needs rating)';
+      return '❓';
   }
 }
 
@@ -79,6 +92,35 @@ export function getStatusEmoji(category: undefined | 'in-progress' | 'on-hold' |
     case 'polishing':
       return '✨';
     default:
-      return '❓ (needs category)';
+      return '❓';
+  }
+}
+
+export function getStatusDescriptor(category: undefined | 'in-progress' | 'on-hold' | 'completed' | 'delayed' | 'upcoming' | 'cancelled' | 'under-review' | 'needs-attention' | 'awaiting-feedback' | 'testing-phase' | 'polishing'): string {
+  switch (category) {
+    case 'in-progress':
+      return 'Work in Progress';
+    case 'on-hold':
+      return 'On Hold';
+    case 'completed':
+      return 'Completed';
+    case 'delayed':
+      return 'Delayed';
+    case 'upcoming':
+      return 'Upcoming';
+    case 'cancelled':
+      return 'Cancelled';
+    case 'under-review':
+      return 'Under Review';
+    case 'needs-attention':
+      return 'Needs Attention';
+    case 'awaiting-feedback':
+      return 'Awaiting Feedback';
+    case 'testing-phase':
+      return 'Testing Phase';
+    case 'polishing':
+      return 'Polishing';
+    default:
+      return 'Unknown Status';
   }
 }

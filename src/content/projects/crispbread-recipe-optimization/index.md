@@ -1,0 +1,25 @@
+---
+title: "Develop optimized knækbrød recipe"
+description: "A spray-on knækbrød for the masses."
+date: "Apr 5 2024"
+demoURL: "../blog/01-the-easiest-crispbread-youll-find"
+timeInvestmentRating: "low"  
+necessityRating: "low"
+statusRating: "polishing" #'in-progress' | 'on-hold' | 'completed' | 'delayed' | 'upcoming' | 'cancelled' | 'under-review' | 'needs-attention' | 'awaiting-feedback' | 'testing-phase' | 'polishing'
+---
+
+
+### DIY Crispbread Project: Can We Make It Way Easier?
+
+Have you noticed how expensive crispbread has become in Denmark? It's crazy! We're talking over 120 DKK / 16 € per kg for a basic version that's not even organic. Check it out [at REMA1000](https://shop.rema1000.dk/kolonial/kiks-kager-knaekbrod), a discount super market.
+
+### The Struggle is Real:
+
+I've experimented with making my own crispbread before, because it's delicious with hummus. First, I tried a heavy dough that needed to be rolled out thinly. It was pretty exhausting! Then, I attempted a thin recipe with lots of water added, but that just led to longer baking time and soggy results. Not ideal for a "knækbrød", meaning 'cracking bread'.
+
+### A Better Way?
+
+I think it should be possible to create a spray-on version that requires less cleanup, less effort, less energy, and less time. The only mixing you will do will be of dry ingredients. Added water and oil will be sprayed on.
+
+### Notes
+It is best to use a food safe sprayer for oil and water. If I can't find a food grade water sprayer, try a cheap oil sprayer, but put water inside.

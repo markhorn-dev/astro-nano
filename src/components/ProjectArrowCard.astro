@@ -1,6 +1,11 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { getRatingEmoji, getStatusEmoji } from "src/lib/utils";
+import {
+    getRatingEmoji,
+    getStatusEmoji,
+    getStatusDescriptor,
+    getRatingDescriptor,
+} from "src/lib/utils";
 
 type Props = {
     entry: CollectionEntry<"blog"> | CollectionEntry<"projects">;
@@ -38,15 +43,19 @@ const { entry, timeInvestmentRating, necessityRating, statusRating } =
         </div>
         <div class="text-sm">
             <span>Status: </span>
-            {getStatusEmoji(statusRating)}
+            {getStatusEmoji(statusRating)} / ({
+                getStatusDescriptor(statusRating)
+            })
         </div>
         <div class="text-sm">
             <span>Time Consumption: </span>
             {getRatingEmoji(timeInvestmentRating)}
+            / ({getRatingDescriptor(timeInvestmentRating)})
         </div>
         <div class="text-sm">
             <span>Necessity: </span>
             {getRatingEmoji(necessityRating)}
+            / ({getRatingDescriptor(necessityRating)})
         </div>
     </div>
     <svg
