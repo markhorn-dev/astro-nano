@@ -7,6 +7,13 @@ import {
     getRatingDescriptor,
 } from "src/lib/utils";
 
+type Category =
+    | "Gardening"
+    | "Cooking & Baking"
+    | "Software"
+    | "Data Analysis and Machine Learning"
+    | "Hardware & Repairs";
+
 type Props = {
     entry: CollectionEntry<"blog"> | CollectionEntry<"projects">;
     timeInvestmentRating: "low" | "medium" | "high";
@@ -24,10 +31,16 @@ type Props = {
         | "awaiting-feedback"
         | "testing-phase"
         | "polishing";
+    categories: Category[];
 };
 
-const { entry, timeInvestmentRating, necessityRating, statusRating } =
-    Astro.props;
+const {
+    entry,
+    timeInvestmentRating,
+    necessityRating,
+    statusRating,
+    categories,
+} = Astro.props;
 ---
 
 <a
@@ -54,6 +67,10 @@ const { entry, timeInvestmentRating, necessityRating, statusRating } =
             <span>Necessity: </span>
             {getRatingEmoji(necessityRating)}
             / {getRatingDescriptor(necessityRating)}
+        </div>
+        <div class="text-sm">
+            <span>Categories: </span>
+            {categories.join("; ")}
         </div>
     </div>
     <svg

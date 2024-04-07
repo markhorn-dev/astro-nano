@@ -2,10 +2,11 @@
 import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
-import { PROJECTS } from "@consts";
 import ProjectArrowCard from "@components/ProjectArrowCard.astro";
+import { PROJECTS } from "@consts";
 
-const projects = (await getCollection("projects"))
+const projectsData = await getCollection("projects");
+const projects = projectsData
   .filter((project) => !project.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
@@ -16,44 +17,28 @@ type Category =
   | "Data Analysis and Machine Learning"
   | "Hardware & Repairs";
 
-interface Project {
-  data: {
-    categories: Category[];
-  };
-}
+const allCategories: Category[] = [
+  "Gardening",
+  "Cooking & Baking",
+  "Software",
+  "Data Analysis and Machine Learning",
+  "Hardware & Repairs",
+];
 
-const CategoriesDropdown = ({
-  onChange,
-}: {
-  onChange: (event: Event) => void;
-}) => {
-  const usedCategories: Category[] = projects.reduce(
-    (acc: Category[], project) => {
-      project.data.categories.forEach((category: Category) => {
-        if (!acc.some((item) => item === category)) {
-          acc.push(category);
-        }
-      });
-      return acc;
-    },
-    [],
-  );
-
-  return `
-    <select multiple onchange="${onChange.toString()}">
-      ${usedCategories
-        .map(
-          (category: Category, index: number) => `
-        <option value="${category.toString()}">
-          ${category}
-        </option>
-      `,
-        )
-        .join("")}
-    </select>
-  `;
-};
+const selectedCategories: Category[] = allCategories; // Initialize with all categories selected
 ---
+
+<script lang="ts">
+  function handleCategoryChange(event) {
+    const target = event.target;
+    const selectedOptions = Array.from(target.options)
+      .filter((option) => option.selected)
+      .map((option) => option.value);
+    const queryParams = new URLSearchParams(window.location.search);
+    queryParams.set("categories", selectedOptions.join(","));
+    history.replaceState({}, "", `${location.pathname}?${queryParams}`);
+  }
+</script>
 
 <PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
   <Container>
@@ -61,18 +46,39 @@ const CategoriesDropdown = ({
       <div class="animate font-semibold text-black dark:text-white">
         Projects
       </div>
+      <div>
+        <select multiple onchange="handleCategoryChange()">
+          {
+            allCategories.map((category: Category) => (
+              <option
+                value={category.toString()}
+                selected={selectedCategories.includes(category)}
+              >
+                {category}
+              </option>
+            ))
+          }
+        </select>
+      </div>
       <ul class="animate flex flex-col gap-4">
         {
-          projects.map((project) => (
-            <li>
-              <ProjectArrowCard
-                entry={project}
-                timeInvestmentRating={project.data.timeInvestmentRating}
-                necessityRating={project.data.necessityRating}
-                statusRating={project.data.statusRating}
-              />
-            </li>
-          ))
+          projects
+            .filter((project) =>
+              project.data.categories.some((cat) =>
+                selectedCategories.includes(cat),
+              ),
+            )
+            .map((project) => (
+              <li>
+                <ProjectArrowCard
+                  entry={project}
+                  statusRating={project.data.statusRating}
+                  timeInvestmentRating={project.data.timeInvestmentRating}
+                  necessityRating={project.data.necessityRating}
+                  categories={project.data.categories}
+                />
+              </li>
+            ))
         }
       </ul>
     </div>

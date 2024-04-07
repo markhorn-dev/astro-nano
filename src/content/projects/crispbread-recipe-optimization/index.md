@@ -6,6 +6,13 @@ demoURL: "../blog/01-the-easiest-crispbread-youll-find"
 timeInvestmentRating: "low"  
 necessityRating: "low"
 statusRating: "completed" #'in-progress' | 'on-hold' | 'completed' | 'delayed' | 'upcoming' | 'cancelled' | 'under-review' | 'needs-attention' | 'awaiting-feedback' | 'testing-phase' | 'polishing'
+categories:
+  - "Cooking & Baking"
+#  - "Gardening"
+#  - "Software"
+#  - "Data Analysis and Machine Learning"
+#  - "Hardware & Repairs"
+
 ---
 
 

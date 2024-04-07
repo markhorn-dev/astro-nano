@@ -74,6 +74,7 @@ const projects = (await getCollection("projects"))
                   statusRating={project.data.statusRating}
                   timeInvestmentRating={project.data.timeInvestmentRating}
                   necessityRating={project.data.necessityRating}
+                  categories={project.data.categories}
                 />
               </li>
             ))

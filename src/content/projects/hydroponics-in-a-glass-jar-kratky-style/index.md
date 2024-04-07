@@ -6,6 +6,13 @@ demoURL: "../blog/"
 timeInvestmentRating: "medium"  
 necessityRating: "low"
 statusRating: "in-progress" #'in-progress' | 'on-hold' | 'completed' | 'delayed' | 'upcoming' | 'cancelled' | 'under-review' | 'needs-attention' | 'awaiting-feedback' | 'testing-phase' | 'polishing'
+categories:
+#  - "Cooking & Baking"
+  - "Gardening"
+#  - "Software"
+#  - "Data Analysis and Machine Learning"
+#  - "Hardware & Repairs"
+
 ---
 
 # Hydroponic Chili Project: Growing Chilies in a Glass Jar

@@ -6,6 +6,13 @@ repoURL: "https://github.com/jfelding/repair-cafe-danmark-registration-page-poc"
 timeInvestmentRating: "medium"  
 necessityRating: "medium"
 statusRating: "needs-attention" #'in-progress' | 'on-hold' | 'completed' | 'delayed' | 'upcoming' | 'cancelled' | 'under-review' | 'needs-attention' | 'awaiting-feedback' | 'testing-phase' | 'polishing'
+categories:
+#  - "Cooking & Baking"
+#  - "Gardening"
+  - "Software"
+#  - "Data Analysis and Machine Learning"
+#  - "Hardware & Repairs"
+
 ---
 
 ## Handle product registrations in a static astro site

@@ -6,15 +6,22 @@ demoURL: "../blog/"
 timeInvestmentRating: "medium"  
 necessityRating: "low"
 statusRating: "upcoming" #'in-progress' | 'on-hold' | 'completed' | 'delayed' | 'upcoming' | 'cancelled' | 'under-review' | 'needs-attention' | 'awaiting-feedback' | 'testing-phase' | 'polishing'
+categories:
+  - "Cooking & Baking"
+#  - "Gardening"
+#  - "Software"
+#  - "Data Analysis and Machine Learning"
+#  - "Hardware & Repairs"
+
 ---
 
 # Adding fiber to your buns/rolls 🥯
 
-> "Dietary fiber has two main components: soluble fiber and insoluble fiber, which are components of plant-based foods, such as legumes, whole grains and cereals, vegetables, fruits, and nuts or seeds. A diet high in regular fiber consumption is generally associated with supporting health and lowering the risk of several diseases."  
+> Dietary fiber has two main components: soluble fiber and insoluble fiber, which are components of plant-based foods, such as legumes, whole grains and cereals, vegetables, fruits, and nuts or seeds. A diet high in regular fiber consumption is generally associated with supporting health and lowering the risk of several diseases.  
 > 
 > — [Wikipedia, Dietary fiber](https://en.wikipedia.org/wiki/Dietary_fiber)
 
-> "Bulking fibers – such as cellulose and hemicellulose (including psyllium) – absorb and hold water, promoting bowel movement regularity.[7] Viscous fibers – such as beta-glucan and psyllium – thicken the fecal mass."  
+> Bulking fibers – such as cellulose and hemicellulose (including psyllium) – absorb and hold water, promoting bowel movement regularity.[7] Viscous fibers – such as beta-glucan and psyllium – thicken the fecal mass.  
 > 
 > — [Wikipedia, Dietary fiber](https://en.wikipedia.org/wiki/Dietary_fiber)
 
