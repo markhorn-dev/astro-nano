@@ -10,6 +10,7 @@ const blog = defineCollection({
   }),
 });
 
+
 const work = defineCollection({
   type: "content",
   schema: z.object({

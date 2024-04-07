@@ -1,9 +1,11 @@
 ---
-title: "The Easiest Crispbread You'll Find"
+title: "Recipe: The Easiest Crispbread You'll Ever Make"
 description: "A no-knead, no-roll, no-getting-your-counter-dirty and spray-on approach to crispbread, also known as knækbrød in Danish."
 date: "04/06/2024"
 draft: false
 ---
+
+<img src="https://lh3.googleusercontent.com/pw/AP1GczPUg_JDaYL1CQHuPvQWgt5MyMAaz0YURkPiU1Mf1eM4n8AIhekJH46gEFj4sGSqjWe0OZ3WZkh9cVwrKeUzL0-9_vZSKPB_TG4wEvPoorKD07xEYq4zVgGIZKTgW5cEVj2KU7dq-fCLKTqexwk4Rpspig=w2580-h1722-s-no-gm?authuser=0" alt="Spray-On Crispbread"><br/>
 
 # Recipe: Spray-On Crispbread
 This recipe is the output of [this project](/projects/crispbread-recipe-optimization).
@@ -15,7 +17,8 @@ I've previously made my own crispbread in different versions, first trying a ver
 But I thought that there must be a better way. So I have created a spray-on-version that requires less dishwashing, effort, energy and time. This is the result.
 
 
-<img src="https://lh3.googleusercontent.com/pw/AP1GczPNJo6EJ-U40dizthmBRPKsU7Xk5yn8NScwImY3ArWGpX0gpuPi6BoQ3E6ruW_4SZubPAcg9ZtSbttMv334XNAd5MIKFv8F6UpQIWg9RQBaXDLD6E7xYW5PKWr9PaT5ok_GuXaPvLuNXrOVcML9t6xMiw=w2296-h1722-s-no-gm?authuser=0" alt="Spray-On Crispbread">
+<img src="https://lh3.googleusercontent.com/pw/AP1GczPZgd9HKznlHEwsMJaLUt-56T2MDRd4CXwdgycyxFgGvmBKepqL8FUxcojYe9ByuiB1bYlkiAbbA8XE66hzQ7AkMf-epw_cW4fiTytwYmeO_YDUhueEJdCy_7yIOMyskyqRcJKtYK37VTijssP6etqQOg=w2296-h1722-s-no-gm?authuser=0" alt="Spray-On Crispbread Mid-Baking">
+
 
 [More photos](https://photos.app.goo.gl/bMjqQVvTLkzmRETB8)
 ## Ingredients:

@@ -1,6 +1,6 @@
 ---
 title: "Ways to add dietary fiber to your rolls 🥯"
-description: "Fix your stool tastily"
+description: "Fix your stool, tastily."
 date: "Apr 7 2024"
 demoURL: "../blog/"
 timeInvestmentRating: "medium"  
