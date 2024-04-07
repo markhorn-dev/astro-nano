@@ -1,0 +1,63 @@
+---
+title: "Ways to add dietary fiber to your rolls 🥯"
+description: ""
+date: "Apr 7 2024"
+demoURL: "../blog/"
+timeInvestmentRating: "medium"  
+necessityRating: "low"
+statusRating: "upcoming" #'in-progress' | 'on-hold' | 'completed' | 'delayed' | 'upcoming' | 'cancelled' | 'under-review' | 'needs-attention' | 'awaiting-feedback' | 'testing-phase' | 'polishing'
+---
+
+# Adding fiber to your buns/rolls 🥯
+
+> "Dietary fiber has two main components: soluble fiber and insoluble fiber, which are components of plant-based foods, such as legumes, whole grains and cereals, vegetables, fruits, and nuts or seeds. A diet high in regular fiber consumption is generally associated with supporting health and lowering the risk of several diseases."  
+> 
+> — [Wikipedia, Dietary fiber](https://en.wikipedia.org/wiki/Dietary_fiber)
+
+> "Bulking fibers – such as cellulose and hemicellulose (including psyllium) – absorb and hold water, promoting bowel movement regularity.[7] Viscous fibers – such as beta-glucan and psyllium – thicken the fecal mass."  
+> 
+> — [Wikipedia, Dietary fiber](https://en.wikipedia.org/wiki/Dietary_fiber)
+
+# Motivation
+I have found that my gut benefits from a little bit of solluble dietary fibers in the form of psyllium husks to my diet. It may also have prebiotic benefits.
+
+Dietary fibers are a curious thing, they cannot be broken down completely and so they are passed on. In another project I want to experiment with a dietary fiber sweetener that is growing in popularity in western cooking and "healthy" products. I like the thought of a sweetener (found naturally in chicory roots and Jerusalem artichokes) that the body can't process and therefore just resides temporarily in the body - cool!
+
+But in this case, I'll use readily available soluble psyllium husks.
+
+# Benefits and drawbacks to baking
+## Benefits
+
+- Fibers are prebiotic and psyllium can do great things for the stool. It relieves both mild diarrhea and constipation! (do drink extra water when using)
+
+- Psyllium husks can store _a lot_ of water, so it is quite easy to create a dough with high hydration,  'baker's percentage': 
+<center><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/d456bb122a2574b988545e87fd3ee97f0ccf4295" alt="Math Formula" style="filter: invert(50%);"  height="30px"></center>
+
+I want to stress that I very much OBJECT to wikipedia's use of 100% as something you need to multiply on there to "get it in the unit of percentage". I have hated since middleschool. % literally means one-hundreth, so 0.1=10% and that's it 🤬
+
+But high hydration has multiple benefits. I have found that psyllium can even hold a lot of moisture so that the _buns want go dry_ if you mix it in and add more water accordingly.
+
+- Psyllium husks can be used in gluten-free baking when gluten development is unavailable. I will use it in in combination with gluten.
+
+## Drawbacks
+- If psyllium and extra water is added into the dough, they can become quite moist, which means they'll also go bad more quickly. So take that into account when you want a 90% hydration using psyllium...
+
+- Psyllium and water will clump.  We need to be smart about adding psyllium and water into the dough (but there are also other approaches!). What we want is a homogenious, even isotropic dough.
+
+
+# Different approaches
+## Incorporating fibers into the dough
+The most obvious way. We need to take into account how much psyllium consumes water. I think it is best to:
+1. Combine water and psyllium and let sit for 5 minutes to incorporate it. 
+2. Add more water and let absorb until the psyllium is _saturated_.
+3. Add the mixture a "neutral ingredient" now that it is neither viscous or dry.
+4. Find a way to really incorporate it evenly into the dough and avoid clumping.
+
+## Adding fibers externally to your standard dough
+- As a topping
+- As a bottiming
+- Both
+
+This will give a durum-wheat like italian bread texture that can be rough on the palate, and the fibers will be visible (it can be made into powder).
+
+Benefit is that it is easy to add with no extra water, will provide a crisp surface on the bread 
