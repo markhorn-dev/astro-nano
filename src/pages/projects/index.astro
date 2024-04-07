@@ -6,7 +6,7 @@ import ProjectArrowCard from "@components/ProjectArrowCard.astro";
 import { PROJECTS } from "@consts";
 
 const projectsData = await getCollection("projects");
-const projects = projectsData
+export const projects = projectsData
   .filter((project) => !project.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
@@ -25,20 +25,30 @@ const allCategories: Category[] = [
   "Hardware & Repairs",
 ];
 
-const selectedCategories: Category[] = allCategories; // Initialize with all categories selected
+let selectedCategories: Category[] = allCategories;
+
+// currently shown projects and convert projects to accessible object
+export let shownProjects = projects;
+
+
+export function handleCategoryChange(category: Category) {
+  selectedCategories = selectedCategories.includes(category)
+    ? selectedCategories.filter((c) => c !== category)
+    : [...selectedCategories, category];
+
+  shownProjects = projects.filter((project) =>
+    selectedCategories.some((category) =>
+      project.data.categories.includes(category)
+    )
+  );
+}
+
+export function getProjects() {
+  return shownProjects;
+}
+
 ---
 
-<script lang="ts">
-  function handleCategoryChange(event) {
-    const target = event.target;
-    const selectedOptions = Array.from(target.options)
-      .filter((option) => option.selected)
-      .map((option) => option.value);
-    const queryParams = new URLSearchParams(window.location.search);
-    queryParams.set("categories", selectedOptions.join(","));
-    history.replaceState({}, "", `${location.pathname}?${queryParams}`);
-  }
-</script>
 
 <PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
   <Container>
@@ -47,27 +57,23 @@ const selectedCategories: Category[] = allCategories; // Initialize with all cat
         Projects
       </div>
       <div>
-        <select multiple onchange="handleCategoryChange()">
-          {
-            allCategories.map((category: Category) => (
-              <option
+        {
+          allCategories.map((category: Category) => (
+            <label>
+              <input
+                type="checkbox"
                 value={category.toString()}
-                selected={selectedCategories.includes(category)}
-              >
-                {category}
-              </option>
-            ))
-          }
-        </select>
+                onchange=handleCategoryChange()
+                checked={selectedCategories.includes(category)}
+              />
+              {category}
+            </label>
+          ))
+        }
       </div>
       <ul class="animate flex flex-col gap-4">
         {
-          projects
-            .filter((project) =>
-              project.data.categories.some((cat) =>
-                selectedCategories.includes(cat),
-              ),
-            )
+          shownProjects
             .map((project) => (
               <li>
                 <ProjectArrowCard
