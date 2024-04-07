@@ -8,6 +8,51 @@ import ProjectArrowCard from "@components/ProjectArrowCard.astro";
 const projects = (await getCollection("projects"))
   .filter((project) => !project.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+type Category =
+  | "Gardening"
+  | "Cooking & Baking"
+  | "Software"
+  | "Data Analysis and Machine Learning"
+  | "Hardware & Repairs";
+
+interface Project {
+  data: {
+    categories: Category[];
+  };
+}
+
+const CategoriesDropdown = ({
+  onChange,
+}: {
+  onChange: (event: Event) => void;
+}) => {
+  const usedCategories: Category[] = projects.reduce(
+    (acc: Category[], project) => {
+      project.data.categories.forEach((category: Category) => {
+        if (!acc.some((item) => item === category)) {
+          acc.push(category);
+        }
+      });
+      return acc;
+    },
+    [],
+  );
+
+  return `
+    <select multiple onchange="${onChange.toString()}">
+      ${usedCategories
+        .map(
+          (category: Category, index: number) => `
+        <option value="${category.toString()}">
+          ${category}
+        </option>
+      `,
+        )
+        .join("")}
+    </select>
+  `;
+};
 ---
 
 <PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>

@@ -45,7 +45,14 @@ const projects = defineCollection({
       z.literal('polishing'),
     ]),
     timeInvestmentRating: z.union([z.literal("low"), z.literal("medium"), z.literal("high")]),
-    necessityRating: z.union([z.literal("low"), z.literal("medium"), z.literal("high")])
+    necessityRating: z.union([z.literal("low"), z.literal("medium"), z.literal("high")]),
+    categories: z.array(z.union([
+      z.literal('Gardening'),
+      z.literal('Cooking & Baking'),
+      z.literal('Software'),
+      z.literal('Data Analysis and Machine Learning'),
+      z.literal('Hardware & Repairs'),
+    ]))
   }),
 });
 
