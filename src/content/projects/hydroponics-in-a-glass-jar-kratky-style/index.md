@@ -18,6 +18,6 @@ statusRating: "in-progress" #'in-progress' | 'on-hold' | 'completed' | 'delayed'
 Here, we'll use a hydroponic approach to growing a chili plant in a 500ml amber medicine glass jar. I have successfully grown herbs and salad heads in plastic containers using the kratky method before - it is the simplest hydroponic solution. But this time, I will try in nice amber medicine jars. Seeing the roots in their full glory would be beautiful, and the glass jars will be relatively stable compared to when I did this with beer cans...
 The risk to using glass, of course, is that algae might form once nutrients are added, but I'm curious to see how well amber glass can prevent it.
 
-To help the plant grow well, we're starting the seedling off with a small 10W grow light to help it in the darkest days of spring. I will start from seed and provide a little nutrients after a while, but a seed has what is needed at first, and I want to avoid nutrient burn.
+To help the plant grow well, we're starting the seedling off with a small 10W grow light to help it in the darkest days of spring. I will start from seed and provide some nutrients after a while, but a seed has what is needed at first, and I want to avoid nutrient burn.
 
 500 ml amber medicine glass is from [flaschenland.de](flaschenland.de).
