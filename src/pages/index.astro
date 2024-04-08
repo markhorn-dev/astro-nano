@@ -20,32 +20,55 @@ const projects = (await getCollection("projects"))
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
     <h4 class="animate font-semibold text-black dark:text-white">
-      Hey, welcome to Jacob Experiments! <span class="text-xl">👋</span>
+      Welcome to Jacob Experiments! <span class="text-xl">👋</span>
     </h4>
     <div class="space-y-16">
       <section>
         <article class="space-y-4">
           <p class="animate">
-            This is a world of diverse projects spanning software ventures,
-            culinary experiments, DIY fixes, and a few innovative creations.
+            I'm Jacob, and I'm in desparate need of a personal project manager.
+            <br />
+            Lacking one, this is my attempt at project self-management when it comes
+            to my ideas, hobbies and experiments.
+          </p>
 
-            <p class="animate">
-              Join me on this journey as I share my project ideas, document
-              their progress, and unveil the results. From coding challenges to
-              kitchen triumphs, and plenty of failures along the way. I'm here
-              to explore, learn, and share every step.
-            </p>
-            <p class="animate">
-              Reach out if something catches your eye or share your thoughts.
-            </p>
+          <p class="animate">
+            With this site, I hope to get a better overview of what I'm working
+            on, thinking about, what needs my attention, and what can be
+            postponed or scrapped entirely. My failures, too, may serve as a
+            warning to others.
+          </p>
+
+          <p class="animate">
+            With this site, I hope to obtain a better overview of what I'm
+            working on, thinking about, what needs my attention, and what can be
+            postponed or scrapped entirely.
+          </p>
+
+          <p class="animate">
+            In the <a href="/blog">blog</a>
+            you can find outputs of my projects. It can be recipes, a software demonstation
+            or images of a finished craft of mine. In <a href="/projects"
+              >projects</a
+            >
+            you can find the project/idea descriptions themselves. Reach out if something
+            catches your eye or if you want to share your thoughts.
+          </p>
+
+          <p class="animate">
+            Who am I? I'm Jacob. Check out more
+            <a href="https://github.com/jfelding">here</a> or find my contact information
+            below.
           </p>
         </article>
       </section>
 
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">Recent posts</h5>
-          <Link href="/blog"> See all posts </Link>
+          <h5 class="font-semibold text-black dark:text-white">
+            Recent project outputs
+          </h5>
+          <Link href="/blog"> See all project outputs </Link>
         </div>
         <ul class="flex flex-col gap-4">
           {
@@ -61,9 +84,9 @@ const projects = (await getCollection("projects"))
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5 class="font-semibold text-black dark:text-white">
-            Recent projects
+            Recent projects & ideas
           </h5>
-          <Link href="/projects"> See all projects </Link>
+          <Link href="/projects"> See all projects/ideas</Link>
         </div>
         <ul class="flex flex-col gap-4">
           {

@@ -14,7 +14,7 @@ export const HOME: Metadata = {
 };
 
 export const BLOG: Metadata = {
-  TITLE: "Blog",
+  TITLE: "Project Outputs",
   DESCRIPTION: "Results of my projects are posted as blog posts.",
 };
 
@@ -24,7 +24,7 @@ export const WORK: Metadata = {
 };
 
 export const PROJECTS: Metadata = {
-  TITLE: "Projects",
+  TITLE: "Projects & Ideas",
   DESCRIPTION: "A collection of my projects.",
 };
 
