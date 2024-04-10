@@ -31,24 +31,26 @@ let selectedCategories: Category[] = allCategories;
 export let shownProjects = projects;
 
 
-export function handleCategoryChange(category: Category) {
-  selectedCategories = selectedCategories.includes(category)
-    ? selectedCategories.filter((c) => c !== category)
-    : [...selectedCategories, category];
-
+export function handleCategoryChange(event:Event) {
+  updateSelectedCategories(event);
   shownProjects = projects.filter((project) =>
-    selectedCategories.some((category) =>
-      project.data.categories.includes(category)
-    )
+    project.data.categories.some((category) =>
+      selectedCategories.includes(category),
+    ),
   );
 }
 
-export function getProjects() {
-  return shownProjects;
+export function updateSelectedCategories(event:Event) {
+  const target = event.target as HTMLInputElement;
+   const category = target.value as Category;
+   if (target.checked) {
+    selectedCategories.push(category);
+  } else {
+    selectedCategories = selectedCategories.filter(c => c !== category);
+  }
 }
 
 ---
-
 
 <PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
   <Container>
@@ -63,7 +65,7 @@ export function getProjects() {
               <input
                 type="checkbox"
                 value={category.toString()}
-                onchange=handleCategoryChange()
+                :onchange={(event: Event) => handleCategoryChange(event)}
                 checked={selectedCategories.includes(category)}
               />
               {category}
@@ -73,18 +75,17 @@ export function getProjects() {
       </div>
       <ul class="animate flex flex-col gap-4">
         {
-          shownProjects
-            .map((project) => (
-              <li>
-                <ProjectArrowCard
-                  entry={project}
-                  statusRating={project.data.statusRating}
-                  timeInvestmentRating={project.data.timeInvestmentRating}
-                  necessityRating={project.data.necessityRating}
-                  categories={project.data.categories}
-                />
-              </li>
-            ))
+          shownProjects.map((project) => (
+            <li>
+              <ProjectArrowCard
+                entry={project}
+                statusRating={project.data.statusRating}
+                timeInvestmentRating={project.data.timeInvestmentRating}
+                necessityRating={project.data.necessityRating}
+                categories={project.data.categories}
+              />
+            </li>
+          ))
         }
       </ul>
     </div>
