@@ -2,13 +2,13 @@
 import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
-import ProjectArrowCard from "@components/ProjectArrowCard.astro";
 import { PROJECTS } from "@consts";
+import ProjectArrowCard from "@components/ProjectArrowCard.astro";
 
-const projectsData = await getCollection("projects");
-export const projects = projectsData
+const projects = (await getCollection("projects"))
   .filter((project) => !project.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
 
 type Category =
   | "Gardening"
@@ -17,7 +17,7 @@ type Category =
   | "Data Analysis and Machine Learning"
   | "Hardware & Repairs";
 
-const allCategories: Category[] = [
+export const allCategories: Category[] = [
   "Gardening",
   "Cooking & Baking",
   "Software",
@@ -25,7 +25,7 @@ const allCategories: Category[] = [
   "Hardware & Repairs",
 ];
 
-let selectedCategories: Category[] = allCategories;
+export let selectedCategories: Category[] = allCategories;
 
 // currently shown projects and convert projects to accessible object
 export let shownProjects = projects;
