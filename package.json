@@ -26,7 +26,6 @@
     "@typescript-eslint/parser": "^7.3.1",
     "astro-imagetools": "^0.9.0",
     "clsx": "^2.1.0",
-    "eslint": "^8.57.0",
     "eslint-plugin-astro": "^0.32.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "sharp": "^0.33.3",
@@ -35,6 +34,11 @@
     "typescript": "^5.4.3"
   },
   "devDependencies": {
-    "astro": "^4.5.16"
+    "@eslint/js": "^9.0.0",
+    "astro": "^4.5.16",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.1",
+    "globals": "^15.0.0",
+    "typescript-eslint": "^7.6.0"
   }
 }
