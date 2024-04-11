@@ -4,82 +4,58 @@ import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
 import { PROJECTS } from "@consts";
 import ProjectArrowCard from "@components/ProjectArrowCard.astro";
-import type { CollectionEntry } from "astro:content";
+import { type Project, type Category, allCategories } from '../../project.type.ts';
 
-export interface Project {
-  data: {
-    title: string;
-    description: string;
-    date: Date;
-    draft: boolean;
-    statusRating: number;
-    timeInvestmentRating: number;
-    necessityRating: number;
-    categories: string[];
-  };
-  url: string;
-}
-export function load() {
-  const collection = getCollection("projects")
-  const projects = collection
-    .filter((project) => !project.data.draft)
-    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+export async function load() {
+  const projects = (await getCollection("projects"))
+  .filter((project) => !project.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
 
   return {
     props: {
-      projects
+      projects,
+      allCategories,
     }
   };
 }
 
-
-
-
-type Category =
-  | "Gardening"
-  | "Cooking & Baking"
-  | "Software"
-  | "Data Analysis and Machine Learning"
-  | "Hardware & Repairs";
-
-export const allCategories: Category[] = [
-  "Gardening",
-  "Cooking & Baking",
-  "Software",
-  "Data Analysis and Machine Learning",
-  "Hardware & Repairs",
-];
-
-export let selectedCategories: Category[] = allCategories;
-
-// currently shown projects and convert projects to accessible object
-export let shownProjects = projects.filter((project) =>
-  project.data.categories.some((category) =>
-    selectedCategories.includes(category),
-  ),
-);
-
-
-export function handleCategoryChange(event:Event) {
-  updateSelectedCategories(event);
-  shownProjects = load.filter((project) =>
-    project.data.categories.some((category) =>
-      selectedCategories.includes(category),
-    ),
-  );
-}
-
-export function updateSelectedCategories(event:Event) {
-  const target = event.target as HTMLInputElement;
-   const category = target.value as Category;
-   if (target.checked) {
-    selectedCategories.push(category);
-  } else {
-    selectedCategories = selectedCategories.filter(c => c !== category);
-  }
-}
-
 ---
+<script>
+  import { type Project, type Category } from '../../project.type.ts';
+
+  export let selectedCategories = Astro.props.allCategories;
+  export const allProjects = Astro.props.projects;
+
+    // currently shown projects and convert projects to accessible object
+  export let shownProjects = Astro.props.projects.filter((project:Project) =>
+      project.categories.some((category) =>
+          selectedCategories.includes(category as Category),
+      ),
+  );
+
+  export function handleCategoryChange(event: Event) {
+      updateSelectedCategories(event);
+
+      // shownProjects are all projects with selected categories
+      shownProjects = allProjects.filter((project:Project) =>
+          project.categories.some((category) =>
+              selectedCategories.includes(category),
+          ),
+      );
+
+  }
+
+  export function updateSelectedCategories(event: Event) {
+      const target = event.target as HTMLInputElement;
+      const category = target.value as Category;
+      if (target.checked) {
+          selectedCategories.push(category);
+      }
+
+  }
+
+</script>
+
 
 <PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
   <Container>
@@ -104,14 +80,14 @@ export function updateSelectedCategories(event:Event) {
       </div>
       <ul class="animate flex flex-col gap-4">
         {
-          shownProjects.map((project) => (
+          shownProjects.map((project:Project) => (
             <li>
               <ProjectArrowCard
                 entry={project}
                 statusRating={project.data.statusRating}
                 timeInvestmentRating={project.data.timeInvestmentRating}
                 necessityRating={project.data.necessityRating}
-                categories={project.data.categories}
+                categories={project.categories}
               />
             </li>
           ))
