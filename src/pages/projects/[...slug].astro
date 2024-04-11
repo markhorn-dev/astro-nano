@@ -62,30 +62,41 @@ const { Content } = await project.render();
                 </Link>
               )}
             </nav>
-            <div class="animate">
-              {project.data.statusRating && (
-                <span>
-                  Project Status: {getStatusEmoji(project.data.statusRating)} /{" "}
-                  {getStatusDescriptor(project.data.statusRating)}
-                </span>
-              )}
-            </div>
-            <div class="animate">
-              {project.data.necessityRating && (
-                <span>
-                  Necessity: {getRatingEmoji(project.data.necessityRating)} /{" "}
-                  {getRatingDescriptor(project.data.necessityRating)}
-                </span>
-              )}
-            </div>
-            <div class="animate">
-              {project.data.timeInvestmentRating && (
-                <span>
-                  Time Investment Need:{" "}
-                  {getRatingEmoji(project.data.timeInvestmentRating)} /{" "}
-                  {getRatingDescriptor(project.data.timeInvestmentRating)}
-                </span>
-              )}
+            <div
+              style="width:fit-content"
+              class="p-4 rounded-lg animate dark:border-white/50 hover:bg-black/5
+              dark:hover:bg-white/5 hover:text-black dark:hover:text-white"
+            >
+              <div class="animate">
+                {project.data.statusRating && (
+                  <span>
+                    Project Status: {getStatusEmoji(project.data.statusRating)}{" "}
+                    / {getStatusDescriptor(project.data.statusRating)}
+                  </span>
+                )}
+              </div>
+              <div class="animate">
+                {project.data.necessityRating && (
+                  <span>
+                    Necessity: {getRatingEmoji(project.data.necessityRating)} /{" "}
+                    {getRatingDescriptor(project.data.necessityRating)}
+                  </span>
+                )}
+              </div>
+              <div class="animate">
+                {project.data.timeInvestmentRating && (
+                  <span>
+                    Time Investment:{" "}
+                    {getRatingEmoji(project.data.timeInvestmentRating)} /{" "}
+                    {getRatingDescriptor(project.data.timeInvestmentRating)}
+                  </span>
+                )}
+              </div>
+              <div class="animate">
+                {project.data.categories && (
+                  <span>Categories: {project.data.categories.join("; ")}</span>
+                )}
+              </div>
             </div>
           </>
         )
