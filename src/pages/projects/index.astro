@@ -2,55 +2,55 @@
 import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
-import { PROJECTS } from "@consts";
 import ProjectArrowCard from "@components/ProjectArrowCard.astro";
-import { type Project, type Category, allCategories } from '../../project.type.ts';
+import { PROJECTS } from "@consts";
 
-export async function load() {
-  const projects = (await getCollection("projects"))
+const projectsData = await getCollection("projects");
+export const projects = projectsData
   .filter((project) => !project.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-  return {
-    props: {
-      projects,
-    }
-  };
+type Category =
+  | "Gardening"
+  | "Cooking & Baking"
+  | "Software"
+  | "Data Analysis and Machine Learning"
+  | "Hardware & Repairs";
+
+const allCategories: Category[] = [
+  "Gardening",
+  "Cooking & Baking",
+  "Software",
+  "Data Analysis and Machine Learning",
+  "Hardware & Repairs",
+];
+
+let selectedCategories: Category[] = allCategories;
+
+// currently shown projects and convert projects to accessible object
+export let shownProjects = projects;
+
+
+export function handleCategoryChange(event:Event) {
+  updateSelectedCategories(event);
+  shownProjects = projects.filter((project) =>
+    project.data.categories.some((category) =>
+      selectedCategories.includes(category),
+    ),
+  );
 }
 
+export function updateSelectedCategories(event:Event) {
+  const target = event.target as HTMLInputElement;
+   const category = target.value as Category;
+   if (target.checked) {
+    selectedCategories.push(category);
+  } else {
+    selectedCategories = selectedCategories.filter(c => c !== category);
+  }
+}
 
 ---
-
-<script src="./projects.ts"></script>
-<script>
-  export let selectedCategories = [...allCategories] as Category[];
-
-  // currently shown projects and convert projects to accessible object
-  export let shownProjects = Astro.props.projects.filter((project: Project) =>
-      project.categories.some((category) =>
-          selectedCategories.includes(category as Category),
-      ),
-  );
-
-  export function handleCategoryChange(event: Event) {
-      updateSelectedCategories(event);
-
-      // shownProjects are all projects with selected categories
-      shownProjects = allProjects.filter((project: Project) =>
-          project.categories.some((category) =>
-              selectedCategories.includes(category),
-          ),
-      );
-  }
-
-  export function updateSelectedCategories(event: Event) {
-      const target = event.target as HTMLInputElement;
-      const category = target.value;
-      if (target.checked) {
-          selectedCategories.push(category);
-      }
-  }
-</script>
 
 <PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
   <Container>
@@ -75,14 +75,14 @@ export async function load() {
       </div>
       <ul class="animate flex flex-col gap-4">
         {
-          shownProjects.map((project:Project) => (
+          shownProjects.map((project) => (
             <li>
               <ProjectArrowCard
                 entry={project}
                 statusRating={project.data.statusRating}
                 timeInvestmentRating={project.data.timeInvestmentRating}
                 necessityRating={project.data.necessityRating}
-                categories={project.categories}
+                categories={project.data.categories}
               />
             </li>
           ))
