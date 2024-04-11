@@ -5,6 +5,7 @@ import {
     getStatusEmoji,
     getStatusDescriptor,
     getRatingDescriptor,
+    getCategoryEmoji,
 } from "src/lib/utils";
 import { Category } from "src/project.type";
 
@@ -48,23 +49,61 @@ const {
         <div class="text-sm">
             {entry.data.description}
         </div>
-        <div class="text-sm">
-            <span>Status: </span>
-            {getStatusEmoji(statusRating)} / {getStatusDescriptor(statusRating)}
-        </div>
-        <div class="text-sm">
-            <span>Time Consumption: </span>
-            {getRatingEmoji(timeInvestmentRating)}
-            / {getRatingDescriptor(timeInvestmentRating)}
-        </div>
-        <div class="text-sm">
-            <span>Necessity: </span>
-            {getRatingEmoji(necessityRating)}
-            / {getRatingDescriptor(necessityRating)}
-        </div>
-        <div class="text-sm">
-            <span>Categories: </span>
-            {categories.join("; ")}
+        <div class="text-sm mt-4">
+            {
+                statusRating && (
+                    <span class="flex">
+                        <span style="width: 150px;">Project Status:</span>
+                        <span class="ml-2">{getStatusEmoji(statusRating)}</span>
+                        <span class="ml-2">
+                            {getStatusDescriptor(statusRating)}
+                        </span>
+                    </span>
+                )
+            }
+            {
+                necessityRating && (
+                    <span class="flex">
+                        <span style="width: 150px;">Necessity:</span>
+                        <span class="ml-2">
+                            {getRatingEmoji(necessityRating)}
+                        </span>
+                        <span class="ml-2">
+                            {getRatingDescriptor(necessityRating)}
+                        </span>
+                    </span>
+                )
+            }
+            {
+                timeInvestmentRating && (
+                    <span class="flex">
+                        <span style="width: 150px;">Time Investment:</span>
+                        <span class="ml-2">
+                            {getRatingEmoji(timeInvestmentRating)}
+                        </span>
+                        <span class="ml-2">
+                            {getRatingDescriptor(timeInvestmentRating)}
+                        </span>
+                    </span>
+                )
+            }
+            {
+                categories && (
+                    <span class="flex">
+                        <span style="width: 150px;">Categories:</span>
+                        <span class="ml-2">
+                            {categories
+                                .map(
+                                    (category: Category) =>
+                                        getCategoryEmoji(category) +
+                                        "  " +
+                                        category,
+                                )
+                                .join("; ")}
+                        </span>
+                    </span>
+                )
+            }
         </div>
     </div>
     <svg

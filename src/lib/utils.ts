@@ -2,6 +2,7 @@
 
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { Category } from "src/project.type";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -122,5 +123,22 @@ export function getStatusDescriptor(category: undefined | 'in-progress' | 'on-ho
       return 'Polishing';
     default:
       return 'Unknown Status';
+  }
+}
+
+export function getCategoryEmoji(category: Category): string {
+  switch (category) {
+    case Category.Gardening:
+      return '🌱'; // Gardening
+    case Category.CookingAndBaking:
+      return '👩‍🍳'; // Cooking & Baking
+    case Category.Software:
+      return '💻'; // Software
+    case Category.DataAnalysisAndMachineLearning:
+      return '📊'; // Data Analysis and Machine Learning
+    case Category.HardwareAndRepairs:
+      return '🔧'; // Hardware & Repairs
+    default:
+      return '❓'; // Unknown category
   }
 }

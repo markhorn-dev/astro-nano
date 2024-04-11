@@ -6,11 +6,13 @@ import FormattedDate from "@components/FormattedDate.astro";
 import { readingTime } from "@lib/utils";
 import BackToPrev from "@components/BackToPrev.astro";
 import Link from "@components/Link.astro";
+import { Category } from "src/project.type";
 import {
   getRatingEmoji,
   getStatusEmoji,
   getStatusDescriptor,
   getRatingDescriptor,
+  getCategoryEmoji,
 } from "src/lib/utils";
 
 export async function getStaticPaths() {
@@ -62,46 +64,79 @@ const { Content } = await project.render();
                 </Link>
               )}
             </nav>
-            <div
-              style="width:fit-content"
-              class="p-4 rounded-lg animate dark:border-white/50 hover:bg-black/5
-              dark:hover:bg-white/5 hover:text-black dark:hover:text-white"
-            >
-              <div class="animate">
-                {project.data.statusRating && (
-                  <span>
-                    Project Status: {getStatusEmoji(project.data.statusRating)}{" "}
-                    / {getStatusDescriptor(project.data.statusRating)}
-                  </span>
-                )}
-              </div>
-              <div class="animate">
-                {project.data.necessityRating && (
-                  <span>
-                    Necessity: {getRatingEmoji(project.data.necessityRating)} /{" "}
-                    {getRatingDescriptor(project.data.necessityRating)}
-                  </span>
-                )}
-              </div>
-              <div class="animate">
-                {project.data.timeInvestmentRating && (
-                  <span>
-                    Time Investment:{" "}
-                    {getRatingEmoji(project.data.timeInvestmentRating)} /{" "}
-                    {getRatingDescriptor(project.data.timeInvestmentRating)}
-                  </span>
-                )}
-              </div>
-              <div class="animate">
-                {project.data.categories && (
-                  <span>Categories: {project.data.categories.join("; ")}</span>
-                )}
-              </div>
-            </div>
           </>
         )
       }
+
+      <div
+        style="width:fit-content"
+        class="p-4 rounded-lg animate dark:border-white/50 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white"
+      >
+        {
+          project.data.statusRating && (
+            <span class="flex">
+              <span class="font-bold" style="width: 150px;">
+                Project Status:
+              </span>
+              <span class="ml-2">
+                {getStatusEmoji(project.data.statusRating)}
+              </span>
+              <span class="ml-2">
+                {getStatusDescriptor(project.data.statusRating)}
+              </span>
+            </span>
+          )
+        }
+        {
+          project.data.necessityRating && (
+            <span class="flex">
+              <span class="font-bold" style="width: 150px;">
+                Necessity:
+              </span>
+              <span class="ml-2">
+                {getRatingEmoji(project.data.necessityRating)}
+              </span>
+              <span class="ml-2">
+                {getRatingDescriptor(project.data.necessityRating)}
+              </span>
+            </span>
+          )
+        }
+        {
+          project.data.timeInvestmentRating && (
+            <span class="flex">
+              <span class="font-bold" style="width: 150px;">
+                Time Investment:
+              </span>
+              <span class="ml-2">
+                {getRatingEmoji(project.data.timeInvestmentRating)}
+              </span>
+              <span class="ml-2">
+                {getRatingDescriptor(project.data.timeInvestmentRating)}
+              </span>
+            </span>
+          )
+        }
+        {
+          project.data.categories && (
+            <span class="flex">
+              <span class="font-bold" style="width: 150px;">
+                Categories:
+              </span>
+              <span class="ml-2">
+                {project.data.categories
+                  .map(
+                    (category: Category) =>
+                      getCategoryEmoji(category) + "  " + category,
+                  )
+                  .join("; ")}
+              </span>
+            </span>
+          )
+        }
+      </div>
     </div>
+
     <article class="animate">
       <Content />
     </article>
