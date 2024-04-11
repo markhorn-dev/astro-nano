@@ -5,6 +5,7 @@ import PageLayout from "@layouts/PageLayout.astro";
 import ArrowCard from "@components/ArrowCard.astro";
 import ProjectArrowCard from "@components/ProjectArrowCard.astro";
 import Link from "@components/Link.astro";
+import { Category } from "src/project.type";
 import { SITE, HOME, SOCIALS } from "@consts";
 const blog = (await getCollection("blog"))
   .filter((post) => !post.data.draft)
@@ -91,7 +92,7 @@ const projects = (await getCollection("projects"))
                   statusRating={project.data.statusRating}
                   timeInvestmentRating={project.data.timeInvestmentRating}
                   necessityRating={project.data.necessityRating}
-                  categories={project.data.categories}
+                  categories={project.data.categories as Category[] || []}  )  
                 />
               </li>
             ))

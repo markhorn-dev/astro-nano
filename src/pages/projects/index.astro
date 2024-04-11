@@ -14,20 +14,19 @@ export async function load() {
   return {
     props: {
       projects,
-      allCategories,
     }
   };
 }
 
+
 ---
+
+<script src="./projects.ts"></script>
 <script>
-  import { type Project, type Category } from '../../project.type.ts';
+  export let selectedCategories = [...allCategories] as Category[];
 
-  export let selectedCategories = Astro.props.allCategories;
-  export const allProjects = Astro.props.projects;
-
-    // currently shown projects and convert projects to accessible object
-  export let shownProjects = Astro.props.projects.filter((project:Project) =>
+  // currently shown projects and convert projects to accessible object
+  export let shownProjects = Astro.props.projects.filter((project: Project) =>
       project.categories.some((category) =>
           selectedCategories.includes(category as Category),
       ),
@@ -37,25 +36,21 @@ export async function load() {
       updateSelectedCategories(event);
 
       // shownProjects are all projects with selected categories
-      shownProjects = allProjects.filter((project:Project) =>
+      shownProjects = allProjects.filter((project: Project) =>
           project.categories.some((category) =>
               selectedCategories.includes(category),
           ),
       );
-
   }
 
   export function updateSelectedCategories(event: Event) {
       const target = event.target as HTMLInputElement;
-      const category = target.value as Category;
+      const category = target.value;
       if (target.checked) {
           selectedCategories.push(category);
       }
-
   }
-
 </script>
-
 
 <PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
   <Container>
