@@ -6,7 +6,7 @@ import { astroImageTools } from "astro-imagetools";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://astro-nano-demo.vercel.app",
+  site: "https://jacob-experiments.com",
   integrations: [mdx(), sitemap(), tailwind(), astroImageTools],
 
 });
