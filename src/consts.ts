@@ -24,7 +24,7 @@ export const WORK: Metadata = {
 };
 
 export const PROJECTS: Metadata = {
-  TITLE: "Projects & Ideas",
+  TITLE: "Projects",
   DESCRIPTION: "A collection of my projects.",
 };
 
