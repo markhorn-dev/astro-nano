@@ -4,10 +4,35 @@ import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
 import { PROJECTS } from "@consts";
 import ProjectArrowCard from "@components/ProjectArrowCard.astro";
+import type { CollectionEntry } from "astro:content";
 
-const projects = (await getCollection("projects"))
-  .filter((project) => !project.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+export interface Project {
+  data: {
+    title: string;
+    description: string;
+    date: Date;
+    draft: boolean;
+    statusRating: number;
+    timeInvestmentRating: number;
+    necessityRating: number;
+    categories: string[];
+  };
+  url: string;
+}
+export function load() {
+  const collection = getCollection("projects")
+  const projects = collection
+    .filter((project) => !project.data.draft)
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+  return {
+    props: {
+      projects
+    }
+  };
+}
+
+
 
 
 type Category =
@@ -28,12 +53,16 @@ export const allCategories: Category[] = [
 export let selectedCategories: Category[] = allCategories;
 
 // currently shown projects and convert projects to accessible object
-export let shownProjects = projects;
+export let shownProjects = projects.filter((project) =>
+  project.data.categories.some((category) =>
+    selectedCategories.includes(category),
+  ),
+);
 
 
 export function handleCategoryChange(event:Event) {
   updateSelectedCategories(event);
-  shownProjects = projects.filter((project) =>
+  shownProjects = load.filter((project) =>
     project.data.categories.some((category) =>
       selectedCategories.includes(category),
     ),
