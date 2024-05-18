@@ -1,8 +1,8 @@
 ---
-company: "Smarsh"
-role: "Sr. Software Engineer"
-dateStart: "06/11/2015"
-dateEnd: "11/19/2017"
+company: "Capital One"
+role: "Sr. Staff Engineer"
+dateStart: "02/11/2018"
+dateEnd: "Current"
 ---
 
-As a Sr. Software Engineer, I excelled in planning and creating work tickets, developing innovative solutions to address these tickets, conducting thorough research on alternative technologies to ensure optimal outcomes, and writing robust Python code accompanied by comprehensive unit tests. Additionally, I took on a team coordination role where I actively participated in decision-making processes, leveraging my expertise to drive effective collaboration and achieve successful project outcomes.
+As a Senior Staff Software Engineer, I am a technical leader with expertise across the full software development stack. I work on a variety of projects that span across the mobile, web and api domains, collaborating with different internal and partner teams to deliver complex solutions. My past experiences and in-depth knowledge allows me to make high-level technical decisions and also mentor up and coming junior/senior individual contributors.
