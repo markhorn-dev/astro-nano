@@ -20,12 +20,17 @@ export const BLOG: Metadata = {
 
 export const WORK: Metadata = {
   TITLE: "Work",
-  DESCRIPTION: "Nitesh Rijal's Past Work Experiences",
+  DESCRIPTION: "Nitesh Rijal's Work Experiences",
 };
 
 export const PROJECTS: Metadata = {
   TITLE: "Projects",
   DESCRIPTION: "Nitesh Rijal's Projects",
+};
+
+export const CONTACT: Metadata = {
+  TITLE: "Contact",
+  DESCRIPTION: "Nitesh Rijal's Contact",
 };
 
 export const SOCIALS: Socials = [
@@ -47,8 +52,3 @@ export const SOCIALS: Socials = [
     HREF: "https://www.instagram.com/openrijal",
   }
 ];
-
-export const CONTACT: Metadata = {
-  TITLE: "Contact",
-  DESCRIPTION: "Nitesh Rijal's Contact",
-};
