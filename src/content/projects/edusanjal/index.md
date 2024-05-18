@@ -1,5 +1,5 @@
 ---
-title: "EduSanjal"
+title: "Edu Sanjal"
 description: "The most popular education portal in Nepal."
 date: "Mar 18 2010"
 demoURL: "https://edusanjal.com"
@@ -11,4 +11,4 @@ Edusanjal has now become a leading educational portal for Nepal that provides co
 
 It has revolutionized the way students search and get enrolled in various programs offered by academic institutions in Nepal. Today, most students browse Edusanjal to find courses and colleges fit for them. 
 
-<Link href="https://edusanjal.com/about/us/" aria-label="About Edusanjal" external>Read More >></Link>
+[Read More >>](https://edusanjal.com/about/us/)
