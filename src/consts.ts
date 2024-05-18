@@ -47,3 +47,8 @@ export const SOCIALS: Socials = [
     HREF: "https://www.instagram.com/openrijal",
   }
 ];
+
+export const CONTACT: Metadata = {
+  TITLE: "Contact",
+  DESCRIPTION: "Nitesh Rijal's Contact",
+};
