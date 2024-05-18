@@ -10,27 +10,25 @@ import { CONTACT, SOCIALS } from "@consts";
       <div class="animate font-semibold text-black dark:text-white">
         Let's Connect
       </div>
-      <article>
-          <p>
-            If you want to get in touch with me about something or just to say hi,
-            reach out on social media or send me an email.
-          </p>
-        </article>
-        <ul class="flex flex-wrap gap-2">
-          {SOCIALS.map(SOCIAL => (
-            <li class="flex gap-x-2 text-nowrap">
-              <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
-                {SOCIAL.NAME}
-              </Link>
-              {"/"}
-            </li>
-          ))}
-          <li class="line-clamp-1">
-            <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
-              {SITE.EMAIL}
+      <p>
+        If you want to get in touch with me about something or just to say hi,
+        reach out on social media or send me an email.
+      </p>
+      <ul class="flex flex-wrap gap-2">
+        {SOCIALS.map(SOCIAL => (
+          <li class="flex gap-x-2 text-nowrap">
+            <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
+              {SOCIAL.NAME}
             </Link>
+            {"/"}
           </li>
-        </ul>
+        ))}
+        <li class="line-clamp-1">
+          <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
+            {SITE.EMAIL}
+          </Link>
+        </li>
+      </ul>
     </div>
   </Container>
 </PageLayout>
