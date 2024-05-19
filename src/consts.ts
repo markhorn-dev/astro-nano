@@ -4,7 +4,7 @@ export const SITE: Site = {
   NAME: "Nitesh Rijal",
   EMAIL: "rijal.it@gmail.com",
   NUM_POSTS_ON_HOMEPAGE: 3,
-  NUM_WORKS_ON_HOMEPAGE: 2,
+  NUM_WORKS_ON_HOMEPAGE: 1,
   NUM_PROJECTS_ON_HOMEPAGE: 2,
 };
 
@@ -20,12 +20,17 @@ export const BLOG: Metadata = {
 
 export const WORK: Metadata = {
   TITLE: "Work",
-  DESCRIPTION: "Nitesh Rijal's Past Work Experiences",
+  DESCRIPTION: "Nitesh Rijal's Work Experiences",
 };
 
 export const PROJECTS: Metadata = {
   TITLE: "Projects",
   DESCRIPTION: "Nitesh Rijal's Projects",
+};
+
+export const CONTACT: Metadata = {
+  TITLE: "Contact",
+  DESCRIPTION: "Nitesh Rijal's Contact",
 };
 
 export const SOCIALS: Socials = [

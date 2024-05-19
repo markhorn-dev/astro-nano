@@ -1,6 +1,6 @@
 ---
-company: "Capital One"
-role: "Sr. Staff Engineer"
+title: "Capital One"
+description: "Sr. Staff Engineer"
 dateStart: "02/11/2018"
 dateEnd: "Current"
 ---

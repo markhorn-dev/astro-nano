@@ -30,10 +30,10 @@ const work = await Promise.all(
                 {dateRange(entry.data.dateStart, entry.data.dateEnd)}
               </div>
               <div class="font-semibold text-black dark:text-white">
-                {entry.data.company}
+                {entry.data.title}
               </div>
               <div class="text-sm opacity-75">
-                {entry.data.role}
+                {entry.data.description}
               </div>
               <article>
                 <entry.Content />
@@ -42,10 +42,6 @@ const work = await Promise.all(
           ))
         }
       </ul>
-<!-- 
-      <ul class="animate flex flex-col gap-4">
-
-      </ul> -->
     </div>
   </Container>
 </PageLayout>

@@ -3,8 +3,8 @@ import { getCollection } from "astro:content";
 import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import ArrowCard from "@components/ArrowCard.astro";
+import SimpleCard from "@components/SimpleCard.astro";
 import Link from "@components/Link.astro";
-import { dateRange } from "@lib/utils";
 import { SITE, HOME, SOCIALS } from "@consts";
 
 const blog = (await getCollection("blog"))
@@ -20,20 +20,12 @@ const projects = (await getCollection("projects"))
 const allwork = (await getCollection("work"))
   .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf())
   .slice(0,SITE.NUM_WORKS_ON_HOMEPAGE);
-
-const work = await Promise.all(
-  allwork.map(async (item) => {
-    const { Content } = await item.render();
-    return { ...item, Content };
-  })
-);
-
 ---
 
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
     <h4 class="animate font-semibold text-black dark:text-white">
-      Namaste, I am Nitesh Rijal<span class="text-xl">🙏</span> 
+      Namaste, I am Nitesh <span class="text-xl">🙏</span> 
     </h4>
     <div class="space-y-16">
       <section>
@@ -79,20 +71,9 @@ const work = await Promise.all(
           </Link>
         </div>
         <ul class="flex flex-col space-y-4">
-          {work.map(entry => (
+          {allwork.map(work => (
             <li>
-              <div class="text-sm opacity-75">
-                {dateRange(entry.data.dateStart, entry.data.dateEnd)}
-              </div>
-              <div class="font-semibold text-black dark:text-white">
-                {entry.data.company}
-              </div>
-              <div class="text-sm opacity-75">
-                {entry.data.role}
-              </div>
-              <article>
-                <entry.Content />
-              </article>
+              <SimpleCard entry={work} />
             </li>
           ))}
         </ul>
