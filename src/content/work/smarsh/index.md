@@ -1,6 +1,6 @@
 ---
-company: "Smarsh"
-role: "Sr. Software Engineer"
+title: "Smarsh"
+description: "Sr. Software Engineer"
 dateStart: "06/11/2015"
 dateEnd: "11/19/2017"
 ---
