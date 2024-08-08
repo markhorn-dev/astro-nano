@@ -1,0 +1,57 @@
+name: DeployAstroToCOS
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Default to bash
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+
+      - name: Setup coscmd and sdk
+        run: sudo pip install coscmd
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build with Astro
+        run: npm run build
+
+      - name: Configure coscmd
+        env:
+          SECRET_ID: ${{ secrets.TCLOUD_ASTRO_SECRETID }}
+          SECRET_KEY: ${{ secrets.TCLOUD_ASTRO_SECRETKEY }}
+          BUCKET: ${{ secrets.TCLOUD_ASTRO_BUCKET }}
+          REGION: ${{ secrets.TCLOUD_ASTRO_REGION }}
+        run: coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r $REGION
+        
+      - name: Upload to COS
+        run: coscmd upload -rfs --delete dist/ /
+      # - name: Flush CDN
+      # env:
+      #   SECRET_ID: ${{ secrets.TCLOUD_ASTRO_SECRETID }}
+      #   SECRET_KEY: ${{ secrets.TCLOUD_ASTRO_SECRETKEY }}
+      # run: |
+      #   pip install --upgrade tencentcloud-sdk-python
+      #   python flush-dns.py -i $SECRET_ID -k $SECRET_KEY
