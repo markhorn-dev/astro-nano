@@ -4,11 +4,8 @@ import "@fontsource/inter/latin-400.css";
 import "@fontsource/inter/latin-600.css";
 import "@fontsource/lora/400.css";
 import "@fontsource/lora/600.css";
-import inter400 from "@fontsource/inter/files/inter-latin-400-normal.woff2";
-import inter600 from "@fontsource/inter/files/inter-latin-600-normal.woff2";
-import lora400 from "@fontsource/lora/files/lora-latin-400-normal.woff2";
-import lora600 from "@fontsource/lora/files/lora-latin-600-normal.woff2";
 import { ViewTransitions } from "astro:transitions";
+
 
 interface Props {
   title: string;
@@ -30,10 +27,10 @@ const { title, description, image = "/nano.png" } = Astro.props;
 <meta name="generator" content={Astro.generator} />
 
 <!-- Font preloads -->
-<link rel="preload" href={inter400} as="font" type="font/woff2" crossorigin/>
-<link rel="preload" href={inter600} as="font" type="font/woff2" crossorigin/>
-<link rel="preload" href={lora400} as="font" type="font/woff2" crossorigin/>
-<link rel="preload" href={lora600} as="font" type="font/woff2" crossorigin/>
+<link
+	rel="stylesheet"
+	href="https://registry.npmmirror.com/lxgw-wenkai-screen-web/latest/files/style.css"
+/>
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />

@@ -1,9 +1,9 @@
 ---
 import { getCollection } from "astro:content";
-import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
-import { dateRange } from "@lib/utils";
 import { WORK } from "@consts";
+import PageLayout from "@layouts/PageLayout.astro";
+import { dateRange } from "@lib/utils";
 
 const collection = (await getCollection("work"))
   .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf());
@@ -26,12 +26,17 @@ const work = await Promise.all(
         { 
           work.map(entry => (
             <li class="animate">
-              <div class="text-sm opacity-75">
-                {dateRange(entry.data.dateStart, entry.data.dateEnd)}
-              </div>
-              <div class="font-semibold text-black dark:text-white">
+              <div class="flex justify-between">
+                  <div class="font-semibold text-black dark:text-white">
                 {entry.data.company}
               </div>
+                <div class="text-sm opacity-75">
+                {dateRange(entry.data.dateStart, entry.data.dateEnd)}
+              </div>
+            
+                
+              </div>
+            
               <div class="text-sm opacity-75">
                 {entry.data.role}
               </div>

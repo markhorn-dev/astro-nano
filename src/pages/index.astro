@@ -1,11 +1,11 @@
 ---
 import { getCollection } from "astro:content";
-import Container from "@components/Container.astro";
-import PageLayout from "@layouts/PageLayout.astro";
 import ArrowCard from "@components/ArrowCard.astro";
+import Container from "@components/Container.astro";
 import Link from "@components/Link.astro";
-import { dateRange } from "@lib/utils";
-import { SITE, HOME, SOCIALS } from "@consts";
+import { HOME, SITE, SOCIALS } from "@consts";
+import PageLayout from "@layouts/PageLayout.astro";
+// import { dateRange } from "@lib/utils";
 
 const blog = (await getCollection("blog"))
   .filter(post => !post.data.draft)
@@ -17,26 +17,26 @@ const projects = (await getCollection("projects"))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0,SITE.NUM_PROJECTS_ON_HOMEPAGE);
 
-const allwork = (await getCollection("work"))
-  .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf())
-  .slice(0,SITE.NUM_WORKS_ON_HOMEPAGE);
+// const allwork = (await getCollection("work"))
+//   .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf())
+//   .slice(0,SITE.NUM_WORKS_ON_HOMEPAGE);
 
-const work = await Promise.all(
-  allwork.map(async (item) => {
-    const { Content } = await item.render();
-    return { ...item, Content };
-  })
-);
+// const work = await Promise.all(
+//   allwork.map(async (item) => {
+//     const { Content } = await item.render();
+//     return { ...item, Content };
+//   })
+// );
 
 ---
 
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
-    <h4 class="animate font-semibold text-black dark:text-white">
-      Hi, I'm Nano <span class="text-xl">👋🏻</span> 
-    </h4>
+    <!-- <h4 class="animate font-semibold text-black dark:text-white">
+      Hi, I'm NingXi <span class="text-xl">👋🏻</span> 
+    </h4> -->
     <div class="space-y-16">
-      <section>
+      <!-- <section>
         <article class="space-y-4">
           <p class="animate">
             I am a minimal, seo friendly, accessible portfolio and blog for developers. 
@@ -61,7 +61,7 @@ const work = await Promise.all(
             to fork the repository, read the docs or one-click deploy on Vercel or Netlify. 
           </p>
         </article>
-      </section>
+      </section> -->
 
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
@@ -80,7 +80,7 @@ const work = await Promise.all(
           ))}
         </ul>
       </section>
-
+<!-- 
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5 class="font-semibold text-black dark:text-white">
@@ -108,7 +108,7 @@ const work = await Promise.all(
             </li>
           ))}
         </ul>
-      </section>
+      </section> -->
 
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">

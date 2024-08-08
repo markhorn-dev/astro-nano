@@ -1,0 +1,19 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+	"organizeImports": {
+		"enabled": true
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true
+		}
+	},
+	"formatter": {
+		"enabled": true
+	},
+
+	"files": {
+		"ignore": [".vscode/", "dist/", "node_modules/", "public/", ".astro"]
+	}
+}
