@@ -24,10 +24,8 @@ The open nature of the code allows developers worldwide to contribute their expe
 ### Transparency and Security
 The open source model promotes transparency, as the code is open for scrutiny by anyone. This can lead to the early identification and resolution of security vulnerabilities, resulting in more secure and reliable software.
 
-> [!NOTE]  
 > The impact of open source is undeniable, with projects like the Linux operating system, the Apache web server, and the WordPress content management system powering a significant portion of the internet.
 
-> [!TIP]
 > Did you know that the Linux kernel is used in a vast majority of web servers and Android devices?
 
 ## Collaboration within the walls
@@ -39,7 +37,6 @@ By adopting innersource practices, companies can break down silos between teams,
 ### Fostering a Culture of Innovation
 Innersource empowers employees by giving them a sense of ownership and encouraging them to contribute to projects beyond their immediate team. This fosters a culture of continuous improvement and innovation.
 
-> [!TIP]
 > Companies like Google, IBM, and PayPal have successfully implemented innersource practices, reaping the benefits of increased collaboration and efficiency.
 
 ## Key Differences and Similarities
@@ -48,7 +45,8 @@ While both models emphasize collaboration, there are some key distinctions:
 - **Target Audience**: Open source is open to the public, while innersource is limited to an organization's internal teams.
 - **Licensing**: Open source projects typically use permissive licenses (e.g. MIT, Apache), allowing for broad use and modification. Innersource projects may have stricter licensing terms to protect intellectual property.
 - **Shared Principles**: Both models promote collaboration, transparency, and meritocracy, valuing contributions based on merit rather than hierarchy.
-Deciding between open source and inner source depends on various factors, including project goals, intellectual property concerns, and company culture. Open source is ideal for projects that benefit from a large community of contributors, while inner source is better suited for proprietary projects or those requiring stricter control.
+
+Deciding between open source and innersource depends on various factors, including project goals, intellectual property concerns, and company culture. Open source is ideal for projects that benefit from a large community of contributors, while innersource is better suited for proprietary projects or those requiring stricter control.
 
 ## Choosing the Right Approach
 Open source and innersource are powerful collaborative models that are driving innovation and shaping the future of software development. Whether you're contributing to a global open source project or advocating for innersource within your organization, embracing collaboration is key to unlocking the full potential of software development.
