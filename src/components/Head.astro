@@ -102,7 +102,7 @@ const { title, description, image = "/nano.png" } = Astro.props;
 
     window.matchMedia("(prefers-color-scheme: dark)")
       .addEventListener("change", event => {
-        if (localStorage.theme === "system") {
+        if (localStorage.theme === "system" || !localStorage.theme) {
           toggleTheme(event.matches);
         }
       }
