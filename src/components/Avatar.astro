@@ -1,0 +1,23 @@
+---
+import { Image } from 'astro:assets';
+
+const src = '/img/me.png';
+
+/**
+ * Image by flatart on Freepik
+ * https://www.freepik.com/free-psd/portrait-girl-black-t-shirt-gray-background_132259808.htm
+ *
+ * Please replace the image with your own and update the alt text accordingly.
+ */
+---
+
+<div class="flex items-center justify-center rounded-full border-4 border-gray-950">
+	<Image
+		src={src}
+		alt="Selfie of me"
+		width={156}
+		height={156}
+		class="size-36 animate-zoom-in-out rounded-full p-0.5 duration-300 md:size-40"
+		loading="eager"
+	/>
+</div>

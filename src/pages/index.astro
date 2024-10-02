@@ -6,6 +6,9 @@ import ArrowCard from "@components/ArrowCard.astro";
 import Link from "@components/Link.astro";
 import { dateRange } from "@lib/utils";
 import { SITE, HOME, SOCIALS } from "@consts";
+import Avatar from "@components/Avatar.astro";
+import Details from "@components/Details.astro";
+import Socials from "@components/Socials.astro";
 
 const blog = (await getCollection("blog"))
   .filter(post => !post.data.draft)
@@ -32,8 +35,13 @@ const work = await Promise.all(
 
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
+    <div class="grid py-4 pb-36 grid-cols-1 place-content-center place-items-center gap-5">
+      <Avatar />
+      <Details />
+      <Socials />
+    </div>
     <h4 class="animate font-semibold text-black dark:text-white">
-      Hi, I'm Nano <span class="text-xl">👋🏻</span> 
+      Thanks for stopping by <span class="text-xl">👋🏻</span> 
     </h4>
     <div class="space-y-16">
       <section>

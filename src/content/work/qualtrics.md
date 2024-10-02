@@ -1,6 +1,6 @@
 ---
-company: "Google"
-role: "Staff Software Engineer"
+company: "Qualtrics"
+role: "Technical Account Manager"
 dateStart: "11/27/2022"
 dateEnd: "Current"
 ---
