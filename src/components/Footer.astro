@@ -4,7 +4,7 @@ import { SITE } from "@consts";
 import BackToTop from "@components/BackToTop.astro";
 ---
 
-<footer class="animate">
+<footer class="">
   <Container>
     <div class="relative">
       <div class="absolute right-0 -top-20">
@@ -13,7 +13,8 @@ import BackToTop from "@components/BackToTop.astro";
     </div>
     <div class="flex justify-between items-center">
       <div>
-        &copy; 2024 {`|`} {SITE.NAME}
+        &copy; 2024 {`|`}
+        {SITE.NAME}
       </div>
       <div class="flex flex-wrap gap-1 items-center">
         <button
