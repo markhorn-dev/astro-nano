@@ -47,6 +47,9 @@ const work = await Promise.all(
       <section>
         <article class="space-y-4">
           <p class="animate">
+            I am software engineer with passion for building applications.
+            I love getting into the weeds of the tech and seeing how the sausage is made.
+            ENDOFTEST
             I am a minimal, seo friendly, accessible portfolio and blog for developers. 
             I am an even more lightweight version of my popular theme
             <Link href="https://github.com/markhorn-dev/astro-sphere" aria-label="Astro Sphere on Github" external>
@@ -101,14 +104,16 @@ const work = await Promise.all(
         <ul class="flex flex-col space-y-4">
           {work.map(entry => (
             <li>
-              <div class="text-sm opacity-75">
-                {dateRange(entry.data.dateStart, entry.data.dateEnd)}
-              </div>
               <div class="font-semibold text-black dark:text-white">
                 {entry.data.company}
               </div>
-              <div class="text-sm opacity-75">
-                {entry.data.role}
+              <div class="flex justify-between text-sm opacity-75">
+                <div>
+                  {entry.data.role}
+                </div>
+                <div>
+                  {dateRange(entry.data.dateStart, entry.data.dateEnd)}
+                </div>
               </div>
               <article>
                 <entry.Content />

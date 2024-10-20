@@ -1,8 +1,8 @@
 ---
 company: "Qualtrics"
 role: "Technical Account Manager"
-dateStart: "11/27/2022"
-dateEnd: "Current"
+dateStart: "12/15/2021"
+dateEnd: "10/01/2023"
 ---
 
-Sit amet consectetur adipisicing elit. Iure illo neque tempora, voluptatem est quaerat voluptas praesentium ipsa dolorem dignissimos nulla ratione distinctio quae maiores eligendi nostrum? Quibusdam, debitis voluptatum, lorem ipsum dolor.
+I worked with some really cool customers and helped them to Qualtrics surveys. It was fascinating 

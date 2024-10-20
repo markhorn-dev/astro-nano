@@ -4,9 +4,10 @@
  */
 
  enum DetailType {
-	title = 'Test',
-	subtitle = 'Test 2',
-	description = 'Test 3',
+	title = 'title',
+	subtitle = 'subtitle',
+	description = 'description',
+	location = 'location'
 }
 
 const details: {
@@ -19,13 +20,19 @@ const details: {
 	},
 	{
 		type: DetailType.subtitle,
-		content: 'Software Engineer',
+		content: 'Software Engineer 💻',
 	},
 	{
 		type: DetailType.description,
-		content: 'Exploring tech, one code line at a time. 🚀💻',
+		content: 'Homelab enthusiast 🤖 | Amateur mixologist 🍹 | Cursed sports fan 🫠',
 	},
+	{
+		type: DetailType.location,
+		content: 'Washington D.C. 🏛️'
+	}
 ];
+
+
 
 const getClass = (type: DetailType) => {
 	switch (type) {
@@ -34,6 +41,8 @@ const getClass = (type: DetailType) => {
 		case DetailType.subtitle:
 			return 'text-sm font-normal tracking-wide md:text-base duration-300';
 		case DetailType.description:
+			return 'text-sm font-normal tracking-wide md:text-base animate-fade-in duration-300';
+		case DetailType.location:
 			return 'text-sm font-normal tracking-wide md:text-base animate-fade-in duration-300';
 	}
 };

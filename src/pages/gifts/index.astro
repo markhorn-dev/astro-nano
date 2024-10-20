@@ -1,0 +1,24 @@
+---
+import Container from "@/components/Container.astro";
+import { GIFTS } from "@/consts";
+import PageLayout from "@/layouts/PageLayout.astro";
+import dotenv from "dotenv"
+
+dotenv.config()
+
+export const prerender = false;
+
+const pagePassword = process.env.GIFTS_PASSWORD;
+const password = Astro.url.searchParams.get('password');
+const authenticated = password == pagePassword;
+// url should include ?password=PASSWORD
+
+if (!authenticated)
+	return Astro.redirect("/forbidden");
+---
+
+<PageLayout title={GIFTS.TITLE} description={GIFTS.DESCRIPTION}>
+  <Container>
+    <div>Test</div>
+  </Container>
+</PageLayout>

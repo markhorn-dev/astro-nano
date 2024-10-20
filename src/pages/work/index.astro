@@ -14,26 +14,36 @@ const work = await Promise.all(
     return { ...item, Content };
   })
 );
+
+// fill in download resume function here
+const dl = () => {}
 ---
 
 <PageLayout title={WORK.TITLE} description={WORK.DESCRIPTION}>
   <Container>
     <div class="space-y-10">
-      <div class="animate font-semibold text-black dark:text-white">
-        Work
+      <div class="flex justify-between">
+        <div class="animate font-semibold text-black dark:text-white">
+          Work Experience
+        </div>
+        <button class="mr-12 relative group flex flex-nowrap py-1 px-3 rounded-lg border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
+          Resume
+        </button>
       </div>
       <ul class="flex flex-col space-y-4">
         { 
           work.map(entry => (
             <li class="animate">
-              <div class="text-sm opacity-75">
-                {dateRange(entry.data.dateStart, entry.data.dateEnd)}
-              </div>
               <div class="font-semibold text-black dark:text-white">
                 {entry.data.company}
               </div>
-              <div class="text-sm opacity-75">
-                {entry.data.role}
+              <div class="flex justify-between text-sm opacity-75">
+                <div>
+                  {entry.data.role}
+                </div>
+                <div class="mr-6">
+                  {dateRange(entry.data.dateStart, entry.data.dateEnd)}
+                </div>
               </div>
               <article>
                 <entry.Content />

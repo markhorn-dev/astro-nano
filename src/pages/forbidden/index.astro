@@ -1,0 +1,16 @@
+---
+import Container from "@components/Container.astro";
+import { FORBIDDEN } from "@consts";
+import PageLayout from "@layouts/PageLayout.astro";
+---
+
+<PageLayout title={FORBIDDEN.TITLE} description={FORBIDDEN.DESCRIPTION}>
+  <Container>
+    <h1 class="flex justify-center animate font-semibold text-black dark:text-white text-xl py-8">
+      403: Forbidden
+    </h1>
+    <div class="grid justify-items-center">
+      <p class="animate font-semibold text-black dark:text-white">Womp womp</p>
+    </div>
+  </Container>
+</PageLayout>

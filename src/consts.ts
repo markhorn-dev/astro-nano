@@ -28,6 +28,16 @@ export const PROJECTS: Metadata = {
   DESCRIPTION: "A collection of my projects, with links to repos.",
 };
 
+export const GIFTS: Metadata = {
+  TITLE: "Gifts",
+  DESCRIPTION: "Rick gift ideas for family and friends"
+}
+
+export const FORBIDDEN: Metadata = {
+  TITLE: "Forbidden",
+  DESCRIPTION: "If ya know, ya know"
+}
+
 export const SOCIALS: Socials = [
   { 
     NAME: "github",
