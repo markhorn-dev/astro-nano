@@ -10,11 +10,15 @@
     "preview:network": "astro preview --host",
     "astro": "astro",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "generate": "drizzle-kit generate --dialact=sqlite --schema=./src/models/schema.ts",
+    "migrate": "tsx src/utils/db.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.9",
     "@astrojs/mdx": "^2.2.0",
+    "@astrojs/node": "^8.3.4",
+    "@astrojs/react": "^3.6.2",
     "@astrojs/rss": "^4.0.5",
     "@astrojs/sitemap": "^3.1.1",
     "@astrojs/tailwind": "^5.1.0",
@@ -22,20 +26,32 @@
     "@fontsource/inter": "^5.0.17",
     "@fontsource/lora": "^5.0.16",
     "@tailwindcss/typography": "^0.5.10",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
     "@typescript-eslint/eslint-plugin": "^7.3.1",
     "@typescript-eslint/parser": "^7.3.1",
-    "astro": "^4.5.6",
+    "astro": "^4.16.8",
+    "better-sqlite3": "^11.5.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.36.0",
     "eslint": "^8.57.0",
     "eslint-plugin-astro": "^0.32.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "lucide-react": "^0.453.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "sharp": "^0.33.3",
     "tailwind-merge": "^2.2.2",
     "tailwindcss": "^3.4.1",
-    "tailwindcss-animate": "^1.0.7",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.11",
+    "@types/node": "^22.8.7",
+    "drizzle-kit": "^0.27.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5.4.2"
   }
 }
