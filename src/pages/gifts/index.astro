@@ -1,6 +1,7 @@
 ---
-import Gifts from "../../components/Gifts.tsx"
+import PageLayout from "@layouts/PageLayout.astro"
+import Gifts from "@components/Gifts.tsx"
 ---
-<div>
+<PageLayout title="Gifts" description="A secret gifts list">
   <Gifts client:load />
-</div>
+</PageLayout>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import GiftsTable from "./GiftsTable";
 
 const Gifts = () => {
   const [isAuthorized, setIsAuthorized] = useState(false);
@@ -27,7 +28,7 @@ const Gifts = () => {
 
   return(
     <div>
-      Gifts!
+      <GiftsTable />
     </div>
   )
 }
