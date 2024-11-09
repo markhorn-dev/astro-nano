@@ -1,5 +1,5 @@
 ---
-title: "Astro Sphere"
+title: "Coming soon"
 description: "Portfolio and blog build with astro."
 date: "Mar 18 2024"
 demoURL: "https://astro-sphere-demo.vercel.app"
