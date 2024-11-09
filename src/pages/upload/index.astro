@@ -1,39 +1,39 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
-import Container from "@components/Container.astro";
 ---
 
 <PageLayout title={"TEST"} description={"ANOTHA TEST"}>
-  <Container>
-    <div class="space-y-10">
-      <h1>Add New Gifts</h1>
-      <div class="flex justify-between">
-        <form method="post" class="">
-          <label>
-            Name
-            <input type="text" name="name" required/>
-          </label>
-          <label>
-            Link
-            <input type="url" name="link" required />
-          </label>
-          <label>
-            Assignee
-            <input type="text" name="assignee" />
-          </label>
-          <label>
-            Bought?
-            <input type="text" name="bought" />
-          </label>
-          <label>
-            Notes
-            <input type="text" name="notes" />
-          </label>
-          <button class="mr-12 relative group flex flex-nowrap py-1 px-3 rounded-lg border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
-            Submit
-          </button>
-        </form>
-      </div>
+  <div class="space-y-10 mx-10">
+    <h1>Add New Gifts</h1>
+    <div id="form-block" class="flex">
+      <form method="post" class="flex">
+        <div class="flex flex-col">
+          <label class="my-2">Name</label>
+          <input type="text" name="name" required/>
+        </div>
+        <div class="flex flex-col">
+          <label class="my-2">Link</label>
+          <input type="url" name="link" required />
+        </div>
+        <div class="flex flex-col">
+          <label class="my-2">Assignee</label>
+          <input type="text" name="assignee" value="Unassigned" />
+        </div>
+        <div class="flex flex-col">
+          <label class="my-2">Bought?</label>
+          <select>
+            <option value="Yes">Yes</option>
+            <option value="No" selected>No</option>
+          </select>
+        </div>
+        <div class="flex flex-col">
+          <label class="my-2">Notes</label>
+          <input type="text" name="notes" />
+        </div>
+      </form>
     </div>
-  </Container>
+    <button class="mr-12 relative group flex flex-nowrap py-1 px-3 rounded-lg border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
+      + Add Record
+    </button>
+  </div>
 </PageLayout>
