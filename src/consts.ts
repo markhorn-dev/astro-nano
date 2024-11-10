@@ -33,6 +33,11 @@ export const GIFTS: Metadata = {
   DESCRIPTION: "Rick gift ideas for family and friends"
 }
 
+export const UPLOAD: Metadata = {
+  TITLE: "Upload",
+  DESCRIPTION: "Frontend interface for me to upload gifts to my secret gifts page",
+};
+
 export const FORBIDDEN: Metadata = {
   TITLE: "Forbidden",
   DESCRIPTION: "If ya know, ya know"
