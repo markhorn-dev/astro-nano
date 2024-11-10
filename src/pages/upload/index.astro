@@ -1,0 +1,66 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import { UPLOAD } from "@consts";
+---
+
+<PageLayout title={UPLOAD.TITLE} description={UPLOAD.DESCRIPTION}>
+  <div class="space-y-10 mx-10">
+    <div id="header-block" class="flex text-start">
+      <h1 class="text-xl font-semibold">Add New Gifts</h1>
+      <button id="upload-data" class="ml-20 relative group flex flex-nowrap py-1 px-3 rounded-lg border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
+        Upload
+      </button>
+    </div>
+    <div id="form-block" class="flex">
+      <form method="post" class="flex">
+        <div class="flex flex-col pr-8 max-w-56">
+          <label class="my-2">Name</label>
+          <input class="border border-stone-600 rounded-lg bg-stone-700 py-1 px-2" type="text" name="name" required />
+        </div>
+        <div class="flex flex-col pr-8">
+          <label class="my-2">Link</label>
+          <input class="border border-stone-600 rounded-lg bg-stone-700 py-1 px-2" type="url" name="link" required />
+        </div>
+        <div class="flex flex-col pr-8 max-w-40">
+          <label class="my-2">Assignee</label>
+          <select class="border border-stone-600 rounded-lg bg-stone-700 py-1 px-2">
+            <option value="Unassigned" selected>Unassigned</option>
+            <option value="Justin">Justin</option>
+            <option value="Kaylin">Kaylin</option>
+            <option value="Liz">Liz</option>
+            <option value="Lorraine">Lorraine</option>
+            <option value="Rachel">Rachel</option>
+            <option value="Tyler">Tyler</option>
+          </select>
+        </div>
+        <div class="flex flex-col pr-8">
+          <label class="my-2">Bought?</label>
+          <select class="border border-stone-600 rounded-lg bg-stone-700 py-1 px-2">
+            <option value="Yes">Yes</option>
+            <option value="No" selected>No</option>
+          </select>
+        </div>
+        <div class="flex flex-col">
+          <label class="my-2">Notes</label>
+          <input class="border border-stone-600 rounded-lg bg-stone-700 py-1 px-2" type="text" name="notes" />
+        </div>
+      </form>
+    </div>
+    <button id="add-row-btn" class="mr-12 relative group flex flex-nowrap py-1 px-3 rounded-lg border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
+      + Add Record
+    </button>
+  </div>
+  <script>
+    const formBlock = document.getElementById('form-block');
+    document.getElementById('add-row-btn')?.addEventListener('click', () => {
+      if (formBlock) {
+        const duplicateRow = formBlock.cloneNode(true) as HTMLElement;
+        const giftRecords = document.getElementsByTagName('form')
+        const addNewRowBtn = document.getElementById('add-row-btn') as HTMLElement
+        const lastRecord = giftRecords[giftRecords.length - 1].parentElement?.parentElement
+        duplicateRow.id = 'divToDuplicate' + Date.now(); // Make the ID unique  
+        lastRecord?.insertBefore(duplicateRow, addNewRowBtn)
+      }
+    });
+  </script>
+</PageLayout>
