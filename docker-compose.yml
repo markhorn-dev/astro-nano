@@ -7,4 +7,4 @@ services:
      - .:/app
     ports:
      - 4321:4321
-    command: npm run dev
+    command: npm run dev:network
