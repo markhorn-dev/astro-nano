@@ -1,5 +1,5 @@
 ---
-company: "Invoke Malaysia"
+company: "Invoke Solutions"
 role: "Software Engineer"
 dateStart: "08/01/2022"
 dateEnd: "03/01/2024"

@@ -21,7 +21,7 @@ const allwork = (await getCollection("work"))
   .sort(
     (a, b) =>
       new Date(b.data.dateStart).valueOf() -
-      new Date(a.data.dateStart).valueOf(),
+      new Date(a.data.dateStart).valueOf()
   )
   .slice(0, SITE.NUM_WORKS_ON_HOMEPAGE);
 
@@ -29,7 +29,7 @@ const work = await Promise.all(
   allwork.map(async (item) => {
     const { Content } = await item.render();
     return { ...item, Content };
-  }),
+  })
 );
 ---
 
@@ -42,43 +42,33 @@ const work = await Promise.all(
       <section>
         <article class="space-y-4">
           <p class="animate">
-           Some calls
-            me Jun and that's fine. I'm web developer based in Kuala Lumpur 🧑‍💻.
-            I started out my career as a Mechanical Engineer then discovered the
-            passion for automating the boring tasks which led me down the road
-            of software development. I'm dedicating this space as a
-            documentation of my learning journey.
+            Some people call me Jun and that's fine. I'm Mechanical Engineer turned
+            web developer based in Kuala Lumpur 🧑‍💻. This is a space where I will
+            document my learning journey in the software development world.
           </p>
           <p class="animate">
             I enjoy building server-side applications with a little bit of
             DevOps on the side. While my primary programming language at work is
-            Object Oriented PHP, I actively explore different paradigms just to
-            keep my biases checked. This leads me to learning Go, which I think
-            complements PHP very well givens it's developer experience and
-            compilation speed. I'm also a fan of Linux and currently using Mint
-            as my daily driver.
+            Object Oriented PHP, I like explore different languages like Go and C for fun. 
           </p>
-      
         </article>
       </section>
 
-      <!-- <section class="animate space-y-6">
+      <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
-            Latest posts
-          </h5>
-          <Link href="/blog">
-            See all posts
-          </Link>
+          <h5 class="font-semibold text-black dark:text-white">Latest posts</h5>
+          <Link href="/blog"> See all posts </Link>
         </div>
         <ul class="flex flex-col gap-4">
-          {blog.map(post => (
-            <li>
-              <ArrowCard entry={post} />
-            </li>
-          ))}
+          {
+            blog.map((post) => (
+              <li>
+                <ArrowCard entry={post} />
+              </li>
+            ))
+          }
         </ul>
-      </section> -->
+      </section>
 
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
@@ -107,23 +97,23 @@ const work = await Promise.all(
         </ul>
       </section>
 
-      <!-- <section class="animate space-y-6">
+      <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5 class="font-semibold text-black dark:text-white">
             Recent projects
           </h5>
-          <Link href="/projects">
-            See all projects
-          </Link>
+          <Link href="/projects"> See all projects </Link>
         </div>
         <ul class="flex flex-col gap-4">
-          {projects.map(project => (
-            <li>
-              <ArrowCard entry={project} />
-            </li>
-          ))}
+          {
+            projects.map((project) => (
+              <li>
+                <ArrowCard entry={project} />
+              </li>
+            ))
+          }
         </ul>
-      </section> -->
+      </section>
 
       <section class="animate space-y-4">
         <h5 class="font-semibold text-black dark:text-white">Let's Connect</h5>
