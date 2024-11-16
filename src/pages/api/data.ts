@@ -2,7 +2,7 @@ import { gifts } from '@models/schema';
 import { db } from '@utils/db';
 
 // Function to get column names
-export const get = async ({ req }: { req: Request }) => {
+export const get = async (req: Request) => {
   if (req.method === 'GET') {
     try {
       const allGifts = db.select().from(gifts)

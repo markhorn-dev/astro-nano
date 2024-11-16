@@ -1,66 +1,131 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
 import { UPLOAD } from "@consts";
+
+
+
 ---
 
 <PageLayout title={UPLOAD.TITLE} description={UPLOAD.DESCRIPTION}>
   <div class="space-y-10 mx-10">
     <div id="header-block" class="flex text-start">
       <h1 class="text-xl font-semibold">Add New Gifts</h1>
-      <button id="upload-data" class="ml-20 relative group flex flex-nowrap py-1 px-3 rounded-lg border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
-        Upload
-      </button>
+      <div id="btn-group" class="flex">
+        <button id="upload-btn" class="ml-20 relative group flex flex-nowrap py-1 px-3 rounded-lg border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
+          Upload
+        </button>
+        <button id="add-row-btn" class="mr-12 ml-4 relative group flex flex-nowrap py-1 px-3 rounded-lg border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
+          + Add Record
+        </button>
+      </div>
     </div>
-    <div id="form-block" class="flex">
-      <form method="post" class="flex">
-        <div class="flex flex-col pr-8 max-w-56">
-          <label class="my-2">Name</label>
-          <input class="border border-stone-600 rounded-lg bg-stone-700 py-1 px-2" type="text" name="name" required />
+    <form id="form-block" action="/api/submit" method="POST">
+      <div id="entries">
+        <div id="form-entry-1" data-group="gift-entries" class="flex">
+          <div class="flex flex-col pr-8 max-w-56">
+            <label class="my-2">Name</label>
+            <input class="border border-stone-600 rounded-lg bg-stone-700 py-1 px-2" type="text" name="name" required />
+          </div>
+          <div class="flex flex-col pr-8">
+            <label class="my-2">Link</label>
+            <input class="border border-stone-600 rounded-lg bg-stone-700 py-1 px-2" type="url" name="link" required />
+          </div>
+          <div class="flex flex-col pr-8 max-w-40">
+            <label class="my-2">Assignee</label>
+            <select name="assignee" class="border border-stone-600 rounded-lg bg-stone-700 py-1 px-2">
+              <option value="Unassigned" selected>Unassigned</option>
+              <option value="Justin">Justin</option>
+              <option value="Kaylin">Kaylin</option>
+              <option value="Liz">Liz</option>
+              <option value="Lorraine">Lorraine</option>
+              <option value="Rachel">Rachel</option>
+              <option value="Tyler">Tyler</option>
+            </select>
+          </div>
+          <div class="flex flex-col pr-8">
+            <label class="my-2">Bought?</label>
+            <select name="bought" class="border border-stone-600 rounded-lg bg-stone-700 py-1 px-2">
+              <option value="Yes">Yes</option>
+              <option value="No" selected>No</option>
+            </select>
+          </div>
+          <div class="flex flex-col">
+            <label class="my-2">Notes</label>
+            <input class="border border-stone-600 rounded-lg bg-stone-700 py-1 px-2" type="text" name="notes" />
+          </div>
+          <div class="flex">
+            <button class="flex ml-3 mt-11" data-group="delete-entry-btns" onclick="deleteFormRow(this)">X</button>
+          </div>
         </div>
-        <div class="flex flex-col pr-8">
-          <label class="my-2">Link</label>
-          <input class="border border-stone-600 rounded-lg bg-stone-700 py-1 px-2" type="url" name="link" required />
-        </div>
-        <div class="flex flex-col pr-8 max-w-40">
-          <label class="my-2">Assignee</label>
-          <select class="border border-stone-600 rounded-lg bg-stone-700 py-1 px-2">
-            <option value="Unassigned" selected>Unassigned</option>
-            <option value="Justin">Justin</option>
-            <option value="Kaylin">Kaylin</option>
-            <option value="Liz">Liz</option>
-            <option value="Lorraine">Lorraine</option>
-            <option value="Rachel">Rachel</option>
-            <option value="Tyler">Tyler</option>
-          </select>
-        </div>
-        <div class="flex flex-col pr-8">
-          <label class="my-2">Bought?</label>
-          <select class="border border-stone-600 rounded-lg bg-stone-700 py-1 px-2">
-            <option value="Yes">Yes</option>
-            <option value="No" selected>No</option>
-          </select>
-        </div>
-        <div class="flex flex-col">
-          <label class="my-2">Notes</label>
-          <input class="border border-stone-600 rounded-lg bg-stone-700 py-1 px-2" type="text" name="notes" />
-        </div>
-      </form>
-    </div>
-    <button id="add-row-btn" class="mr-12 relative group flex flex-nowrap py-1 px-3 rounded-lg border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
-      + Add Record
-    </button>
+      </div>
+      <div id="submit-btn-block">
+        <button id="submit-btn" class="mt-8 mr-12 relative group flex flex-nowrap py-1 px-3 rounded-lg border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
+          Submit
+        </button>
+      </div>
+    </form>
   </div>
   <script>
-    const formBlock = document.getElementById('form-block');
+    declare global {
+      interface Window {
+        deleteFormRow: (button: HTMLButtonElement) => void;
+      }
+    }
+
+    const formEntry = document.getElementById('form-entry-1')
     document.getElementById('add-row-btn')?.addEventListener('click', () => {
-      if (formBlock) {
-        const duplicateRow = formBlock.cloneNode(true) as HTMLElement;
-        const giftRecords = document.getElementsByTagName('form')
-        const addNewRowBtn = document.getElementById('add-row-btn') as HTMLElement
-        const lastRecord = giftRecords[giftRecords.length - 1].parentElement?.parentElement
-        duplicateRow.id = 'divToDuplicate' + Date.now(); // Make the ID unique  
-        lastRecord?.insertBefore(duplicateRow, addNewRowBtn)
+      if (formEntry) {
+        const duplicateRow = formEntry.cloneNode(true) as HTMLElement;
+
+        // Find all the gift entries (the containers for the form rows)
+        const giftRecords = document.querySelectorAll('[data-group="gift-entries"]');
+      
+        // Find the parent container of the last gift entry row
+        const lastRecord = giftRecords[giftRecords.length - 1].parentElement
+
+        // Ensure the parent exists
+        if (lastRecord) {
+          duplicateRow.id = 'divToDuplicate' + Date.now();
+          lastRecord.appendChild(duplicateRow);
+        } else {
+          console.error('Parent container for last record not found.');
+        }
       }
     });
+
+    const form = document.getElementById('form-block') as HTMLFormElement | null;
+    if (form) {
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault(); // Prevent default form submission
+        const formData = new FormData(form);
+        const searchParams = new URLSearchParams();
+
+        formData.forEach((value, key) => {
+          searchParams.append(key, value.toString());
+        });
+
+        const response = await fetch('/api/submit', {
+          method: 'POST',
+          body: new URLSearchParams(searchParams),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          alert(result.message); // Success message
+        } else {
+          alert(result.message); // Validation or error message
+        }
+      });
+    } else {
+      console.error('Form element not found.');
+    }
+
+    window.deleteFormRow = (button: HTMLButtonElement) => {
+      const row: HTMLElement = button.closest('div')?.parentNode as HTMLElement;
+      if (row && row.parentNode) {
+        row.parentNode.removeChild(row)
+      }
+    }
   </script>
 </PageLayout>
