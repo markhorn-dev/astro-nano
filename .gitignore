@@ -22,3 +22,4 @@ pnpm-debug.log*
 .DS_Store
 
 notes.txt
+db.sqlite3
