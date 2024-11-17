@@ -88,12 +88,13 @@ Once training is complete, you will see a messsage indicating that, and you can 
 
 ## Generate Images
 I used [this other pre-made interface](https://replicate.com/lucataco/flux-dev-lora) on Replicate to generate my images.
+
 ![image](/images/lora_training/replicate_generate.png)
 
 ### prompt
 This is the prompt that is used for generating the image. Remember that this prompt needs to contain your trigger word, only then the model can generate images that you trained it with. 
 
-For example, if you trained the model on images of [Jabba the Hutt](https://en.wikipedia.org/wiki/Jabba_the_Hutt) from Starwars.
+For example, if you trained the model on images of [Jabba the Hutt](https://en.wikipedia.org/wiki/Jabba_the_Hutt)
 - Example Trigger Word: `jabba`
 - Example Prompt: `a portrait of jabba at a green grass field around wild bisons on Tatooine`
 
@@ -107,8 +108,7 @@ Change this field to generate multiple outputs (Max 4). Remember each output wil
 
 ![image](/images/lora_training/replicate_num_output.png)
 
-Now click `Run` to begin training. 
-> This will take some time depending on the resource and files. In my case it took me around 30 mins to complete training.
+Now click `Run` to begin generating image based on your prompt. 
 
 > In my experiment, generating an image resulted in an approximate cost of 0.04 USD per image.
 
