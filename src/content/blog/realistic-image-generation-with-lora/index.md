@@ -35,7 +35,7 @@ I have compiled a dataset consisting of 50 photographs of myself, captured in va
 ## Start Training the Model
 I used [this pre-made interface](https://replicate.com/ostris/flux-dev-lora-trainer/train) on Replicate to train the model. This step needs to be done carefully, this is the majority of the configuration required.
 
-![image](./assets/img/flux_trainer_config.png)
+![image](/images/lora_training/flux_trainer_config.png)
 
 ### Destination
 Click the dropdown and create destination to be used to store this model on Replicate.
@@ -53,24 +53,32 @@ If you check this box, the images you've uploaded will be captioned automaticall
 
 > Alternatively, you may choose to provide your own captions on the images you uploaded. To provide your own caption create a txt file of the same name as your image.
 
-![image](./assets/img/flux_trainer_config.png)
+![image](/images/lora_training/hf_replicate_config.png)
 
 ### hf_repo_id
 This is the huggingface repo where the trained model will be stored.
 - Head over to [Huggingface](https://huggingface.co/)
+
 - Click on [Profile > New Model](https://huggingface.co/new) to create this repo.
-![image](./assets/img/hf_new_model.png)
+
+![image](/images/lora_training/hf_new_model.png)
+
 - You may name the model anything you like. 
 > To avoid futher configuration around access during image generation, please make the model public. You can later make it private if you wish.
+
 - Copy the repo id and paste it on the `hf_repo_id` field in the replicate interface.
 
 ### hf_token
 This is the huggingface token, to be able to programatically upload model to Huggingface.
 - Head over to [Huggingface](https://huggingface.co/)
+
 - Click on [Profile > Access Token > Create New Token](hhttps://huggingface.co/settings/tokens) to create this repo.
-![image](assets/img/hf_create_token.png)
+
+![image](/images/lora_training/hf_create_token.png)
+
 - You may name the token anything you like. 
 > You can only see this token once, so please copy and store this in a safe place for later.
+
 - Copy the token and paste it on the `hf_token` field in the replicate interface.
 
 Now click `Create training` to begin training. 
@@ -80,38 +88,43 @@ Once training is complete, you will see a messsage indicating that, and you can 
 
 ## Generate Images
 I used [this other pre-made interface](https://replicate.com/lucataco/flux-dev-lora) on Replicate to generate my images.
-![image](./assets/img/replicate_generate.png)
+
+![image](/images/lora_training/replicate_generate.png)
 
 ### prompt
 This is the prompt that is used for generating the image. Remember that this prompt needs to contain your trigger word, only then the model can generate images that you trained it with. 
 
-For example, if you trained the model on images of [Jabba the Hutt](https://en.wikipedia.org/wiki/Jabba_the_Hutt) from Starwars.
+For example, if you trained the model on images of [Jabba the Hutt](https://en.wikipedia.org/wiki/Jabba_the_Hutt)
 - Example Trigger Word: `jabba`
 - Example Prompt: `a portrait of jabba at a green grass field around wild bisons on Tatooine`
 
 ### hf_lora
 Change this field to your huggingface repo id you created earlier.
-![image](./assets/img/replicate_hf_lora.png)
+
+![image](/images/lora_training/replicate_hf_lora.png)
 
 ### num_outputs
 Change this field to generate multiple outputs (Max 4). Remember each output will cost you some money.
-![image](./assets/img/replicate_num_output.png)
 
-Now click `Run` to begin training. 
-> This will take some time depending on the resource and files. In my case it took me around 30 mins to complete training.
+![image](/images/lora_training/replicate_num_output.png)
+
+Now click `Run` to begin generating image based on your prompt. 
 
 > In my experiment, generating an image resulted in an approximate cost of 0.04 USD per image.
 
 ## Sample Images
 
-- prompt: `a professional portrait of <trigger_word> at a conference in a formal attire`
-![image](./assets/img/professional.webp)
+### prompt: `a professional portrait of <trigger_word> at a conference in a formal attire`
 
-- prompt: `a headshot of <trigger_word> at thanksgiving parade wearing a turkey hat`
-![image](./assets/img/thanksgiving.webp)
+![image](/images/lora_training/professional.webp)
 
-- prompt: `photo of <trigger_word> cycling at tour de france 
-![image](./assets/img/tourdefrance.webp)
+### prompt: `a headshot of <trigger_word> at thanksgiving parade wearing a turkey hat`
+
+![image](/images/lora_training/thanksgiving.webp)
+
+### prompt: `photo of <trigger_word> cycling at tour de france`
+
+![image](/images/lora_training/tourdefrance.webp)
 
 ## Conclusion
 I was honestly impressed by the outputs. The first two samples were pretty impressive and resemble me a lot. I even replaced my existing LinkedIn display picture with it. The last sample for Tour de France does not look like me at all.
