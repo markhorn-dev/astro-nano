@@ -58,19 +58,27 @@ If you check this box, the images you've uploaded will be captioned automaticall
 ### hf_repo_id
 This is the huggingface repo where the trained model will be stored.
 - Head over to [Huggingface](https://huggingface.co/)
+
 - Click on [Profile > New Model](https://huggingface.co/new) to create this repo.
+
 ![image](/images/lora_training/hf_new_model.png)
+
 - You may name the model anything you like. 
 > To avoid futher configuration around access during image generation, please make the model public. You can later make it private if you wish.
+
 - Copy the repo id and paste it on the `hf_repo_id` field in the replicate interface.
 
 ### hf_token
 This is the huggingface token, to be able to programatically upload model to Huggingface.
 - Head over to [Huggingface](https://huggingface.co/)
+
 - Click on [Profile > Access Token > Create New Token](hhttps://huggingface.co/settings/tokens) to create this repo.
+
 ![image](/images/lora_training/hf_create_token.png)
+
 - You may name the token anything you like. 
 > You can only see this token once, so please copy and store this in a safe place for later.
+
 - Copy the token and paste it on the `hf_token` field in the replicate interface.
 
 Now click `Create training` to begin training. 
@@ -91,10 +99,12 @@ For example, if you trained the model on images of [Jabba the Hutt](https://en.w
 
 ### hf_lora
 Change this field to your huggingface repo id you created earlier.
+
 ![image](/images/lora_training/replicate_hf_lora.png)
 
 ### num_outputs
 Change this field to generate multiple outputs (Max 4). Remember each output will cost you some money.
+
 ![image](/images/lora_training/replicate_num_output.png)
 
 Now click `Run` to begin training. 
@@ -104,13 +114,16 @@ Now click `Run` to begin training.
 
 ## Sample Images
 
-- prompt: `a professional portrait of <trigger_word> at a conference in a formal attire`
+### prompt: `a professional portrait of <trigger_word> at a conference in a formal attire`
+
 ![image](/images/lora_training/professional.webp)
 
-- prompt: `a headshot of <trigger_word> at thanksgiving parade wearing a turkey hat`
+### prompt: `a headshot of <trigger_word> at thanksgiving parade wearing a turkey hat`
+
 ![image](/images/lora_training/thanksgiving.webp)
 
-- prompt: `photo of <trigger_word> cycling at tour de france 
+### prompt: `photo of <trigger_word> cycling at tour de france`
+
 ![image](/images/lora_training/tourdefrance.webp)
 
 ## Conclusion
