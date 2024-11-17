@@ -53,7 +53,7 @@ If you check this box, the images you've uploaded will be captioned automaticall
 
 > Alternatively, you may choose to provide your own captions on the images you uploaded. To provide your own caption create a txt file of the same name as your image.
 
-![image](/images/lora_training/flux_trainer_config.png)
+![image](/images/lora_training/hf_replicate_config.png)
 
 ### hf_repo_id
 This is the huggingface repo where the trained model will be stored.
