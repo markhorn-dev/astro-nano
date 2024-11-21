@@ -30,15 +30,11 @@ export const PROJECTS: Metadata = {
 
 export const SOCIALS: Socials = [
   { 
-    NAME: "twitter-x",
-    HREF: "https://twitter.com/markhorn_dev",
+    NAME: "GitHub",
+    HREF: "https://github.com/guilhermefgs"
   },
   { 
-    NAME: "github",
-    HREF: "https://github.com/markhorn-dev"
-  },
-  { 
-    NAME: "linkedin",
-    HREF: "https://www.linkedin.com/in/markhorn-dev",
+    NAME: "LinkedIn",
+    HREF: "https://www.linkedin.com/in/guilhermefgs",
   }
 ];
