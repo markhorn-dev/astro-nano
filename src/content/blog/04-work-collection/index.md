@@ -10,15 +10,15 @@ Working with the `work` collection:
 
 ```
 📁 /src/content/work
-└── 📄 apple.md
-└── 📄 facebook.md
-└── 📄 google.md
-└── 📄 mcdonalds.md
+└── 📄 solactive_ag.md
+└── 📄 eta_fabrik.md
+└── 📄 btg_pactual.md
+└── 📄 itau.md
 ```
 
 In the above example, four entries on the /work page will be generated.
 
-`apple`, `facebook`, `google`, `mcdonalds`
+`solactive_ag`, `eta_fabrik`, `btg_pactual`, `itau`
 
 All content must be preceded by required metadata in the markdown file in `yaml` format, and be enclosed by triple dashes. --- ---
 
