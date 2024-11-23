@@ -1,25 +1,42 @@
 import { gifts } from '@models/schema';
 import { db } from '@utils/db';
+import type { APIRoute } from 'astro';
+import { error } from 'console';
 
-// Function to get column names
-export const get = async (req: Request) => {
-  if (req.method === 'GET') {
+// Function to get db data
+export const GET: APIRoute = async ({ request }) => {
+  if (request.method === 'GET') {
     try {
-      const allGifts = db.select().from(gifts)
-      return { 
+      const allGifts = await db.select().from(gifts)
+      return new Response(
+        JSON.stringify({ body: allGifts }),
+      {
         status: 200,
-        body: allGifts
+        headers: {
+          "Content-Type": "application/json"
+        }
       }
+    )
     } catch (error) {
-      return {
-        status: 500,
-        error: { error: 'Error fetching data from SQLite database' },
-      }
+      return new Response(
+        JSON.stringify({ message: "Error fetching row data from database"}),
+        {
+          status: 500,
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      )
     } 
   } else {
-    return {
-      status: 405, 
-      error: { error: 'Method not allowed' },
-    }
+    return new Response(
+      JSON.stringify({ message: `Method not allowed, ${error}`}),
+      {
+        status: 405,
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
+    )
   }
 }
