@@ -1,56 +1,30 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
-import PageLayout from "@layouts/PageLayout.astro";
-import Container from "@components/Container.astro";
-import ArrowCard from "@components/ArrowCard.astro";
-import { BLOG } from "@consts";
+import { getCollection } from "astro:content"
+import PageLayout from "@layouts/PageLayout.astro"
+import TopLayout from "@layouts/TopLayout.astro"
+import BottomLayout from "@layouts/BottomLayout.astro"
+import Blog from "@components/Blog"
+import { BLOG } from "@consts"
 
-const data = (await getCollection("blog"))
+const posts = (await getCollection("blog"))
   .filter(post => !post.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-  
-type Acc = {
-  [year: string]: CollectionEntry<"blog">[];
-}
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
 
-const posts = data.reduce((acc: Acc, post) => {
-    const year = post.data.date.getFullYear().toString();
-    if (!acc[year]) {
-      acc[year] = [];
-    }
-    acc[year].push(post);
-    return acc;
-  }, {});
-
-const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a)); 
+const tags = [...new Set(posts.flatMap(post => post.data.tags))]
+  .sort((a, b) => a.localeCompare(b))
 ---
 
 <PageLayout title={BLOG.TITLE} description={BLOG.DESCRIPTION}>
-  <Container>
-    <div class="space-y-10">
-      <div class="animate font-semibold text-black dark:text-white">
-        Blog
-      </div>
-      <div class="space-y-4">
-        {years.map(year => (
-          <section class="animate space-y-4">
-            <div class="font-semibold text-black dark:text-white">
-              {year}
-            </div>
-            <div>
-              <ul class="flex flex-col gap-4">
-                {
-                  posts[year].map((post) => (
-                    <li>
-                      <ArrowCard entry={post}/>
-                    </li>
-                  ))
-                }
-              </ul>
-            </div>
-          </section>
-        ))}
-      </div>
+  <TopLayout>
+    <div class="animate page-heading">
+      {BLOG.TITLE}
     </div>
-  </Container>
+  </TopLayout>
+  <BottomLayout>
+    <div class="animate">
+      <Blog client:load tags={tags} data={posts} />
+    </div>
+  </BottomLayout>
 </PageLayout>
+
+

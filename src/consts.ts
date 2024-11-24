@@ -1,54 +1,81 @@
-import type { Site, Metadata, Socials } from "@types";
+import type { Site, Page, Links, Socials } from "@types"
 
+// Global
 export const SITE: Site = {
-  NAME: "Nitesh Rijal",
-  EMAIL: "rijal.it@gmail.com",
-  NUM_POSTS_ON_HOMEPAGE: 3,
-  NUM_WORKS_ON_HOMEPAGE: 1,
-  NUM_PROJECTS_ON_HOMEPAGE: 2,
-};
+  TITLE: "PLANET-N 🇳🇵 ✈ 🇺🇸",
+  DESCRIPTION: "Welcome to PLANET-N, a personal portfolio and blog for Nitesh Rijal.",
+  AUTHOR: "Nitesh Rijal",
+}
 
-export const HOME: Metadata = {
-  TITLE: "Home",
-  DESCRIPTION: "Nitesh Rijal's Homepage",
-};
-
-export const BLOG: Metadata = {
+// Blog Page
+export const BLOG: Page = {
   TITLE: "Blog",
-  DESCRIPTION: "Nitesh Rijal's Blog Posts",
-};
+  DESCRIPTION: "Writing on topics I am passionate about.",
+}
 
-export const WORK: Metadata = {
-  TITLE: "Work",
-  DESCRIPTION: "Nitesh Rijal's Work Experiences",
-};
-
-export const PROJECTS: Metadata = {
+// Projects Page 
+export const PROJECTS: Page = {
   TITLE: "Projects",
-  DESCRIPTION: "Nitesh Rijal's Projects",
-};
+  DESCRIPTION: "Recent projects I have worked on.",
+}
 
-export const CONTACT: Metadata = {
-  TITLE: "Contact",
-  DESCRIPTION: "Nitesh Rijal's Contact",
-};
+// Work Page
+export const WORK: Page = {
+  TITLE: "Work",
+  DESCRIPTION: "Places I have worked.",
+}
 
+// Search Page
+export const SEARCH: Page = {
+  TITLE: "Search",
+  DESCRIPTION: "Search all posts and projects by keyword.",
+}
+
+// Links
+export const LINKS: Links = [
+  { 
+    TEXT: "Home", 
+    HREF: "/", 
+  },
+  { 
+    TEXT: "Blog", 
+    HREF: "/blog", 
+  },
+  { 
+    TEXT: "Projects", 
+    HREF: "/projects", 
+  },
+  { 
+    TEXT: "Work", 
+    HREF: "/work", 
+  },
+]
+
+// Socials
 export const SOCIALS: Socials = [
-  
   { 
-    NAME: "linkedin",
-    HREF: "https://www.linkedin.com/in/openrijal/",
+    NAME: "Email",
+    ICON: "email", 
+    TEXT: "rijal.it@gmail.com",
+    HREF: "mailto:rijal.it@gmail.com",
   },
   { 
-    NAME: "twitter-x",
-    HREF: "https://twitter.com/opynrijal",
-  },
-  { 
-    NAME: "github",
+    NAME: "Github",
+    ICON: "github",
+    TEXT: "openrijal",
     HREF: "https://github.com/openrijal"
   },
   { 
-    NAME: "instagram",
-    HREF: "https://www.instagram.com/openrijal",
-  }
-];
+    NAME: "LinkedIn",
+    ICON: "linkedin",
+    TEXT: "openrijal",
+    HREF: "https://www.linkedin.com/in/openrijal/",
+  },
+  { 
+    NAME: "Twitter",
+    ICON: "twitter-x",
+    TEXT: "opynrijal",
+    HREF: "https://x.com/opynrijal",
+  },
+]
+

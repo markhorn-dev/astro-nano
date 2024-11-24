@@ -1,8 +1,15 @@
 ---
 title: "Hello Project IDX"
-description: "Project IDX: A fresh take on AI first cloud IDEs by Google."
+summary: "Project IDX: A fresh take on AI first cloud IDEs by Google."
 date: "Aug 08 2024"
 draft: false
+tags:
+- google
+- ai
+- llm
+- ide
+- idx
+- experiment
 ---
 
 In the past couple of years, especially last year, the world has witnessed a monumental shift towards AI focused development in the cloud or edge. This transformation has revolutionized the tools we use for software development. One of the most significant developments in this space has been the migration of Integrated Development Environments (IDEs) to the cloud, bringing about a new era of collaborative, AI-powered coding. 

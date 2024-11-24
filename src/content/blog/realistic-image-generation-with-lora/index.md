@@ -1,8 +1,13 @@
 ---
 title: "Realistic Image Generation with LLMs using LoRA Training Technique"
-description: "a hands on tutorial explaining creation and usage of LoRA technique to generate realistic images using LLMs"
+summary: "a hands on tutorial explaining creation and usage of LoRA technique to generate realistic images using LLMs"
 date: "Nov 17 2024"
 draft: false
+tags:
+- lora
+- ai
+- llm
+- comfyui
 ---
 
 # Introduction

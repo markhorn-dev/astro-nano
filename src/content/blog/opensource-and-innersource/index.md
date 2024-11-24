@@ -1,8 +1,16 @@
 ---
 title: "Open Source, Innersource and Fair Source: Collaborative models for innovation."
-description: "Open Source principles or development paradigms could be applied in a much smaller setting behind closed doors, that is generally called Innersource."
+summary: "Open Source principles or development paradigms could be applied in a much smaller setting behind closed doors, that is generally called Innersource."
 date: "Aug 09 2024"
 draft: false
+tags:
+- opensource
+- innersource
+- fairsource
+- community
+- education
+- collaboration
+- innovation
 ---
 
 In today's rapidly evolving tech landscape, collaboration is key to driving innovation and staying ahead of the curve. Two prominent models that have emerged to foster collaboration in software development are open source and innersource. While both share a common foundation in collaborative principles, they differ in their scope and application. Let's delve into the worlds of open source and inner source, exploring their benefits, differences, and how they are shaping the future of software development.
