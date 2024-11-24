@@ -1,7 +1,7 @@
 {
-  "name": "astro-sphere",
+  "name": "nitesh-rijal",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "scripts": {
     "dev": "astro dev",
     "dev:network": "astro dev --host",
