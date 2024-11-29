@@ -13,7 +13,7 @@ const Gifts = ({ admin }: GiftProps) => {
     const urlParams = new URLSearchParams(window.location.search);
     const password = urlParams.get('password');
     
-    if (password !== import.meta.env.PUBLIC_GIFTS_PASSWORD) {
+    if (password !== import.meta.env.PUBLIC_GIFTS_PASSWORD && !admin) {
       window.location.href = '/forbidden';
     } else {
       setIsAuthorized(true)

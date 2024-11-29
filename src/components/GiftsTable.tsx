@@ -10,9 +10,17 @@ const GiftsTable = ({ admin }: GiftTableProps) => {
   const cols = ['Id', 'Name', 'Bought', 'Assignee', 'URL']
   const assignees = ['Unassigned', 'Justin', 'Kaylin', 'Liz', 'Lorraine', 'Rachel', 'Tyler', 'Other']
 
-  // const deleteRow = () => {
-
-  // }
+  const deleteRowHandler = async(giftId: number) => {
+    const parsedGiftId = giftId.toString()
+    try {
+      await fetch(`/api/gifts/delete-gift/${parsedGiftId}`, {
+        method: 'DELETE',
+        body: new URLSearchParams(parsedGiftId),
+      });
+    } catch (error) {
+      console.log('Error deleting gift');
+    }
+  }
 
   // const saveRowData = () => {
   
@@ -20,7 +28,7 @@ const GiftsTable = ({ admin }: GiftTableProps) => {
 
 
   useEffect(() => {
-    fetch('/api/data')
+    fetch('/api/gifts/data')
       .then((response) => response.json())
       .then((data) => {
         setGifts(data.body); // Set the fetched data to state
@@ -67,7 +75,13 @@ const GiftsTable = ({ admin }: GiftTableProps) => {
               <td><a href={gift.link} target="_blank" rel="noopener noreferrer">{gift.link}</a></td>
               {
                 admin 
-                ? <button className="flex py-4 pr-2" id="delete-gift">[X]</button>
+                ? <button 
+                    className="flex py-4 pr-2" 
+                    id={`delete-gift-${gift.id}`}
+                    onClick={(e) => deleteRowHandler(gift.id)}
+                  >
+                    [X]
+                  </button>
                 : null
               }
             </tr>

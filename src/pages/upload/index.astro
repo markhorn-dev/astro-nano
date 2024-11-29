@@ -106,7 +106,7 @@ if (Astro.locals.user === null) {
           searchParams.append(key, value.toString());
         });
 
-        const response = await fetch('/api/submit', {
+        const response = await fetch('/api/gifts/submit', {
           method: 'POST',
           body: new URLSearchParams(searchParams),
         });
