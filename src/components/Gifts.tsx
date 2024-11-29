@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import GiftsTable from "./GiftsTable";
 
-const Gifts = () => {
+export interface GiftProps {
+  admin: boolean
+}
+
+const Gifts = ({ admin }: GiftProps) => {
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -28,7 +32,7 @@ const Gifts = () => {
 
   return(
     <div>
-      <GiftsTable />
+      <GiftsTable admin={admin} />
     </div>
   )
 }

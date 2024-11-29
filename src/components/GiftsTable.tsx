@@ -1,11 +1,23 @@
 import { useEffect, useState } from "react";
 import type { Gift } from "@models/type";
+import type { GiftProps } from "./Gifts";
 
-const GiftsTable = () => {
+interface GiftTableProps extends GiftProps{}
+
+const GiftsTable = ({ admin }: GiftTableProps) => {
   const [gifts, setGifts] = useState<Gift[]>([]);
   const [loading, setLoading] = useState(true);
   const cols = ['Id', 'Name', 'Bought', 'Assignee', 'URL']
   const assignees = ['Unassigned', 'Justin', 'Kaylin', 'Liz', 'Lorraine', 'Rachel', 'Tyler', 'Other']
+
+  // const deleteRow = () => {
+
+  // }
+
+  // const saveRowData = () => {
+  
+  // }
+
 
   useEffect(() => {
     fetch('/api/data')
@@ -53,6 +65,11 @@ const GiftsTable = () => {
                 </select>
               </td>
               <td><a href={gift.link} target="_blank" rel="noopener noreferrer">{gift.link}</a></td>
+              {
+                admin 
+                ? <button className="flex py-4 pr-2" id="delete-gift">[X]</button>
+                : null
+              }
             </tr>
           ))}
         </tbody>
