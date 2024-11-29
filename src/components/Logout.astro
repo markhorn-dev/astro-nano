@@ -1,0 +1,21 @@
+<body>
+  <h1>Hi, {Astro.locals.user.username}!</h1>
+  <img src={`https://avatars.githubusercontent.com/u/${Astro.locals.user.githubId}`} height="100px" width="100px" />
+  <p>Email: {Astro.locals.user.email}</p>
+  <form id="form-logout">
+    <button>Sign out</button>
+  </form>
+</body>
+
+<script>
+	const logoutForm = document.getElementById("form-logout") as HTMLFormElement;
+	if (logoutForm) {
+    logoutForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      await fetch("/api/logout", {
+        method: "POST"
+      });
+      window.location.href = "/login";
+    });
+  }
+</script>

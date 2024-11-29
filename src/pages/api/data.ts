@@ -1,13 +1,13 @@
-import { gifts } from '@models/schema';
-import { db } from '@utils/db';
+import { giftsTable } from '@models/schema';
+import { db } from '@lib/server/db';
 import type { APIRoute } from 'astro';
 import { error } from 'console';
 
 // Function to get db data
-export const GET: APIRoute = async ({ request }) => {
+export const GET: APIRoute = async ({ request }): Promise<Response> => {
   if (request.method === 'GET') {
     try {
-      const allGifts = await db.select().from(gifts)
+      const allGifts = await db.select().from(giftsTable)
       return new Response(
         JSON.stringify({ body: allGifts }),
       {

@@ -43,6 +43,16 @@ export const FORBIDDEN: Metadata = {
   DESCRIPTION: "If ya know, ya know"
 }
 
+export const LOGIN: Metadata = {
+  TITLE: "Login",
+  DESCRIPTION: "Login for special users :)"
+}
+
+export const LOGOUT: Metadata = {
+  TITLE: "Logout",
+  DESCRIPTION: "Logout for special users :)"
+}
+
 export const SOCIALS: Socials = [
   { 
     NAME: "github",

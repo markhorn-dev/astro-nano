@@ -6,11 +6,13 @@ import react from "@astrojs/react";
 
 import node from "@astrojs/node";
 
-// https://astro.build/config
 export default defineConfig({
   site: "https://astro-nano-demo.vercel.app",
   integrations: [mdx(), sitemap(), tailwind(), react()],
   output: "server",
+  security: {
+		checkOrigin: true
+	},
   adapter: node({
     mode: "standalone"
   })

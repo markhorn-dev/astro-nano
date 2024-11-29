@@ -1,0 +1,32 @@
+---
+import Container from "@components/Container.astro";
+import { LOGIN, LOGOUT } from "@consts";
+import PageLayout from "@layouts/PageLayout.astro";
+import Login from "@components/Login.astro";
+import Logout from "@components/Logout.astro";
+
+const isLoggedIn =  (Astro.locals.session !== null)
+const pageTitle = isLoggedIn ? LOGIN.TITLE : LOGOUT.TITLE
+const pageDesc = isLoggedIn ? LOGIN.DESCRIPTION :LOGOUT.DESCRIPTION
+
+---
+<PageLayout title={pageTitle} description={pageDesc}>
+	<Container>
+		{
+			isLoggedIn ? <Logout /> : <Login /> 
+		}
+	</Container>	
+</PageLayout>
+
+<script>
+	const logoutForm = document.getElementById("form-logout") as HTMLFormElement;
+	if (logoutForm) {
+		logoutForm.addEventListener("submit", async (e) => {
+			e.preventDefault();
+			await fetch("/api/logout", {
+				method: "POST"
+			});
+			window.location.href = "/login";
+		});
+	}
+</script>
