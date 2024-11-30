@@ -8,10 +8,6 @@ import { userTable } from "@models/schema";
 import { createSession, generateSessionToken, setSessionTokenCookie } from "@lib/server/session";
 
 export async function GET(context: APIContext): Promise<Response> {
-  // context.request.headers.set('Access-Control-Allow-Origin', 'http://localhost:4321');
-  // context.request.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  // context.request.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-
 	const code = context.url.searchParams.get("code");
 	const state = context.url.searchParams.get("state");
 	const storedState = context.cookies.get("github_oauth_state")?.value ?? null;
@@ -44,7 +40,10 @@ export async function GET(context: APIContext): Promise<Response> {
 	const githubUserId = githubUser.id;
 	const githubUsername = githubUser.login;
 
-	// TODO: Replace this with your own DB query.
+  if (githubUsername != "rjhoppe") {
+    return context.redirect("/forbidden");
+  }
+
 	const existingUser = await db
     .select()
     .from(userTable)
