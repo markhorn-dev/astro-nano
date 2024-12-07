@@ -1,9 +1,12 @@
-<body>
-  <h1>Hi, {Astro.locals.user.username}!</h1>
-  <img src={`https://avatars.githubusercontent.com/u/${Astro.locals.user.githubId}`} height="100px" width="100px" />
-  <p>Email: {Astro.locals.user.email}</p>
+<body class="flex items-center">
+  <h1 class="flex mb-4 ml-14">Hi, {Astro.locals.user.username}!</h1>
+  <img class="rounded-full" src={`https://avatars.githubusercontent.com/u/${Astro.locals.user.githubId}`} height="200px" width="200px" />
   <form id="form-logout">
-    <button>Sign out</button>
+    <button
+      class="mt-6 ml-14 relative group flex flex-nowrap py-1 px-3 rounded-lg border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out"
+    >
+      Sign out
+    </button>
   </form>
 </body>
 

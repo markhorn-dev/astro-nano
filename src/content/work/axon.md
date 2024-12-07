@@ -5,4 +5,4 @@ dateStart: "10/15/2023"
 dateEnd: "Current"
 ---
 
-Iure illo neque tempora, voluptatem est quaerat voluptas praesentium ipsa dolorem dignissimos nulla ratione distinctio quae maiores eligendi nostrum? Quibusdam, debitis voluptatum, lorem ipsum dolor. Sit amet consectetur adipisicing elit.
+SWE on Axon's Community team which was responsible for the Community Request and My90 product offerings. Did some work on bringing My90 into the Evidence.com platform post-aquisition and led the technical implementation of introducing user based licenses to Community Request. 

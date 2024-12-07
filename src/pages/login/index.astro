@@ -6,8 +6,8 @@ import Login from "@components/Login.astro";
 import Logout from "@components/Logout.astro";
 
 const isLoggedIn =  (Astro.locals.session !== null)
-const pageTitle = isLoggedIn ? LOGIN.TITLE : LOGOUT.TITLE
-const pageDesc = isLoggedIn ? LOGIN.DESCRIPTION :LOGOUT.DESCRIPTION
+const pageTitle = isLoggedIn ? LOGOUT.TITLE : LOGIN.TITLE
+const pageDesc = isLoggedIn ? LOGOUT.DESCRIPTION :LOGIN.DESCRIPTION
 
 ---
 <PageLayout title={pageTitle} description={pageDesc}>

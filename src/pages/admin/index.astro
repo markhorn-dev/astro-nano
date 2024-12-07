@@ -1,0 +1,22 @@
+---
+import { ADMIN } from "@consts";
+import Container from "@components/Container.astro"
+import Login from "@components/Login.astro"
+import Logout from "@components/Logout.astro"
+import PageLayout from "@layouts/PageLayout.astro"
+
+if (Astro.locals.user === null) {
+    return Astro.redirect("/login")
+}
+---
+
+<PageLayout title={ADMIN.TITLE} description={ADMIN.DESCRIPTION}>
+	<Container>
+    <div>
+      <div>Placeholder Utils</div>
+      <div>Create DB Snapshot</div>
+      <div>Last DB Update</div>
+      <div>Page Analytics</div>
+    </div>
+	</Container>	
+</PageLayout>

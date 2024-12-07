@@ -36,8 +36,14 @@ const isAdmin = (Astro.locals.session !== null)
             <span>
               {`/`}
             </span>
-            <Link href="/login">
+            <Link href="/admin">
               admin
+            </Link>
+            <span>
+              {`/`}
+            </span>
+            <Link href="/login">
+              logout
             </Link>
           : null
         }
