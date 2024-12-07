@@ -2,8 +2,11 @@
 import PageLayout from "@layouts/PageLayout.astro";
 import { UPLOAD } from "@consts";
 
+const assignees = ['Justin', 'Kaylin', 'Liz', 'Lorraine', 'Rachel', 'Tyler', 'Other']
 
-
+if (Astro.locals.user === null) {
+    return Astro.redirect("/login")
+}
 ---
 
 <PageLayout title={UPLOAD.TITLE} description={UPLOAD.DESCRIPTION}>
@@ -34,12 +37,9 @@ import { UPLOAD } from "@consts";
             <label class="my-2">Assignee</label>
             <select name="assignee" class="border border-stone-600 rounded-lg bg-stone-700 py-1 px-2">
               <option value="Unassigned" selected>Unassigned</option>
-              <option value="Justin">Justin</option>
-              <option value="Kaylin">Kaylin</option>
-              <option value="Liz">Liz</option>
-              <option value="Lorraine">Lorraine</option>
-              <option value="Rachel">Rachel</option>
-              <option value="Tyler">Tyler</option>
+              {assignees.map((val) => (
+                <option value={val}>{val}</option>
+              ))}
             </select>
           </div>
           <div class="flex flex-col pr-8">
@@ -100,11 +100,13 @@ import { UPLOAD } from "@consts";
         const formData = new FormData(form);
         const searchParams = new URLSearchParams();
 
+        console.log(formData)
+
         formData.forEach((value, key) => {
           searchParams.append(key, value.toString());
         });
 
-        const response = await fetch('/api/submit', {
+        const response = await fetch('/api/gifts/submit', {
           method: 'POST',
           body: new URLSearchParams(searchParams),
         });

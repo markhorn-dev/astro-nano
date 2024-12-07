@@ -1,7 +1,9 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro"
 import Gifts from "@components/Gifts.tsx"
+
+const isAdmin = (Astro.locals.session !== null)
 ---
 <PageLayout title="Gifts" description="A secret gifts list">
-  <Gifts client:load />
+  <Gifts admin={isAdmin} client:load />
 </PageLayout>

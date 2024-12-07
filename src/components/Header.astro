@@ -1,6 +1,8 @@
 ---
 import Container from "@components/Container.astro";
 import Link from "@components/Link.astro";
+
+const isAdmin = (Astro.locals.session !== null)
 ---
 
 <header>
@@ -28,6 +30,23 @@ import Link from "@components/Link.astro";
         <Link href="/projects">
           projects
         </Link>
+        {
+          isAdmin 
+          ? 
+            <span>
+              {`/`}
+            </span>
+            <Link href="/admin">
+              admin
+            </Link>
+            <span>
+              {`/`}
+            </span>
+            <Link href="/login">
+              logout
+            </Link>
+          : null
+        }
       </nav>
     </div>
   </Container>

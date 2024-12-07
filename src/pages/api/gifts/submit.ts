@@ -1,6 +1,6 @@
 import { z } from 'astro:content'
-import { gifts } from '@models/schema';
-import { db } from '@utils/db';
+import { giftsTable } from '@models/schema';
+import { db } from '@lib/server/db';
 import { type APIRoute } from 'astro';
 
 // Define a schema for validation (optional but recommended)
@@ -12,7 +12,7 @@ const formSchema = z.object({
   notes: z.string().optional(),
 });
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request }): Promise<Response> => {
   // Parse the form data
   const formData = new URLSearchParams(await request.text());
   // Todo: for i in formData...
@@ -69,7 +69,7 @@ export const POST: APIRoute = async ({ request }) => {
   // Respond to the client
     // Insert data into the database (individual records)
   try {
-    await db.insert(gifts).values(finalValues);
+    await db.insert(giftsTable).values(finalValues);
     console.log('Form data inserted into the database:', formValues);
 
     // Return success response

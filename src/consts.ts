@@ -43,13 +43,28 @@ export const FORBIDDEN: Metadata = {
   DESCRIPTION: "If ya know, ya know"
 }
 
+export const LOGIN: Metadata = {
+  TITLE: "Login",
+  DESCRIPTION: "Login for special users :)"
+}
+
+export const LOGOUT: Metadata = {
+  TITLE: "Logout",
+  DESCRIPTION: "Logout for special users :)"
+}
+
+export const ADMIN: Metadata = {
+  TITLE: "Admin",
+  DESCRIPTION: "Admin page for admin things"
+}
+
 export const SOCIALS: Socials = [
   { 
     NAME: "github",
-    HREF: "https://github.com/markhorn-dev"
+    HREF: "https://github.com/rjhoppe"
   },
   { 
     NAME: "linkedin",
-    HREF: "https://www.linkedin.com/in/markhorn-dev",
+    HREF: "https://www.linkedin.com/in/richardjhoppe/",
   }
 ];
