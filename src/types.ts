@@ -15,3 +15,11 @@ export type Socials = {
   NAME: string;
   HREF: string;
 }[];
+
+export type GiftData = { 
+  name?: string,
+  link?: string, 
+  bought?: string,
+  assignee?: string,
+  notes?: string, 
+}

@@ -66,6 +66,8 @@ if (Astro.locals.user === null) {
     </form>
   </div>
   <script>
+import type { GiftData } from "@types";
+
     declare global {
       interface Window {
         deleteFormRow: (button: HTMLButtonElement) => void;
@@ -97,27 +99,44 @@ if (Astro.locals.user === null) {
     if (form) {
       form.addEventListener('submit', async (event) => {
         event.preventDefault(); // Prevent default form submission
-        const formData = new FormData(form);
-        const searchParams = new URLSearchParams();
+        const giftEntries = document.querySelectorAll('[data-group="gift-entries"]');
+        giftEntries.forEach(async gift => {
+          // Extract data from each entry
+          const giftData: GiftData = {
+            name: '',
+            link: '',
+            assignee: '',
+            bought: '',
+            notes: ''
+          };
 
-        console.log(formData)
+          const nameInput = gift.querySelector('input[name="name"]') as HTMLInputElement | null;
+          const linkInput = gift.querySelector('input[name="link"]') as HTMLInputElement | null;
+          const assigneeSelect = gift.querySelector('select[name="assignee"]') as HTMLSelectElement | null;
+          const boughtSelect = gift.querySelector('select[name="bought"]') as HTMLSelectElement | null;
+          const notesInput = gift.querySelector('input[name="notes"]') as HTMLInputElement | null;
 
-        formData.forEach((value, key) => {
-          searchParams.append(key, value.toString());
+          // Check that the elements exist, and then assign their values to the entryData object
+          if (nameInput) giftData.name = nameInput.value;
+          if (linkInput) giftData.link = linkInput.value;
+          if (assigneeSelect) giftData.assignee = assigneeSelect.value;
+          if (boughtSelect) giftData.bought = boughtSelect.value;
+          if (notesInput) giftData.notes = notesInput.value;
+
+          try {
+            const response = await fetch('/api/gifts/submit', {
+              method: 'POST',
+              body: JSON.stringify(giftData),
+            });
+            const result = await response.json();
+            if (!response.ok) {
+              alert(result.message); // Success message
+            }
+          } catch (error) {
+            alert(error)
+          }
         });
-
-        const response = await fetch('/api/gifts/submit', {
-          method: 'POST',
-          body: new URLSearchParams(searchParams),
-        });
-
-        const result = await response.json();
-
-        if (response.ok) {
-          alert(result.message); // Success message
-        } else {
-          alert(result.message); // Validation or error message
-        }
+        alert('Data successfully uploaded to database')
       });
     } else {
       console.error('Form element not found.');
