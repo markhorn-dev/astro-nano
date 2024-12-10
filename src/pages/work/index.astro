@@ -2,17 +2,21 @@
 import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
+import ExpandableText from "@components/ExpandableText.astro";
 import { dateRange } from "@lib/utils";
 import { WORK } from "@consts";
 
-const collection = (await getCollection("work"))
-  .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf());
+const collection = (await getCollection("work")).sort(
+  (a, b) =>
+    new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf(),
+);
 
 const work = await Promise.all(
   collection.map(async (item) => {
     const { Content } = await item.render();
-    return { ...item, Content };
-  })
+    const text = item.body;
+    return { ...item, Content, text };
+  }),
 );
 ---
 
@@ -20,32 +24,30 @@ const work = await Promise.all(
   <Container>
     <div class="space-y-10">
       <div class="animate font-semibold text-black dark:text-white">
-        Work
+        Doświadczenie
       </div>
       <ul class="flex flex-col space-y-4">
-        { 
-          work.map(entry => (
+        {
+          work.map((entry, index) => (
             <li class="animate">
               <div class="text-sm opacity-75">
                 {dateRange(entry.data.dateStart, entry.data.dateEnd)}
               </div>
-              <div class="font-semibold text-black dark:text-white">
+              <div class="font-semibold text-black dark:text-white text-lg">
                 {entry.data.company}
               </div>
-              <div class="text-sm opacity-75">
-                {entry.data.role}
-              </div>
+              <div class="text-sm opacity-75">{entry.data.role}</div>
               <article>
-                <entry.Content />
+                {index === 0 ? (
+                  <entry.Content />
+                ) : (
+                  <ExpandableText text={entry.text} client:load />
+                )}
               </article>
             </li>
           ))
         }
       </ul>
-<!-- 
-      <ul class="animate flex flex-col gap-4">
-
-      </ul> -->
     </div>
   </Container>
 </PageLayout>

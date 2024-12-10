@@ -1,0 +1,26 @@
+.tag-filter {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.filter-button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+  color: black;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.filter-button:hover {
+  background: #f0f0f0;
+}
+
+.filter-button.active {
+  background: #0070f3;
+  color: white;
+  border-color: #0070f3;
+}

@@ -5,22 +5,20 @@ import Container from "@components/Container.astro";
 import ArrowCard from "@components/ArrowCard.astro";
 import { PROJECTS } from "@consts";
 
-const projects = (await getCollection("projects"))
-  .filter(project => !project.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const projects = (await getCollection("others")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
 ---
 
 <PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
   <Container>
     <div class="space-y-10">
-      <div class="animate font-semibold text-black dark:text-white">
-        Projects
-      </div>
+      <div class="animate font-semibold text-black dark:text-white">Inne</div>
       <ul class="animate flex flex-col gap-4">
         {
           projects.map((project) => (
             <li>
-              <ArrowCard entry={project}/>
+              <ArrowCard entry={project} />
             </li>
           ))
         }

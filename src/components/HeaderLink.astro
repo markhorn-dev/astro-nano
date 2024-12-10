@@ -1,0 +1,17 @@
+---
+import Link from "@components/Link.astro";
+
+interface Props {
+  href: string;
+  className?: string;
+}
+
+const { href, className = "" } = Astro.props;
+---
+
+<Link
+  href={href}
+  className={`hover:text-yellow-500 dark:hover:text-yellow-300 transition-colors ${className}`}
+>
+  <slot />
+</Link>

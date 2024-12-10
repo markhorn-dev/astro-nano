@@ -1,0 +1,33 @@
+---
+interface Props {
+    email: string;
+}
+
+const { email } = Astro.props;
+const generateUUID = () => Math.random().toString(36).substring(2, 9);
+const componentId = `email-protect-${generateUUID()}`;
+
+// Create protected version of email
+const [username, domain] = email.split("@");
+const protectedEmail = `${username.slice(0, 3)}...@${domain}`;
+---
+
+<span id={componentId} class="cursor-pointer">
+    <span class="protected">{protectedEmail}</span>
+    <a href={"mailto:" + email} class="actual hidden">{email}</a>
+</span>
+
+<script define:vars={{ componentId }}>
+    (() => {
+        const container = document.getElementById(componentId);
+        const protectedElement = container.querySelector(".protected");
+        const actual = container.querySelector(".actual");
+        let isRevealed = false;
+
+        container.addEventListener("click", () => {
+            isRevealed = true;
+            protectedElement.classList.toggle("hidden");
+            actual.classList.toggle("hidden");
+        });
+    })();
+</script>

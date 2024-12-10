@@ -2,6 +2,7 @@
 import Container from "@components/Container.astro";
 import { SITE } from "@consts";
 import BackToTop from "@components/BackToTop.astro";
+import Link from "./Link.astro";
 ---
 
 <footer class="animate">
@@ -11,15 +12,16 @@ import BackToTop from "@components/BackToTop.astro";
         <BackToTop />
       </div>
     </div>
-    <div class="flex justify-between items-center">
+    <div class="flex justify-between items-center flex-wrap-reverse">
       <div>
-        &copy; 2024 {`|`} {SITE.NAME}
+        &copy; 2024 {`|`}
+        {SITE.NAME}
       </div>
-      <div class="flex flex-wrap gap-1 items-center">
+      <div class="flex flex-wrap my-2 sm:my-0 gap-1 items-center">
         <button
           id="light-theme-button"
           aria-label="Light theme"
-          class="group size-8 flex items-center justify-center rounded-full"
+          class="group size-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300 ease-in-out [&.active]:bg-gray-200 dark:[&.active]:bg-gray-700"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +49,7 @@ import BackToTop from "@components/BackToTop.astro";
         <button
           id="dark-theme-button"
           aria-label="Dark theme"
-          class="group size-8 flex items-center justify-center rounded-full"
+          class="group size-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300 ease-in-out [&.active]:bg-gray-200 dark:[&.active]:bg-gray-700"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +69,7 @@ import BackToTop from "@components/BackToTop.astro";
         <button
           id="system-theme-button"
           aria-label="System theme"
-          class="group size-8 flex items-center justify-center rounded-full"
+          class="group size-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300 ease-in-out [&.active]:bg-gray-200 dark:[&.active]:bg-gray-700"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -88,5 +90,16 @@ import BackToTop from "@components/BackToTop.astro";
         </button>
       </div>
     </div>
+
+    <p class="space-y-4 text-sm animate mt-2 sm:mt-0">
+      Built with{" "}
+      <Link
+        href="https://github.com/markhorn-dev/astro-nano"
+        aria-label="Astro Nano on Github"
+        external
+      >
+        Astro Nano on Github
+      </Link>
+    </p>
   </Container>
 </footer>

@@ -1,33 +1,37 @@
 ---
 import Container from "@components/Container.astro";
-import Link from "@components/Link.astro";
+import HeaderLink from "@components/HeaderLink.astro";
 import { SITE } from "@consts";
+
+const currentPath = Astro.url.pathname;
+const isHomePage = currentPath === "/" || currentPath === "";
 ---
 
-<header>
+<header
+  class="bg-gradient-to-r from-transparent via-yellow-50/20 to-transparent dark:from-transparent dark:via-yellow-900/10 dark:to-transparent"
+>
   <Container>
     <div class="flex flex-wrap gap-y-2 justify-between">
-      <Link href="/" underline={false}>
-        <div class="font-semibold">
+      <HeaderLink href="/" className="flex items-center gap-3">
+        <div class="font-semibold text-slate-800 dark:text-slate-100">
           {SITE.NAME}
         </div>
-      </Link>
+        {
+          !isHomePage && (
+            <img
+              src="/Screenshot 2024-12-06 at 09.46.03.png"
+              alt="Profile picture"
+              class="size-8 rounded-full object-cover border border-slate-200 dark:border-slate-800 hover:ring-2 hover:ring-yellow-400/50 transition-all"
+            />
+          )
+        }
+      </HeaderLink>
       <nav class="flex gap-1">
-        <Link href="/blog">
-          blog
-        </Link>
-        <span>
-          {`/`}
-        </span>
-        <Link href="/work">
-          work
-        </Link>
-        <span>
-          {`/`}
-        </span>
-        <Link href="/projects">
-          projects
-        </Link>
+        <HeaderLink href="/blog">blog</HeaderLink>
+        <span class="text-yellow-100/50 dark:text-yellow-700">\</span>
+        <HeaderLink href="/work">exp</HeaderLink>
+        <span class="text-yellow-100/50 dark:text-yellow-700">\</span>
+        <HeaderLink href="/projects">inne</HeaderLink>
       </nav>
     </div>
   </Container>
