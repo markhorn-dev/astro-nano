@@ -6,42 +6,38 @@ interface Props {
 }
 
 const { text, maxCharacters = 150, className = "" } = Astro.props;
-
-// Generate a unique ID for this component instance
-const generateUUID = () => Math.random().toString(36).substring(2, 9);
-const componentId = `expandable-text-${generateUUID()}`;
+const id = `expandable-${Math.random().toString(36).slice(2)}`;
 ---
 
-<div id={componentId} class={`expandable-text ${className}`}>
+<div class={`expandable-text ${className}`} id={id}>
     <p class="text"></p>
 </div>
 
-<script define:vars={{ componentId, maxCharacters, text }}>
+<script define:vars={{ text, maxCharacters, id }}>
     (() => {
-        const component = document.getElementById(componentId);
-        const textEl = component.querySelector(".text");
+        const container = document.getElementById(id);
+        const textEl = container.querySelector(".text");
         let isExpanded = false;
 
-        if (text.length > maxCharacters) {
-            const updateText = () => {
-                if (isExpanded) {
-                    textEl.innerHTML = `${text} <span class="toggle-btn text-yellow-500 hover:underline ml-1 text-sm">mniej</span>`;
-                } else {
-                    textEl.innerHTML = `${text.slice(0, maxCharacters)}... <span class="toggle-btn text-yellow-500 hover:underline ml-1 text-sm">więcej</span>`;
-                }
-            };
+        const updateText = () => {
+            if (text.length <= maxCharacters) {
+                textEl.textContent = text;
+                return;
+            }
 
-            updateText();
+            textEl.innerHTML = isExpanded
+                ? `${text} <span class="toggle-btn text-yellow-500 hover:underline ml-1 text-sm cursor-pointer">mniej</span>`
+                : `${text.slice(0, maxCharacters)}... <span class="toggle-btn text-yellow-500 hover:underline ml-1 text-sm cursor-pointer">więcej</span>`;
+        };
 
-            textEl.addEventListener("click", (e) => {
-                if (e.target.classList.contains("toggle-btn")) {
-                    isExpanded = !isExpanded;
-                    updateText();
-                }
-            });
-        } else {
-            textEl.textContent = text;
-        }
+        updateText();
+
+        textEl.addEventListener("click", (e) => {
+            if (e.target.classList.contains("toggle-btn")) {
+                isExpanded = !isExpanded;
+                updateText();
+            }
+        });
     })();
 </script>
 

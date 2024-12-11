@@ -18,6 +18,7 @@ const { entry } = Astro.props;
           hover:text-slate-900 dark:hover:text-white
           hover:h-[152px]
           transition-all duration-300 ease"
+  target={"link" in entry.data ? "_blank" : `_self`}
 >
   <div class="flex flex-col flex-1 justify-between overflow-hidden">
     <div>

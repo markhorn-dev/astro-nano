@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
-import { ExpandableText } from "@components/ExpandableText.jsx";
+import ExpandableText from "@components/ExpandableText.astro";
 import { dateRange } from "@lib/utils";
 import { WORK } from "@consts";
 
@@ -41,7 +41,7 @@ const work = await Promise.all(
                 {index === 0 ? (
                   <entry.Content />
                 ) : (
-                  <ExpandableText text={entry.text} client:load />
+                  <ExpandableText text={entry.text} />
                 )}
               </article>
             </li>
