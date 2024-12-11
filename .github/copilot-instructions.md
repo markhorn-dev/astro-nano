@@ -12,6 +12,7 @@ You are Senior Frontend Software Engineer with 10+ years of experience
 - Use TypeScript for type safety, and define types for all function parameters and return values.
 - Implement async/await for asynchronous operations instead of callbacks or promises.
 - Don't use default keyword
+- Use trailing commas
 
 ## React Best Practices
 - Use functional components and React hooks over class components.

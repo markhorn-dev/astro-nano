@@ -37,7 +37,6 @@ const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
     <div class="space-y-10">
       <div class="animate font-semibold text-black dark:text-white">Blog</div>
 
-      <!-- Add the filter buttons -->
       <div class="tag-filter">
         {
           filters.map((filter) => (
@@ -72,51 +71,38 @@ const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
     </div>
   </Container>
 
-  <!-- Add client-side script for filtering -->
-  <script>
-    const filterButtons = document.querySelectorAll(".filter-button");
-    const posts = document.querySelectorAll<HTMLElement>(".post-item");
-    const yearSections =
-      document.querySelectorAll<HTMLElement>(".year-section");
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+      const filterButtons = document.querySelectorAll(".filter-button");
+      const posts = document.querySelectorAll(".post-item");
+      const yearSections = document.querySelectorAll(".year-section");
 
-    filterButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const filter = button.getAttribute("data-filter");
-        const isActive = button.classList.contains("active");
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const filter = button.getAttribute("data-filter");
+          const isActive = button.classList.contains("active");
 
-        // Deactivate all buttons
-        filterButtons.forEach((btn) => btn.classList.remove("active"));
+          filterButtons.forEach((btn) => btn.classList.remove("active"));
 
-        if (isActive) {
-          // If the button was active, show all posts and years
-          posts.forEach((post) => (post.style.display = ""));
-          yearSections.forEach((section) => (section.style.display = ""));
-        } else {
-          // Activate the clicked button
-          button.classList.add("active");
+          if (isActive) {
+            posts.forEach((post) => (post.style.display = ""));
+            yearSections.forEach((section) => (section.style.display = ""));
+          } else {
+            button.classList.add("active");
 
-          // Show or hide posts based on the selected filter
-          posts.forEach((post) => {
-            const tags = post.getAttribute("data-tags");
-            if (tags && tags.includes(filter || "")) {
-              post.style.display = "";
-            } else {
-              post.style.display = "none";
-            }
-          });
+            posts.forEach((post) => {
+              const tags = post.getAttribute("data-tags");
+              post.style.display = tags && tags.includes(filter) ? "" : "none";
+            });
 
-          // Show or hide years based on the visibility of their posts
-          yearSections.forEach((section) => {
-            const visiblePosts = section.querySelectorAll(
-              ".post-item:not([style*='display: none'])",
-            );
-            if (visiblePosts.length > 0) {
-              section.style.display = "";
-            } else {
-              section.style.display = "none";
-            }
-          });
-        }
+            yearSections.forEach((section) => {
+              const visiblePosts = Array.from(
+                section.querySelectorAll(".post-item"),
+              ).some((post) => post.style.display !== "none");
+              section.style.display = visiblePosts ? "" : "none";
+            });
+          }
+        });
       });
     });
   </script>
