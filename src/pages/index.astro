@@ -6,8 +6,8 @@ import ArrowCard from "@components/ArrowCard.astro";
 import Link from "@components/Link.astro";
 import { dateRange } from "@lib/utils";
 import { SITE, HOME, SOCIALS } from "@consts";
-import ExpandableText from "@components/ExpandableText.astro";
 import EmailProtect from "@components/EmailProtect.astro";
+import { ExpandableText } from "@components/ExpandableText.jsx";
 
 const blog = (await getCollection("blog"))
   .filter((post) => !post.data.draft)

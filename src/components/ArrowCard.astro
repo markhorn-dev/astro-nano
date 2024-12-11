@@ -6,7 +6,6 @@ type Props = {
 };
 
 const { entry } = Astro.props;
-console.log(entry);
 ---
 
 <a
@@ -31,7 +30,7 @@ console.log(entry);
     </div>
 
     <div class="text-xs mt-2">
-      {entry.data.tags?.join(", ")}
+      {"tags" in entry.data && entry.data.tags?.join(", ")}
     </div>
   </div>
   <svg

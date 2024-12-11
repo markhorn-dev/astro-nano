@@ -22,6 +22,13 @@ const { title, description, image = "/nano.png" } = Astro.props;
 
 // Add this line to get the Google Tag ID from an environment variable
 const googleTagId = import.meta.env.GOOGLE_TAG_ID;
+
+
+declare global {
+  interface Window {
+    dataLayer: any[];
+  }
+}
 ---
 
 <!-- Global Metadata -->
@@ -62,8 +69,10 @@ const googleTagId = import.meta.env.GOOGLE_TAG_ID;
     <script async src={`https://www.googletagmanager.com/gtag/js?id=${googleTagId}`}></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {{ dataLayer.push(arguments); }}
+      function gtag() {{ window.dataLayer.push(arguments); }}
+      // @ts-ignore
       gtag('js', new Date());
+      // @ts-ignore
       gtag('config', '{googleTagId}');
     </script>
   </>
@@ -86,12 +95,9 @@ const googleTagId = import.meta.env.GOOGLE_TAG_ID;
 <ViewTransitions />
 
 <script>
-  import type { TransitionBeforeSwapEvent } from "astro:transitions/client";
   document.addEventListener("astro:before-swap", (e) =>
     [
-      ...(e as TransitionBeforeSwapEvent).newDocument.head.querySelectorAll(
-        'link[as="font"]',
-      ),
+      ...(e.newDocument.head.querySelectorAll('link[as="font"]')),
     ].forEach((link) => link.remove()),
   );
 </script>

@@ -55,17 +55,14 @@ const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
               <div class="font-semibold text-black dark:text-white">{year}</div>
               <div>
                 <ul class="flex flex-col gap-4">
-                  {posts[year].map((post) => {
-                    console.log(post.data);
-                    return (
-                      <li
-                        data-tags={post.data.tags && post.data.tags.join(" ")}
-                        class="post-item"
-                      >
-                        <ArrowCard entry={post} />
-                      </li>
-                    );
-                  })}
+                  {posts[year].map((post) => (
+                    <li
+                      data-tags={post.data.tags && post.data.tags.join(" ")}
+                      class="post-item"
+                    >
+                      <ArrowCard entry={post} />
+                    </li>
+                  ))}
                 </ul>
               </div>
             </section>
@@ -78,8 +75,9 @@ const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
   <!-- Add client-side script for filtering -->
   <script>
     const filterButtons = document.querySelectorAll(".filter-button");
-    const posts = document.querySelectorAll(".post-item");
-    const yearSections = document.querySelectorAll(".year-section");
+    const posts = document.querySelectorAll<HTMLElement>(".post-item");
+    const yearSections =
+      document.querySelectorAll<HTMLElement>(".year-section");
 
     filterButtons.forEach((button) => {
       button.addEventListener("click", () => {
@@ -100,7 +98,7 @@ const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
           // Show or hide posts based on the selected filter
           posts.forEach((post) => {
             const tags = post.getAttribute("data-tags");
-            if (tags && tags.includes(filter)) {
+            if (tags && tags.includes(filter || "")) {
               post.style.display = "";
             } else {
               post.style.display = "none";
