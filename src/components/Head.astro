@@ -68,13 +68,13 @@ declare global {
 {googleTagId && (
   <>
     <script async src={`https://www.googletagmanager.com/gtag/js?id=${googleTagId}`}></script>
-    <script>
+    <script define:vars={{ googleTagId }}>
       window.dataLayer = window.dataLayer || [];
       function gtag() {{ window.dataLayer.push(arguments); }}
       // @ts-ignore
       gtag('js', new Date());
       // @ts-ignore
-      gtag('config', '{googleTagId}');
+      gtag('config', googleTagId);
     </script>
   </>
 )}
