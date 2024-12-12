@@ -22,7 +22,8 @@ const { title, description, image = "/nano.png" } = Astro.props;
 
 // Add this line to get the Google Tag ID from an environment variable
 const googleTagId = import.meta.env.GOOGLE_TAG_ID;
-
+// Add this line to get the Sender Tag ID from an environment variable
+const senderTagId = import.meta.env.SENDER_TAG_ID;
 
 declare global {
   interface Window {
@@ -77,6 +78,8 @@ declare global {
     </script>
   </>
 )}
+
+
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
@@ -247,3 +250,30 @@ declare global {
   document.addEventListener("astro:after-swap", () => init());
   preloadTheme();
 </script>
+
+<!-- Conditionally include Sender script if senderTagId is set -->
+{senderTagId && (
+  <script define:vars={{ senderTagId }}>
+  (function (s, e, n, d, er) {
+    // @ts-ignore
+    s['Sender'] = er;
+    // @ts-ignore
+    s[er] = s[er] || function () {
+    // @ts-ignore
+    (s[er].q = s[er].q || []).push(arguments)
+    // @ts-ignore
+  }, s[er].l = 1 * new Date();
+    var a = e.createElement(n),
+        m = e.getElementsByTagName(n)[0];
+    // @ts-ignore
+    a.async = 1; 
+    // @ts-ignore
+    a.src = d;
+    // @ts-ignore
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://cdn.sender.net/accounts_resources/universal.js', 'sender');
+console.log(senderTagId)
+ {/* @ts-ignore */}
+  sender(senderTagId)
+</script>
+)}
