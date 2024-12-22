@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import type { Gift } from "@models/type";
 import type { GiftProps } from "./Gifts";
+import InfoAccordion from "./InfoAccordion";
 
 interface GiftTableProps extends GiftProps{}
 
@@ -196,7 +197,8 @@ const GiftsTable = ({ admin }: GiftTableProps) => {
                       ))}
                   </select>
                 </td>
-                <td><a href={gift.link} className="max-w-sm truncate" target="_blank" rel="noopener noreferrer">{gift.link}</a></td>
+                <td className="max-w-sm overflow-hidden truncate"><a href={gift.link} target="_blank" rel="noopener noreferrer">{gift.link}</a></td>
+                <td>{gift.notes}</td>
                 {
                   admin 
                   ? <button 
@@ -239,7 +241,7 @@ const GiftsTable = ({ admin }: GiftTableProps) => {
                     ))}
                 </select>
               </td>
-              <td><a href={gift.link} className="max-w-12 overflow-hidden text-ellipsis" target="_blank" rel="noopener noreferrer">{gift.link}</a></td>
+              <td className="max-w-sm overflow-hidden truncate"><a href={gift.link} className="" target="_blank" rel="noopener noreferrer">{gift.link}</a></td>
               <td>{gift.notes}</td>
               {
                 admin 
@@ -267,6 +269,7 @@ const GiftsTable = ({ admin }: GiftTableProps) => {
           </button>
         </div>
       )}
+      <InfoAccordion />
     </div>
   )
 }
