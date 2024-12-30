@@ -16,7 +16,7 @@ const GiftsTable = ({ admin }: GiftTableProps) => {
   const [updatedGifts, setUpdatedGifts] = useState<GiftUpdate<Gift>[]>([]);
   const [filterQuery, setFilterQuery] = useState<string>('')
   const cols = ['Id', 'Name', 'Bought', 'Assignee', 'URL', 'Notes']
-  const assignees = ['Unassigned', 'Justin', 'Kaylin', 'Liz', 'Lorraine', 'Rachel', 'Tyler', 'Other']
+  const assignees = ['Unassigned', 'Justin', 'Kaylin', 'Liz', 'Lorraine', 'Rachel', 'Rick', 'Tyler', 'Other']
   
   const deleteGiftHandler = async(giftId: number) => {
     const parsedGiftId = giftId.toString()

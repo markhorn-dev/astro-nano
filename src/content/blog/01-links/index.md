@@ -5,7 +5,9 @@ date: "11/24/2024"
 ---
 An archive of my favorite online resources for my own benefit/reference
 
-### Finance
+## Finance
+
+------------------------------------------------------------------------
 
 ##### eBook: If You Can: How Millenials Can Get Rich Slowly
 author: William (Bill) Bernstein
@@ -14,9 +16,10 @@ link: https://www.etf.com/docs/IfYouCan.pdf
 
 note: Maybe the most important publication I have ever read. It's short and succinct, would highly recommend reading and then re-reading.
 
-------------------------------------------------------------------------
 
-### Programming
+## Programming
+
+------------------------------------------------------------------------
 
 ##### ebook: Automate the Boring Stuff
 author: Al Sweigart
