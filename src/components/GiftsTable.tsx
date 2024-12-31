@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import type { Gift } from "@models/type";
 import type { GiftProps } from "./Gifts";
 import InfoAccordion from "./InfoAccordion";
@@ -204,7 +204,7 @@ const GiftsTable = ({ admin }: GiftTableProps) => {
                   ? <button 
                       className="flex py-4 pr-2" 
                       id={`delete-gift-${gift.id}`}
-                      onClick={(e) => deleteGiftHandler(gift.id)}
+                      onClick={() => deleteGiftHandler(gift.id)}
                     >
                       [X]
                     </button>
@@ -248,7 +248,7 @@ const GiftsTable = ({ admin }: GiftTableProps) => {
                 ? <button 
                     className="flex py-4 pr-2" 
                     id={`delete-gift-${gift.id}`}
-                    onClick={(e) => deleteGiftHandler(gift.id)}
+                    onClick={() => deleteGiftHandler(gift.id)}
                   >
                     [X]
                   </button>

@@ -2,11 +2,9 @@
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "strictNullChecks": true,
-    "baseUrl": "/home/rickjhoppe/repos/astro-portfolio",
+    "baseUrl": "./",
     "paths": {
-      "@*": [
-        "./src/*"
-      ]
+      "@*": ["src/*"]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"

@@ -1,0 +1,13 @@
+.astro/
+.DS_Store
+.git
+.github
+.gitignore
+.vscode
+CHANGELOG.md
+dist/
+node_modules/
+README.md
+notes.txt
+db.sqlite3
+.vscode/
