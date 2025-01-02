@@ -3,7 +3,6 @@
 .git
 .github
 .gitignore
-.vscode
 CHANGELOG.md
 dist/
 node_modules/
