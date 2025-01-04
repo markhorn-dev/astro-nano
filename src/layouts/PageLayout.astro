@@ -12,7 +12,6 @@ type Props = {
 };
 
 const { title, description } = Astro.props;
-const PUBLIC_SENDER_FORM_ID = import.meta.env.PUBLIC_SENDER_FORM_ID;
 ---
 
 <!doctype html>
@@ -24,7 +23,7 @@ const PUBLIC_SENDER_FORM_ID = import.meta.env.PUBLIC_SENDER_FORM_ID;
     <Header />
     <main>
       <slot />
-      <SenderForm formId={PUBLIC_SENDER_FORM_ID} transition:persist />
+      <SenderForm transition:persist />
     </main>
     <Footer />
     <CookieConsent />

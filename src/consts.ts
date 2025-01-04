@@ -9,23 +9,23 @@ export const SITE: Site = {
 };
 
 export const HOME: Metadata = {
-  TITLE: "Home",
-  DESCRIPTION: "TODO",
+  TITLE: "Strona główna",
+  DESCRIPTION: "Strona wizytówka połączona z blogiem programistycznym",
 };
 
 export const BLOG: Metadata = {
   TITLE: "Blog",
-  DESCRIPTION: "TODO",
+  DESCRIPTION: "Blog na tematy programistyczne i rozwojowe w karierze IT",
 };
 
 export const WORK: Metadata = {
-  TITLE: "Work",
-  DESCRIPTION: "TODO",
+  TITLE: "Doświadczenie",
+  DESCRIPTION: "Moje doświadczenie zawodowe",
 };
 
 export const PROJECTS: Metadata = {
-  TITLE: "Projects",
-  DESCRIPTION: "TODO",
+  TITLE: "Inne materiały",
+  DESCRIPTION: "Materiały z poza bloga gdzie dziele się wiedzą i doświadczeniem",
 };
 
 export const SOCIALS: Socials = [
