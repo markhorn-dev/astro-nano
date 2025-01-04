@@ -72,7 +72,8 @@ const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
   </Container>
 
   <script is:inline>
-    document.addEventListener("DOMContentLoaded", () => {
+    // Astro client-side script
+    window.addEventListener("load", () => {
       const filterButtons = document.querySelectorAll(".button");
       const posts = document.querySelectorAll(".post-item");
       const yearSections = document.querySelectorAll(".year-section");
