@@ -21,9 +21,9 @@ export function readingTime(html: string) {
 }
 
 export function dateRange(startDate: Date, endDate?: Date | string): string {
-  const startDateString = startDate.toLocaleString("pl-PL", {month: 'numeric', year: 'numeric'}); 
+  const startDateString = startDate.toLocaleString("pl-PL", { month: 'numeric', year: 'numeric' });
 
-  const endDateString = typeof endDate === "string" ? endDate : endDate?.toLocaleString("pl-PL", {month: 'numeric', year: 'numeric'}); 
+  const endDateString = typeof endDate === "string" ? endDate : endDate?.toLocaleString("pl-PL", { month: 'numeric', year: 'numeric' });
 
   return `${startDateString} - ${endDateString}`;
-} 
+}

@@ -2,6 +2,8 @@
 import Head from "@components/Head.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
+import SenderForm from "@components/SenderForm.astro";
+import { CookieConsent } from "@components/CookieConsent";
 import { SITE } from "@consts";
 
 type Props = {
@@ -10,10 +12,11 @@ type Props = {
 };
 
 const { title, description } = Astro.props;
+const PUBLIC_SENDER_FORM_ID = import.meta.env.PUBLIC_SENDER_FORM_ID;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="pl">
   <head>
     <Head title={`${title} | ${SITE.NAME}`} description={description} />
   </head>
@@ -21,7 +24,9 @@ const { title, description } = Astro.props;
     <Header />
     <main>
       <slot />
+      <SenderForm formId={PUBLIC_SENDER_FORM_ID} transition:persist />
     </main>
     <Footer />
+    <CookieConsent client:only="react" />
   </body>
 </html>

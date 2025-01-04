@@ -31,7 +31,7 @@ header {
 }
 
 main {
-  @apply flex-1 py-32;
+  @apply flex-1 pt-32 pb-16;
 }
 
 footer {
@@ -80,14 +80,14 @@ html.scrolled #back-to-top {
   @apply flex flex-wrap gap-4 mb-8;
 }
 
-.filter-button {
+.button {
   @apply px-4 py-2 rounded-md cursor-pointer transition-colors duration-200;
   @apply border border-slate-200 dark:border-slate-800;
   @apply text-slate-600 dark:text-slate-300;
   @apply hover:bg-slate-100 dark:hover:bg-slate-800;
 }
 
-.filter-button.active {
+.button.active {
   @apply bg-indigo-600 dark:bg-indigo-500;
   @apply text-white dark:text-white;
   @apply border-indigo-600 dark:border-indigo-500;

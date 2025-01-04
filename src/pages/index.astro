@@ -8,8 +8,6 @@ import { dateRange } from "@lib/utils";
 import { SITE, HOME, SOCIALS } from "@consts";
 import EmailProtect from "@components/EmailProtect.astro";
 
-const SENDER_FORM_ID = import.meta.env.SENDER_FORM_ID;
-
 const blog = (await getCollection("blog"))
   .filter((post) => !post.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
@@ -158,15 +156,6 @@ const work = await Promise.all(
           </li>
         </ul>
       </section>
-
-      <div class="flex justify-center">
-        <div
-          style="text-align: left"
-          class="sender-form-field"
-          data-sender-form-id={SENDER_FORM_ID}
-        >
-        </div>
-      </div>
     </div>
   </Container>
 </PageLayout>
