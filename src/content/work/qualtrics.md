@@ -5,4 +5,4 @@ dateStart: "12/15/2021"
 dateEnd: "10/01/2023"
 ---
 
-I worked with some really cool customers and helped them build out Qualtrics survey programs. It was fascinating to see the different ways our customers used the product. Also built some internal tools to improve efficiency in the TAM org.
+Technical Account Manager (TAM) for Qualtrics. I worked with a mix of private and public sector customers to help them improve their employee listening programs using the Qualtrics platform. I also led development on some internal tools designed to streamline TAM processes.

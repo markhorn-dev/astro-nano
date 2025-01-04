@@ -14,7 +14,7 @@ export async function GET(context: APIContext): Promise<Response | void> {
 		});
 	}
 
-	const { session, user } = await validateSessionToken(token);
+	const { session } = await validateSessionToken(token);
 	if (session === null) {
 		deleteSessionTokenCookie(context);
 		return new Response(null, {

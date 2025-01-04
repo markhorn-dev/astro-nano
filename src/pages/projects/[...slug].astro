@@ -1,6 +1,4 @@
 ---
-export const prerender = true;
-
 import { type CollectionEntry, getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
@@ -9,18 +7,21 @@ import { readingTime } from "@lib/utils";
 import BackToPrev from "@components/BackToPrev.astro";
 import Link from "@components/Link.astro";
 
-export async function getStaticPaths() {
-  const projects = (await getCollection("projects"))
-    .filter(post => !post.data.draft)
-    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-  return projects.map((project) => ({
-    params: { slug: project.slug },
-    props: project,
-  }));
-}
-type Props = CollectionEntry<"projects">;
+const { slug } = Astro.params; // Dynamic slug from the URL
 
-const project = Astro.props;
+// Fetch posts dynamically using async
+const projects = (await getCollection("projects"))
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// Find the matching post based on the dynamic slug
+const project = projects.find((p) => p.slug === slug);
+
+if (!project) {
+  throw new Error("Post not found");
+}
+
+type Props = CollectionEntry<"projects">;
 const { Content } = await project.render();
 ---
 

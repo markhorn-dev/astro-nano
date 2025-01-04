@@ -1,6 +1,4 @@
 ---
-export const prerender = true;
-
 import { type CollectionEntry, getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
@@ -8,18 +6,21 @@ import FormattedDate from "@components/FormattedDate.astro";
 import { readingTime } from "@lib/utils";
 import BackToPrev from "@components/BackToPrev.astro";
 
-export async function getStaticPaths() {
-  const posts = (await getCollection("blog"))
-    .filter(post => !post.data.draft)
-    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-  return posts.map((post) => ({
-    params: { slug: post.slug },
-    props: post,
-  }));
-}
-type Props = CollectionEntry<"blog">;
+const { slug } = Astro.params; // Dynamic slug from the URL
 
-const post = Astro.props;
+// Fetch posts dynamically using async
+const posts = (await getCollection("blog"))
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// Find the matching post based on the dynamic slug
+const post = posts.find((p) => p.slug === slug);
+
+if (!post) {
+  throw new Error("Post not found");
+}
+
+type Props = CollectionEntry<"blog">;
 const { Content } = await post.render();
 ---
 
@@ -31,7 +32,7 @@ const { Content } = await post.render();
       </BackToPrev>
     </div>
     <div class="space-y-1 my-10">
-      <div class="animate flex items-center gap-1.5">
+      <div class="mb-10 animate flex items-center gap-1.5">
         <div class="font-base text-sm">
           <FormattedDate date={post.data.date} />
         </div>

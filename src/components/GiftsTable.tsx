@@ -1,6 +1,7 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import type { Gift } from "@models/type";
 import type { GiftProps } from "./Gifts";
+import InfoAccordion from "./InfoAccordion";
 
 interface GiftTableProps extends GiftProps{}
 
@@ -14,8 +15,8 @@ const GiftsTable = ({ admin }: GiftTableProps) => {
   const [loading, setLoading] = useState(true);
   const [updatedGifts, setUpdatedGifts] = useState<GiftUpdate<Gift>[]>([]);
   const [filterQuery, setFilterQuery] = useState<string>('')
-  const cols = ['Id', 'Name', 'Bought', 'Assignee', 'URL']
-  const assignees = ['Unassigned', 'Justin', 'Kaylin', 'Liz', 'Lorraine', 'Rachel', 'Tyler', 'Other']
+  const cols = ['Id', 'Name', 'Bought', 'Assignee', 'URL', 'Notes']
+  const assignees = ['Unassigned', 'Justin', 'Kaylin', 'Liz', 'Lorraine', 'Rachel', 'Rick', 'Tyler', 'Other']
   
   const deleteGiftHandler = async(giftId: number) => {
     const parsedGiftId = giftId.toString()
@@ -24,6 +25,7 @@ const GiftsTable = ({ admin }: GiftTableProps) => {
         method: 'DELETE',
         body: new URLSearchParams(parsedGiftId),
       });
+      alert(`Gift Id: ${giftId} successfully deleted`)
     } catch (error) {
       console.log('Error deleting gift');
     }
@@ -143,7 +145,7 @@ const GiftsTable = ({ admin }: GiftTableProps) => {
 
   return (
     <div className="overflow-x-auto px-12 -mt-8">
-      <div className="flex justify-end gap-4">
+      <div className="flex justify-end gap-4 mb-2">
         <p className="flex py-1">Filter By Assignee</p>
         <select 
           className="flex border border-stone-600 rounded-lg bg-stone-700 py-1 px-2"
@@ -169,44 +171,45 @@ const GiftsTable = ({ admin }: GiftTableProps) => {
           {filterQuery.length > 0 ? (
             filteredGifts.map((gift) => (
               <tr key={gift.id}>
-              <td>{gift.id}</td>
-              <td>{gift.name}</td>
-              <td>
-                <select
-                  id={gift.id.toString()}
-                  className="border border-stone-600 rounded-lg bg-stone-700 py-1 px-2" 
-                  defaultValue={gift.bought} 
-                  name="bought"
-                  onChange={(e) => updateGift(gift.id, 'bought', e.target.value)}
-                >
-                  <option value="No">No</option>
-                  <option value="Yes">Yes</option>
-                </select>
-              </td>
-              <td>
-                <select 
-                  className="border border-stone-600 rounded-lg bg-stone-700 py-1 px-2" 
-                  defaultValue={gift.assignee} 
-                  name="assignee"
-                  onChange={(e) => updateGift(gift.id, 'assignee', e.target.value)}
-                >
-                  {assignees.map((val) => (
-                      <option key={val} value={val}>{val}</option>
-                    ))}
-                </select>
-              </td>
-              <td><a href={gift.link} target="_blank" rel="noopener noreferrer">{gift.link}</a></td>
-              {
-                admin 
-                ? <button 
-                    className="flex py-4 pr-2" 
-                    id={`delete-gift-${gift.id}`}
-                    onClick={(e) => deleteGiftHandler(gift.id)}
+                <td>{gift.id}</td>
+                <td>{gift.name}</td>
+                <td>
+                  <select
+                    id={gift.id.toString()}
+                    className="border border-stone-600 rounded-lg bg-stone-700 py-1 px-2" 
+                    defaultValue={gift.bought} 
+                    name="bought"
+                    onChange={(e) => updateGift(gift.id, 'bought', e.target.value)}
                   >
-                    [X]
-                  </button>
-                : null
-              }
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                  </select>
+                </td>
+                <td>
+                  <select 
+                    className="border border-stone-600 rounded-lg bg-stone-700 py-1 px-2" 
+                    defaultValue={gift.assignee} 
+                    name="assignee"
+                    onChange={(e) => updateGift(gift.id, 'assignee', e.target.value)}
+                  >
+                    {assignees.map((val) => (
+                        <option key={val} value={val}>{val}</option>
+                      ))}
+                  </select>
+                </td>
+                <td className="max-w-sm overflow-hidden truncate"><a href={gift.link} target="_blank" rel="noopener noreferrer">{gift.link}</a></td>
+                <td>{gift.notes}</td>
+                {
+                  admin 
+                  ? <button 
+                      className="flex py-4 pr-2" 
+                      id={`delete-gift-${gift.id}`}
+                      onClick={() => deleteGiftHandler(gift.id)}
+                    >
+                      [X]
+                    </button>
+                  : null
+                }
             </tr>
             ))
           ) : (
@@ -238,13 +241,14 @@ const GiftsTable = ({ admin }: GiftTableProps) => {
                     ))}
                 </select>
               </td>
-              <td><a href={gift.link} target="_blank" rel="noopener noreferrer">{gift.link}</a></td>
+              <td className="max-w-sm overflow-hidden truncate"><a href={gift.link} className="" target="_blank" rel="noopener noreferrer">{gift.link}</a></td>
+              <td>{gift.notes}</td>
               {
                 admin 
                 ? <button 
                     className="flex py-4 pr-2" 
                     id={`delete-gift-${gift.id}`}
-                    onClick={(e) => deleteGiftHandler(gift.id)}
+                    onClick={() => deleteGiftHandler(gift.id)}
                   >
                     [X]
                   </button>
@@ -265,6 +269,7 @@ const GiftsTable = ({ admin }: GiftTableProps) => {
           </button>
         </div>
       )}
+      <InfoAccordion />
     </div>
   )
 }
