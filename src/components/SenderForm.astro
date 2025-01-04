@@ -74,39 +74,42 @@ const groupId = import.meta.env.PUBLIC_SENDER_GROUP_ID;
 </style>
 
 <script define:vars={{ groupId, senderApiKey }}>
-    let isSubscribing = false;
+    document.addEventListener("DOMContentLoaded", () => {
+        let isSubscribing = false;
+        const form = document.getElementById("senderForm");
+        const spinner = form?.querySelector(".loading-spinner");
+        const messageDiv = form?.querySelector(".message");
 
-    const form = document.getElementById("senderForm");
-    const spinner = form.querySelector(".loading-spinner");
-    const messageDiv = form.querySelector(".message");
+        if (!form || !spinner || !messageDiv) {
+            console.error("Required elements not found");
+            return;
+        }
 
-    const validateEmail = (email) => {
-        return email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
-    };
+        const validateEmail = (email) => {
+            return email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+        };
 
-    const showMessage = (message, isError = false) => {
-        messageDiv.textContent = message;
-        messageDiv.className = `message text-center font-medium ${
-            isError
-                ? "text-red-500 dark:text-red-400"
-                : "text-primary dark:text-primary"
-        }`;
-    };
+        const showMessage = (message, isError = false) => {
+            messageDiv.textContent = message;
+            messageDiv.className = `message text-center font-medium ${
+                isError
+                    ? "text-red-500 dark:text-red-400"
+                    : "text-primary dark:text-primary"
+            }`;
+        };
 
-    const toggleLoading = (loading) => {
-        if (!form) return; // Guard against invalid form reference
+        const toggleLoading = (loading) => {
+            const button = form.querySelector('button[type="submit"]');
+            if (!button) return;
 
-        const button = form.querySelector('button[type="submit"]');
-        if (!button || !spinner) return;
+            spinner.classList.toggle("hidden", !loading);
+            button.disabled = loading;
+            isSubscribing = loading;
+        };
 
-        spinner.classList.toggle("hidden", !loading);
-        button.disabled = loading;
-        isSubscribing = loading;
-    };
-
-    if (form) {
         form.addEventListener("submit", async (e) => {
             e.preventDefault();
+            if (!e.isTrusted) return;
 
             if (isSubscribing) return;
 
@@ -149,7 +152,7 @@ const groupId = import.meta.env.PUBLIC_SENDER_GROUP_ID;
                     throw new Error(data.message || "Błąd subskrypcji");
                 }
 
-                showMessage("Dziękujemy za zapisanie się do newslettera!");
+                showMessage("Dzięki za zapisanie się do newslettera!");
                 form.reset();
             } catch (error) {
                 showMessage(
@@ -162,5 +165,5 @@ const groupId = import.meta.env.PUBLIC_SENDER_GROUP_ID;
                 toggleLoading(false);
             }
         });
-    }
+    });
 </script>
