@@ -4,10 +4,11 @@ import Link from "@components/Link.astro";
 
 <div
     id="cookie-banner"
-    class="fixed bottom-5 left-0 right-0 mx-auto max-w-md bg-gray-800 text-white p-5 rounded-lg shadow-lg hidden z-50"
+    class="fixed bottom-5 left-0 right-0 mx-auto max-w-md bg-gray-800 text-white p-5 rounded-lg shadow-lg z-50 hidden"
+    transition:persist
 >
     <p class="m-0">
-        To strona korzysta z plików cookies. Więcej w <Link href="privacy"
+        To strona korzysta z plików cookies. Więcej w <Link href="/privacy"
             >Polityce Prywatności</Link
         >.
     </p>
@@ -20,21 +21,27 @@ import Link from "@components/Link.astro";
 </div>
 
 <script>
-    const initCookieConsent = () => {
+    const checkCookieConsent = () => {
         const banner = document.getElementById("cookie-banner");
-        const btn = document.getElementById("cookie-accept");
-
-        if (!banner || !btn) return;
+        if (!banner) return;
 
         if (!localStorage.getItem("cookieConsent")) {
+            banner.classList.remove("hidden");
             banner.style.display = "flex";
-        }
 
-        btn.addEventListener("click", () => {
-            localStorage.setItem("cookieConsent", "true");
-            banner.style.display = "none";
-        });
+            const btn = document.getElementById("cookie-accept");
+            btn?.addEventListener(
+                "click",
+                () => {
+                    localStorage.setItem("cookieConsent", "true");
+                    banner.style.display = "none";
+                },
+                { once: true },
+            );
+        }
     };
 
-    initCookieConsent();
+    checkCookieConsent();
+
+    document.addEventListener("astro:page-load", checkCookieConsent);
 </script>

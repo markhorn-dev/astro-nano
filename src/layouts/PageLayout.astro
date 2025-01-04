@@ -3,7 +3,7 @@ import Head from "@components/Head.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import SenderForm from "@components/SenderForm.astro";
-import { CookieConsent } from "@components/CookieConsent";
+import CookieConsent from "@components/CookieConsent.astro";
 import { SITE } from "@consts";
 
 type Props = {
@@ -27,6 +27,6 @@ const PUBLIC_SENDER_FORM_ID = import.meta.env.PUBLIC_SENDER_FORM_ID;
       <SenderForm formId={PUBLIC_SENDER_FORM_ID} transition:persist />
     </main>
     <Footer />
-    <CookieConsent client:only="react" />
+    <CookieConsent />
   </body>
 </html>
