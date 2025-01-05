@@ -8,6 +8,7 @@ module.exports = {
     "eslint:recommended",
     "plugin:astro/recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
   ],
   parserOptions: {
     ecmaVersion: "latest",
@@ -17,6 +18,7 @@ module.exports = {
     semi: ["error", "always"],
     quotes: ["error", "double", { "allowTemplateLiterals": true }],
     "@typescript-eslint/triple-slash-reference": "off",
+    "prettier/prettier": "error",
   },
   overrides: [
     {

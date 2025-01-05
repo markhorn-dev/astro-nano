@@ -8,6 +8,7 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "preview:network": "astro preview --host",
+    "prepare": "husky install",
     "astro": "astro",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -39,8 +40,6 @@
     "clsx": "^2.1.1",
     "dotenv": "^16.4.7",
     "drizzle-orm": "^0.36.4",
-    "eslint": "^8.57.1",
-    "eslint-plugin-astro": "^0.32.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "lucide-react": "^0.453.0",
     "react": "^18.3.1",
@@ -54,9 +53,36 @@
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.12",
     "@types/node": "^22.10.2",
+    "astro-eslint-parser": "^1.1.0",
     "daisyui": "^4.12.23",
     "drizzle-kit": "^0.27.2",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-astro": "^0.32.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.3.0",
+    "prettier": "^3.4.2",
+    "prettier-plugin-astro": "^0.14.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.tsx": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.astro": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   }
 }

@@ -5,18 +5,19 @@ import Container from "@components/Container.astro";
 import { dateRange } from "@lib/utils";
 import { WORK } from "@consts";
 
-const collection = (await getCollection("work"))
-  .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf());
+const collection = (await getCollection("work")).sort(
+  (a, b) =>
+    new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf(),
+);
 
 const work = await Promise.all(
   collection.map(async (item) => {
     const { Content } = await item.render();
     return { ...item, Content };
-  })
+  }),
 );
 
 // fill in download resume function here
-const dl = () => {}
 ---
 
 <PageLayout title={WORK.TITLE} description={WORK.DESCRIPTION}>
@@ -26,21 +27,21 @@ const dl = () => {}
         <div class="animate font-semibold text-black dark:text-white">
           Work Experience
         </div>
-        <button class="mr-12 relative group flex flex-nowrap py-1 px-3 rounded-lg border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
+        <button
+          class="mr-12 relative group flex flex-nowrap py-1 px-3 rounded-lg border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out"
+        >
           Resume
         </button>
       </div>
       <ul class="flex flex-col space-y-4">
-        { 
-          work.map(entry => (
+        {
+          work.map((entry) => (
             <li class="animate">
               <div class="font-semibold text-black dark:text-white">
                 {entry.data.company}
               </div>
               <div class="flex justify-between text-sm opacity-75">
-                <div>
-                  {entry.data.role}
-                </div>
+                <div>{entry.data.role}</div>
                 <div class="mr-6">
                   {dateRange(entry.data.dateStart, entry.data.dateEnd)}
                 </div>
@@ -52,10 +53,6 @@ const dl = () => {}
           ))
         }
       </ul>
-<!-- 
-      <ul class="animate flex flex-col gap-4">
-
-      </ul> -->
     </div>
   </Container>
 </PageLayout>
