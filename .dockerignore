@@ -1,4 +1,5 @@
 .astro/
+.husky/
 .DS_Store
 .git
 .github
