@@ -8,6 +8,7 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "preview:network": "astro preview --host",
+    "prepare": "husky install",
     "astro": "astro",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -52,6 +53,7 @@
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.12",
     "@types/node": "^22.10.2",
+    "astro-eslint-parser": "^1.1.0",
     "daisyui": "^4.12.23",
     "drizzle-kit": "^0.27.2",
     "eslint": "^8.57.1",
