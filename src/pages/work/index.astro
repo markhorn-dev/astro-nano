@@ -11,10 +11,10 @@ const collection = (await getCollection("work")).sort(
 );
 
 const work = await Promise.all(
-    collection.map(async (item) => {
-      const { Content } = await item.render();
-      return { ...item, Content };
-    }),
+  collection.map(async (item) => {
+    const { Content } = await item.render();
+    return { ...item, Content };
+  }),
 );
 
 // fill in download resume function here
