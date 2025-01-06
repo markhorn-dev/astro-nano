@@ -2,7 +2,6 @@ import type { Site, Metadata, Socials } from "@types";
 
 export const SITE: Site = {
   NAME: "Rick Hoppe",
-  EMAIL: "rickjhoppe@gmail.com",
   NUM_POSTS_ON_HOMEPAGE: 3,
   NUM_WORKS_ON_HOMEPAGE: 2,
   NUM_PROJECTS_ON_HOMEPAGE: 3,
@@ -56,6 +55,11 @@ export const LOGOUT: Metadata = {
 export const ADMIN: Metadata = {
   TITLE: "Admin",
   DESCRIPTION: "Admin page for admin things"
+}
+
+export const CONTACT: Metadata = {
+  TITLE: "Contact",
+  DESCRIPTION: "Contact me via this email form"
 }
 
 export const SOCIALS: Socials = [

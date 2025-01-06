@@ -33,24 +33,32 @@ const isAdmin = (Astro.locals.session !== null)
         {
           isAdmin 
           ? 
-            <span>
-              {`/`}
-            </span>
-            <Link href="/admin">
-              admin
-            </Link>
-            <span>
-              {`/`}
-            </span>
-            <Link href="/gifts">
-              gifts
-            </Link>
-            <span>
-              {`/`}
-            </span>
-            <Link href="/login">
-              logout
-            </Link>
+            <>
+              <span>
+                {`/`}
+              </span>
+              <Link href="/admin">
+                admin
+              </Link>
+              <span>
+                {`/`}
+              </span>
+              <Link href="/gifts">
+                gifts
+              </Link>
+              <span>
+                {`/`}
+              </span>
+              <Link href="/upload">
+                upload
+              </Link>
+              <span>
+                {`/`}
+              </span>
+              <Link href="/login">
+                logout
+              </Link>
+            </>
           : null
         }
       </nav>

@@ -5,11 +5,13 @@ import Container from "@components/Container.astro";
 import { dateRange } from "@lib/utils";
 import { WORK } from "@consts";
 
+// TODO: specify types here
 const collection = (await getCollection("work")).sort(
   (a, b) =>
     new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf(),
 );
 
+// TODO: specify types here
 const work = await Promise.all(
   collection.map(async (item) => {
     const { Content } = await item.render();
@@ -17,7 +19,7 @@ const work = await Promise.all(
   }),
 );
 
-// fill in download resume function here
+// TODO: fill in download resume function here
 ---
 
 <PageLayout title={WORK.TITLE} description={WORK.DESCRIPTION}>

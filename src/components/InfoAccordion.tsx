@@ -1,3 +1,5 @@
+import { ExternalLinkIcon } from "./ExternalLinkIcon"
+
 const InfoAccordion = () => {
   return (
     <div className="mt-10">
@@ -27,8 +29,11 @@ const InfoAccordion = () => {
         <div className="collapse-content">
         <ul className="ml-4">
             <li>Whey Protein</li>
-              <div className="ml-4 mb-4">
-                <a target="_blank" href="https://www.amazon.com/gp/product/B00CUDYY2U/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1">Dymatize Elite Whey Protein Chocolate (5 lb)</a>
+              <div className="flex ml-4 mb-4 gap-2">
+                <p>Dymatize Elite Whey Protein Chocolate (5 lb)</p>
+                <a target="_blank" href="https://www.amazon.com/gp/product/B00CUDYY2U/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1">
+                  <ExternalLinkIcon />
+                </a>
               </div>
             <li>Casein Protein</li>
               <div className="ml-4 mb-4">
