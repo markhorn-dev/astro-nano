@@ -2,7 +2,7 @@ import type { Site, Page, Links, Socials } from "@types"
 
 // Global
 export const SITE: Site = {
-  TITLE: "PLANET-N 🇳🇵 ✈ 🇺🇸",
+  TITLE: "PLANET-N 🇳🇵 ✈️ 🇺🇸 👨‍💻",
   DESCRIPTION: "Welcome to PLANET-N, a personal portfolio and blog for Nitesh Rijal.",
   AUTHOR: "Nitesh Rijal",
 }
