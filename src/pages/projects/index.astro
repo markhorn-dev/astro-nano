@@ -1,30 +1,28 @@
 ---
-import { getCollection } from "astro:content";
-import PageLayout from "@layouts/PageLayout.astro";
-import Container from "@components/Container.astro";
-import ArrowCard from "@components/ArrowCard.astro";
-import { PROJECTS } from "@consts";
+import { getCollection } from "astro:content"
+import PageLayout from "@layouts/PageLayout.astro"
+import TopLayout from "@layouts/TopLayout.astro"
+import BottomLayout from "@layouts/BottomLayout.astro"
+import Projects from "@components/Projects"
+import { PROJECTS } from "@consts"
 
 const projects = (await getCollection("projects"))
   .filter(project => !project.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+
+const tags = [...new Set(projects.flatMap(project => project.data.tags))]
+  .sort((a, b) => a.localeCompare(b))
 ---
 
 <PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
-  <Container>
-    <div class="space-y-10">
-      <div class="animate font-semibold text-black dark:text-white">
-        Projects
-      </div>
-      <ul class="animate flex flex-col gap-4">
-        {
-          projects.map((project) => (
-            <li>
-              <ArrowCard entry={project}/>
-            </li>
-          ))
-        }
-      </ul>
+  <TopLayout>
+    <div class="animate page-heading">
+      {PROJECTS.TITLE}
     </div>
-  </Container>
+  </TopLayout>
+  <BottomLayout>
+    <div class="animate">
+      <Projects client:load tags={tags} data={projects} />
+    </div>
+  </BottomLayout>
 </PageLayout>

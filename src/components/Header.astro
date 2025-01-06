@@ -1,40 +1,107 @@
 ---
-import Container from "@components/Container.astro";
-import Link from "@components/Link.astro";
-import { SITE } from "@consts";
+import { SITE, LINKS } from "@consts"
+import { cn } from "@lib/utils"
+const { pathname } = Astro.url
+const subpath = pathname.match(/[^/]+/g)
+import Container from "@components/Container.astro"
 ---
 
-<header>
-  <Container>
-    <div class="flex flex-wrap gap-y-2 justify-between">
-      <Link href="/" underline={false}>
-        <div class="font-semibold">
-          {SITE.NAME} 🇳🇵 ✈ 🇺🇸
-        </div>
-      </Link>
-      <nav class="flex gap-1">
-        <Link href="/blog">
-          blog
-        </Link>
-        <span>
-          {`/`}
-        </span>
-        <Link href="/work">
-          work
-        </Link>
-        <span>
-          {`/`}
-        </span>
-        <Link href="/projects">
-          projects
-        </Link>
-        <span>
-          {`/`}
-        </span>
-        <Link href="/contact">
-          contact
-        </Link>
+<header id="header" class="fixed top-0 w-full h-16 z-50 ">
+  <Container size="md">
+    <div class="relative h-full w-full">
+      <div class="absolute left-0 top-1/2 -translate-y-1/2 flex gap-1 font-semibold">
+        <a href="/" class="flex gap-1 text-current hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
+          <img src="/brand.png" class="size-5" alt="logo" />
+          <div>
+            {SITE.TITLE}
+          </div>
+        </a>
+      </div>
+
+    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+      <nav class="hidden md:flex items-center justify-center text-sm gap-1">
+        {
+          LINKS.map((LINK) => (
+            <a href={LINK.HREF} class={cn("h-8 rounded-full px-3 text-current", "flex items-center justify-center", "transition-colors duration-300 ease-in-out", pathname === LINK.HREF || "/" + subpath?.[0] === LINK.HREF ? "bg-black dark:bg-white text-white dark:text-black" : "hover:bg-black/5 dark:hover:bg-white/20 hover:text-black dark:hover:text-white")}>
+              {LINK.TEXT}
+            </a>
+          ))
+        }
       </nav>
     </div>
+
+    <div class="buttons absolute right-0 top-1/2 -translate-y-1/2 flex gap-1">
+      <a href="/search" aria-label={`Search blog posts and projects on ${SITE.TITLE}`} class={cn("hidden md:flex", "size-9 rounded-full p-2 items-center justify-center", "bg-transparent hover:bg-black/5 dark:hover:bg-white/20", "stroke-current hover:stroke-black hover:dark:stroke-white", "border border-black/10 dark:border-white/25", "transition-colors duration-300 ease-in-out", pathname === "/search" || "/" + subpath?.[0] === "/search" ? "pointer-events-none bg-black dark:bg-white text-white dark:text-black" : "")}>
+        <svg class="size-full">
+          <use href="/ui.svg#search"></use>
+        </svg>
+      </a>
+
+      <a href="/rss.xml" target="_blank" aria-label={`Rss feed for ${SITE.TITLE}`} class={cn("hidden md:flex", "size-9 rounded-full p-2 items-center justify-center", "bg-transparent hover:bg-black/5 dark:hover:bg-white/20", "stroke-current hover:stroke-black hover:dark:stroke-white", "border border-black/10 dark:border-white/25", "transition-colors duration-300 ease-in-out")}>
+        <svg class="size-full">
+          <use href="/ui.svg#rss"></use>
+        </svg>
+      </a>
+
+      <a href="https://drive.google.com/file/d/1CZYblq5wO6rbLd5wOCT8wKBKLtYx110p/view?usp=sharing" target="_blank" aria-label={`Nitesh Rijal's Resume`} class={cn("hidden md:flex", "size-9 rounded-full p-2 items-center justify-center", "bg-transparent hover:bg-black/5 dark:hover:bg-white/20", "stroke-current hover:stroke-black hover:dark:stroke-white", "border border-black/10 dark:border-white/25", "transition-colors duration-300 ease-in-out")}>
+        <svg class="size-full">
+          <use href="/ui.svg#download"></use>
+        </svg>
+      </a>
+
+      <button id="header-theme-button" aria-label={`Toggle light and dark theme`} class={cn("hidden md:flex", "size-9 rounded-full p-2 items-center justify-center", "bg-transparent hover:bg-black/5 dark:hover:bg-white/20", "stroke-current hover:stroke-black hover:dark:stroke-white", "border border-black/10 dark:border-white/25", "transition-colors duration-300 ease-in-out")}>
+        <svg class="size-full block dark:hidden">
+          <use href="/ui.svg#sun"></use>
+        </svg>
+        <svg class="size-full hidden dark:block">
+          <use href="/ui.svg#moon"></use>
+        </svg>
+      </button>
+
+      <button id="header-drawer-button" aria-label={`Toggle drawer open and closed`} class={cn("flex md:hidden", "size-9 rounded-full p-2 items-center justify-center", "bg-transparent hover:bg-black/5 dark:hover:bg-white/20", "stroke-current hover:stroke-black hover:dark:stroke-white", "border border-black/10 dark:border-white/25", "transition-colors duration-300 ease-in-out")}>
+        <svg id="drawer-open" class="size-full">
+          <use href="/ui.svg#menu"></use>
+        </svg>
+        <svg id="drawer-close" class="size-full">
+          <use href="/ui.svg#x"></use>
+        </svg>
+      </button>
+    </div>
+  </div>
   </Container>
 </header>
+
+<style>
+  #header-drawer-button > #drawer-open {
+    @apply block;
+  }
+
+  #header-drawer-button > #drawer-close {
+    @apply hidden;
+  }
+
+  #header-drawer-button.open > #drawer-open {
+    @apply hidden;
+  }
+
+  #header-drawer-button.open > #drawer-close {
+    @apply block;
+  }
+</style>
+
+<script is:inline>
+  function toggleDrawer() {
+    const drawer = document.getElementById("drawer")
+    const drawerButton = document.getElementById("header-drawer-button")
+    drawer?.classList.toggle("open")
+    drawerButton?.classList.toggle("open")
+  }
+
+  function initializeDrawerButton() {
+    const drawerButton = document.getElementById("header-drawer-button")
+    drawerButton?.addEventListener("click", toggleDrawer)
+  }
+
+  document.addEventListener("astro:after-swap", initializeDrawerButton)
+  initializeDrawerButton()
+</script>
