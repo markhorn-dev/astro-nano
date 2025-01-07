@@ -6,6 +6,7 @@ import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
   site: 'https://szkudelski.dev/',
+  output: 'server',
   integrations: [mdx(), sitemap(), tailwind(), react()],
   vite: {
     build: {
