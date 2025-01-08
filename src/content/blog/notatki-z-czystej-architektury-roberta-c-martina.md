@@ -18,11 +18,9 @@ published: 'true'
 description: 'Postanowiłem zebrać przynajmniej część notatek z "Czystej architektury" Roberta C. Martina i podzieli się z wami. Ta książka dała mi bardzo dużo do myślenia. Pomogła mi też w moim rozwoju zawodowym poprzez szersze spojrzenie na system, który aktualnie rozwijam.'
 ---
 
-# Wstęp
-
 Postanowiłem zebrać przynajmniej część notatek z "Czystej architektury" Roberta C. Martina i podzieli się z wami. Ta książka dała mi bardzo dużo do myślenia. Pomogła mi też w moim rozwoju zawodowym poprzez szersze spojrzenie na system, który aktualnie rozwijam.
 
-# Single Responsibility Principle
+## Single Responsibility Principle
 
 Co ciekawe, pierwsza myśl jak mi została to poprawne spojrzenia na zasady SOLID. Są one ściśle związane z programowaniem, a nie samą architekturą, ale niektóre z nich mają też swoje przełożenie na architekturę oprogramowania.
 
@@ -46,11 +44,11 @@ Robert C. Martin w swojej książce pisze o zasadzie Common Closure Principle (C
 
 > "W ramach komponentu zgromadź te klasy, które zmieniają się z tego samego powodu"
 
-## Komponent
+### Komponent
 
 Komponent - możemy przyjąć, że jest to szeroko rozumiany moduł naszego systemu/aplikacji. Dokładna definicja zależy od architektury. W przypadku systemy frontendowego może to być np. microfrontend, odrębna biblioteka, widok, który ładujemy leniwie (lazy loading).
 
-## CCP, czyli SRP dla architektury
+### CCP, czyli SRP dla architektury
 
 CCP jest zasadą SRP, ale przełożoną na komponenty. Zasada ogranicza się do grupowania elementów, które zmieniają się z tych samych powodów. Jednocześnie chcemy oddzielać rzeczy (przenosić do różnych komponentów), które zmieniają się z różnych powodów. Celem tej zasady jest zgromadzenie klas w ramach komponentu tak aby ograniczyć ilość komponentów potrzebnych do wprowadzania zmian w wymaganiach systemu.
 
@@ -64,7 +62,7 @@ Aby bardziej to zobrazować to przygotowałem kolejny, bardziej praktyczny przyk
 
 Co możemy zrobić w takim przypadku? Powinniśmy wynieść klasę usera do komponentu współdzielonego pomiędzy różne komponenty. Wtedy zmiana będzie dotyczyła jednego komponentu, ewentualnie będzie potrzeba dostosowania pozostałych jeśli zmiana to tzw. Breaking Change (nowa wersja komponentu nie jest kompatybilna z aktualnymi wersjami innych komponentów)
 
-# "Dobry architekt maksymalizuje liczbę niepodjętych decyzji"
+## "Dobry architekt maksymalizuje liczbę niepodjętych decyzji"
 
 Wiem, że to brzmi dość kontrowersyjnie, ale są to słowa Roberta C. Martina 🙂 Krótko opiszę co autor miał na myśli, a potem przejdę do przykładu z życia.
 
@@ -80,7 +78,7 @@ Wrając do początkowej myśli, nie musimy debatować przez pierwsze 2 tygodnie 
 
 Napisałem w pierwszym zdaniu "Dobry architekt", ale nie trzeba być architektem, żeby mieć wpływ na architekturę systemu 🙂 Każdy z deweloperów w zespole może mieć wpływ na podejmowane decyzje techniczne. Jeśli twój zespół zbyt długo zastanawia się nad danym rozwiązaniem, to zaproponuj użycie jakiegokolwiek narzędzie, opakowanie go we wrapper i zrobienie w między czasie researchu w poszukiwaniu najlepszego rozwiązania. 
 
-# Dobra architektura uwzględnia strukturę organizacyjną zespołu deweloperskiego.
+## Dobra architektura uwzględnia strukturę organizacyjną zespołu deweloperskiego.
 
 Kolejna cenna myśl z książki 🙂
 
@@ -96,6 +94,6 @@ Można rozróżnić dwa przypadki.
 
 Na przykład usługi nie powinny zależeć od innych usług, bo wdrożenie jednej i tak będzie wymagało wdrożenia innej usługi.
 
-# Podsumowanie
+## Podsumowanie
 
 Książka według mnie jest świetna, ale trzeba pamiętać o jednej rzeczy. Ona nie opisuje konkretnych rozwiązań technicznych. Jest bardzo dobrze odseparowania od jakiegokolwiek języka programowania lub technologii. To czyni ją ponadczasową, ale czytelnik może mieć trudność, że przełożyć to na swój własny projekt/system, który rozwija.

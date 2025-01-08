@@ -23,7 +23,7 @@ Osoby techniczne bardzo często mają naturalną, potrzebę dzielenia się wiedz
 > 
 > Zapraszam na wpis o [Dzieleniu się wiedzą techniczną w pracy](https://blog.szkudelski.dev/posts/dzielenie-sie-wiedza-w-pracy)
 
-# Tech talks
+## Tech talks
 
 Na pewno jest to bardzo cenna forma dzielenia się wiedzą, zarówno dla uczestników jak i dla prowadzącego. Jeśli chcemy przygotować dobry tech talk to zazwyczaj musimy mocno wejść w dany temat i w ten sposób sami się uczymy.
 
@@ -33,7 +33,7 @@ Ciężko jest trafić z treścią do całego zespołu, ponieważ najczęściej w
 
 Z mojego doświadczenia wynika, że tech talki można przygotowywać raz na jakiś czas jeśli ktoś rzeczywiście ma jakiś ciekawy temat albo interesujące wnioski do zaprezentowania.
 
-# Podsyłanie linków - artykuły, newsy
+## Podsyłanie linków - artykuły, newsy
 
 Bardzo popularny sposób dzielenia się wiedzą w czasach kiedy pracowałem w swojej pierwszej firmie IT. Niestety z moich obserwacji wynika, że bardzo ciężko o dobre artykuły obecnie. Dużo tematów jest już wyczerpanych, a technologia nie rozwija się aż tak szybko, żeby wypełnić tematy na artykuły na wszystkich istniejących blogach.
 
@@ -41,7 +41,7 @@ Niemniej warto dzielić się ciekawymi linkami z zespołem. Nie wszyscy obserwuj
 
 Traktuję ten sposób bardziej jako raczej spontaniczny dodatek niż coś regularnego.
 
-# Szkolenia
+## Szkolenia
 
 Mam tutaj na myśli szkolenia wewnętrzne prowadzone przez członków zespołu dla innych członków albo innych zespołów.
 
@@ -55,7 +55,7 @@ Niestety taka forma jest bardzo droga i rozwleka się w czasie. Minęło parę m
 
 Plusem na pewno jest to, że sami bardzo dużo się nauczyliśmy i szkolenie było idealnie skrojone na potrzeby zespołu. Jednak z perspektywy czasu stwierdzam, że prawdopodobnie lepiej byłoby zatrudnić firmę zewnętrzną z dedykowanym szkoleniem.
 
-# Group programming
+## Group programming
 
 Wydaje mi się że to jest dość mało popularna aktywność w firmach IT. Polega na tym, żeby wziąć kawałek funkcjonalności i zaprogramować go razem z zespołem. Kluczowe jest tutaj, żeby wcześniej przygotować fragment kodu do zaimplementowania i dokładnie przedstawić go innym, żeby każdy był w tym samym kontekście.
 
@@ -65,7 +65,7 @@ Warto zaznaczyć, że nie jest to tyle dzielenie się wiedzą co pokazywanie swo
 
 Można tutaj skorzystać z tych samych narzędzi co w przypadku pair programmingu, aczkolwiek wymaga to większej dyscypliny zespołu, żeby nie doprowadzić do bałaganu i zamieszania podczas spotkania
 
-# Podsumowanie
+## Podsumowanie
 
 Jak widać sposobów na dzielenie się wiedzą jest mnóstwo. Ja w moich artykułach naliczyłem aż 7, a na pewno jest ich jeszcze więcej. Czego więc jeszcze potrzeba? Chęci 🙂
 

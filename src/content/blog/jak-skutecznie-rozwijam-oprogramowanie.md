@@ -18,7 +18,7 @@ description: 'Rozwijać oprogramowanie można na wiele sposobów. Każdy program
 ---
 Rozwijać oprogramowanie można na wiele sposobów. Każdy programista ma pewnie swój własny styl, którym pisze kod. Przez ostatnie lata udało mi się wypracować swój własny, który przynosi dobre efekty jeśli dobrze do niego podejdę. Pomaga mi on efektywnie dostarczać oprogramowanie dobrej jakości.
 
-# Wszystko jest PoC'em
+## Wszystko jest PoC'em
 
 Tworzę najpierw proof of concept tego co mam zaimplementować. Jest to najprostsza ścieżka, taki happy path, bez żadnych wodostrysków, obsługi błędów lub innych skrajnych przypadków. Sprawdzam, czy mój ogólny pomysł na to zadanie się sprawdzi.
 
@@ -30,7 +30,7 @@ to czy dobrze rozumiem ogólne założenia danego zadania. Jest to dużo ważnie
 
 to czy moje rozwiązanie jest skuteczne. Czasem może się okazać, że napiszemy kawał kodu, ale nasze rozwiązanie ma ograniczenia, które nie pozwalają albo bardzo utrudniają realizację zadania.
 
-# Nie dbam o szczegóły
+## Nie dbam o szczegóły
 
 Podczas tworzenia szkieletu (proof of concept) zazwyczaj nie dbam o jakość kodu. Jeśli coś mi nie pasuje to zostawiam i poprawiam potem. Nie przejmuję się zostawionymi log'ami w konsoli, bo wiem, że będę miał potem czas, żeby to posprzątać.
 
@@ -48,7 +48,7 @@ Rzeczy, którymi się nie przejmuje:
 
 ⚫️ stylowanie i layout (po stronie frontendu)
 
-# TODO'sy, wszędzie TODO'sy
+## TODO'sy, wszędzie TODO'sy
 
 Kiedy widzę jakieś niedociągnięcia w kodzie, ale coś co wiem, że będę musiał dodać w przyszłości, to dodaję sobie prosty komentarz TODO. Zazwyczaj ma on taką formę:
 
@@ -56,7 +56,7 @@ Kiedy widzę jakieś niedociągnięcia w kodzie, ale coś co wiem, że będę mu
 
 Czas na rozwiązywanie takich TODO'sów rezerwuję sobie zawsze na sam koniec, kiedy już moje zadanie działa i jestem pewien, że rozwiązanie jest poprawne.
 
-# Testy przed czyszczeniem kodu
+## Testy przed czyszczeniem kodu
 
 Bardzo ważny etap, żeby dowieźć wysokiej jakości oprogramowanie. Testuję przed refactorem i dopracowaniem kodu, żeby mieć pewność, że późniejsze zmiany się powiodą.
 
@@ -64,7 +64,7 @@ Takie podejście daje możliwość robienia dość zaawansowanego refactoru z do
 
 Jeśli ominąłbym ten etap i zaczął dopracowywać kod, wyciągać funkcje, usuwać duplikacje, to bardzo prawdopodobne, że coś by się posypało. Wtedy ręcznie musiałbym to sprawdzać, a tak testy mi mówią dokładnie co jest nie tak.
 
-# Przechodzenie przez każde TODO w dodanym kodzie
+## Przechodzenie przez każde TODO w dodanym kodzie
 
 Na tym etapie przeglądam każde TODO dodane w ramach tego zadania i decyduje czy je wykonać.
 
@@ -74,13 +74,13 @@ Jeśli ma być zrobione na przykład w ramach jakiegoś zadania, które wkrótce
 
 Jeśli TODO może być wykonane kiedyś, ale czas nie jest znany to wtedy dodaję zadanie do backlogu. Wtedy też dodaję link do zadania w komentarzu.
 
-# Dalszy refactor
+## Dalszy refactor
 
 Zawsze przeglądam cały kod zanim wystawię pull request'a do code review. Przynajmniej dwa razy. Po pierwsze, chcę dowieźć kod dobrej jakości, bez liczenia na to, że ktoś wyłapie moje błędy. Po drugie, chcę zaoszczędzić czas osoby, która będzie mi robiła code review.
 
 Dużo lepiej sprawdza się dobrej jakości kod, skupiając się na ogólnej koncepcji rozwiązania, niż zły kod, gdzie trzeba zwracać uwagę na najmniejszy szczegół, bo jego jakość pozostawia wiele do czynienia.
 
-# Podsumowanie
+## Podsumowanie
 
 W skrócie mój proces wygląda tak:
 

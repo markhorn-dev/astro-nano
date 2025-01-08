@@ -20,7 +20,7 @@ Ważny jest stały rozwój, a nie każdy ma czas na to po pracy. Szczególnie os
 
 Zawsze starałem się mieć zarobkowe podejście do pracy, bo w końcu za darmo przecież tego bym nie robił. Jednak oprócz zarabiania pieniędzy za przepracowaną godzinę, starałem się również tą pracą inwestować w swoje przyszłe zarobki tak, żeby kiedyś zarabiać więcej dzięki temu co teraz robię. Oczywiście pieniądze nie są moją jedyną motywacją!
 
-# Rozwój w "międzyczasie"
+## Rozwój w "międzyczasie"
 
 Na pewno można czytać w przerwach. Na przykład podczas przerwy obiadowej jeśli nie mamy kompana do rozmów. Można czytać artykuły, książki, przeglądać social media jeśli obserwujemy osoby, które dzielą się wiedzą techniczną.
 
@@ -28,7 +28,7 @@ Wada tego podejścia może być zmęczenie. W przerwie zamiast odpocząć mental
 
 Można wykorzystać dobrze czas dojazdów na słuchanie wartościowych rzeczy np. podcastów branżowych albo audiobooków. Można też czytać, ale akurat podczas komunikowania się jestem fanem słuchania 🙂
 
-# Kursy online
+## Kursy online
 
 Największym problemem są bardzo popularne kursy online. Chyba każdy programista miał kiedyś do czynienia z kursem online z tematyki programowania. Oglądanie kolejnych lekcji zajmuje sporo czasu, a robienie zadań często jeszcze więcej.
 
@@ -38,13 +38,13 @@ Na przykład, pół godziny przez zakończeniem pracy skończyliśmy zadanie, wi
 
 Można poprosić przełożonego o dedykowany czas na robienie kursu. Tak jak się to robi wysyłając pracowników na szkolenia stacjonarne, czy też online, ale na żywo. U mnie parę razy się to sprawdziło. Niestety ciężko jest wtedy zadbać o pełne zaangażowanie w kurs. Na pewno nie jest ono na takim poziome jak przy tradycyjnym szkoleniu.
 
-# Rozwój przez wykonywanie zadań
+## Rozwój przez wykonywanie zadań
 
 Jedną bardzo ważną możliwością jest aby uczyć się w trakcie wykonywania zadań. Kiedy używamy jakiegoś narzędzia, to możemy zerknąć do jego dokumentacji i poczytać o nim trochę więcej. Jeśli mamy jakiś problem, to zamiast skupiać się tylko na pozbyciu się go, możemy zagłębić się w to dlaczego ten błąd wystąpił i jak nie natknąć się na niego w przyszłości.
 
 Cokolwiek robimy, starajmy się zawsze pogłębiać wiedzę z tego tematu, czy dziedziny. Będzie to prawdopodobnie kosztowało nas parę dodatkowych minut, ale zyskamy dużo, przez rozwój.
 
-# Podejmowanie wyzwań
+## Podejmowanie wyzwań
 
 Najbardziej efektywny dla mnie sposób, to jest podejmowanie projektów oraz zadań wykraczających w pewnym stopniu poza nasze kompetencje.
 
@@ -54,7 +54,7 @@ Dużą wartość do rozwoju przynosi podejmowanie się zadań, które wyglądaj�
 
 Czasami może się wydawać, że sobie z nimi nie poradzimy, ale to jest sprawdzona metoda na rozwój. Być może będziemy potrzebowali pomocy kogoś bardziej doświadczonego. Być może będziemy musieli zrobić większy research w internecie.
 
-# Zmiana kontekstu
+## Zmiana kontekstu
 
 Na pewno dużo pomogło mi pracowanie dla software house'ów przez pierwsze 4 lata mojej kariery. Mogłem angażować się w różne projekty w różnych technologiach. Jeśli czułem, że za długo tkwię w jakiejś technologii, albo projekcie, to prosiłem przełożonego o zmianę projektu.
 
@@ -62,7 +62,7 @@ Warto też podejmować się zadań, które są spoza obszaru naszych codziennych
 
 Dzięki temu poszerzamy horyzonty. Mamy większe pojęcie o całym systemie i procesie, co skutkuje tym, że możemy brać udział w wysokopoziomowych dyskusjach, albo wychodzić z propozycjami, które usprawnią pracę w zespole.
 
-# Podsumowanie
+## Podsumowanie
 
 Zawsze szukajmy możliwości rozwoju. Koniec końców, to zależy tylko od nas. Mamy naprawdę dużo możliwości, żeby to robić. Nie tylko poza godzinami pracy. Możemy między innymi:
 

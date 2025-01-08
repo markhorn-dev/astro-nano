@@ -22,7 +22,7 @@ Myślę, że w naszej branży dzielenie się wiedzą wygląda zupełnie inaczej 
 
 Właśnie dlatego mamy, bardzo często naturalną, potrzebę dzielenia się wiedzą, nowinkami i ciekawostkami technicznymi. Są różne sposoby, żeby to realizować. Bazując na własny doświadczeniu, chciałby przedstawić kilka sposób, które u mnie się sprawdziły. 
 
-# Code Review
+## Code Review
 
 Wbrew pozorom najlepszym według mnie sposobem na dzielenie się wiedzą to proces Code Review. Oczywiście liczy się tutaj, jak przeglądamy kod oraz jakiego typu komentarze zostawiamy. Jako Reviewer możemy czegoś nauczyć osobę wystawiającą Pull Request'a, albo samemu się czegoś nowego dowiedzieć.
 
@@ -40,7 +40,7 @@ Proces Code Review to dość rozległy i pewnie w niektórych aspektach kontrowe
 >
 > https://www.linkedin.com/pulse/kompendium-code-review-jak-efektywnie-wykonywa%C4%87-kodu-wojtysiak-1c/
 
-# Pair programming
+## Pair programming
 
 Z moich doświadczeń wynika, że najczęściej jest to nie sformalizowana (chociaż wiem, że są firmy gdzie wyglada to inaczej) forma pisania kodu przez dwóch programistów. Jak to mówią "co dwie głowy to nie jedna" i myślę że w przypadku programowania to przysłowie też ma dużo racji. W obecnych czasach kiedy dominuje praca zdalna, takie programowanie może nie być tak łatwe, ale na szczęście są narzędzia które to ułatwiają. Z darmowych jest na przykład Visual Studio Code Live Share.
 
@@ -50,7 +50,7 @@ Najczęstsze sytuacje w których ja spotykam się z pair programmingiem to przyp
 
 Bardzo często bywa, że samo opisanie problemu drugiej osobie już nam nasunie rozwiązanie. Nie rzadziej jest też to chwila kiedy możemy skorzystać z pomocy innego programisty i nauczyć/dowiedzieć sie czegoś nowego.
 
-# Cykliczne spotkania zespołowe
+## Cykliczne spotkania zespołowe
 
 Szczególnie przy średnich i większych zespołach (ponad 3-4 osoby) oraz dopiero formujących się, warto regularnie się spotykać, żeby omawiać tematy typowo techniczne.
 
