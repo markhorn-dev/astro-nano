@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/netlify": "^6.0.1",
+    "@astrojs/node": "^9.0.0",
     "@astrojs/rss": "^4.0.11",
     "@babel/core": "^7.24.0",
     "@babel/preset-react": "^7.23.3",
