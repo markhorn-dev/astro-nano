@@ -9,16 +9,21 @@ import { SITE } from "@consts";
 type Props = {
   title: string;
   description: string;
+  hashtags?: string[];
 };
 
-const { title, description } = Astro.props;
+const { title, description, hashtags } = Astro.props;
 const PUBLIC_SENDER_FORM_ID = import.meta.env.PUBLIC_SENDER_FORM_ID;
 ---
 
 <!doctype html>
 <html lang="pl">
   <head>
-    <Head title={`${title} | ${SITE.NAME}`} description={description} />
+    <Head
+      title={`${title} | ${SITE.NAME}`}
+      description={description}
+      hashtags={hashtags}
+    />
   </head>
   <body>
     <Header />

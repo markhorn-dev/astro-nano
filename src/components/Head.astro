@@ -9,18 +9,27 @@ import inter600 from "@fontsource/inter/files/inter-latin-600-normal.woff2";
 import lora400 from "@fontsource/lora/files/lora-latin-400-normal.woff2";
 import lora600 from "@fontsource/lora/files/lora-latin-600-normal.woff2";
 import { ViewTransitions } from "astro:transitions";
+import { SITE } from "@consts";
 
 interface Props {
   title: string;
   description: string;
   image?: string;
+  hashtags?: string[],
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = "/nano.png" } = Astro.props;
+const { title, description, hashtags = [] } = Astro.props;
+
+const ogImage = new URL(
+  `/og?title=${encodeURIComponent(title)}${hashtags.length ? `&hashtags=${encodeURIComponent(hashtags.slice(0, 5).join(','))}` : ''}`,
+  Astro.site,
+);
 
 const googleTagId = import.meta.env.GOOGLE_TAG_ID;
+
+const viewTitle = `${title} | ${SITE.NAME}`;
 
 declare global {
   interface Window {
@@ -57,8 +66,8 @@ declare global {
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Primary Meta Tags -->
-<title>{title}</title>
-<meta name="title" content={title} />
+<title>{viewTitle}</title>
+<meta name="title" content={viewTitle} />
 <meta name="description" content={description} />
 
 <!-- Conditionally include Google Tag code if GOOGLE_TAG_ID is set -->
@@ -81,9 +90,9 @@ declare global {
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content={Astro.url} />
-<meta property="og:title" content={title} />
+<meta property="og:title" content={viewTitle} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:image" content={ogImage} />
 
 <ViewTransitions />
 

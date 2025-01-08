@@ -15,7 +15,7 @@
   "dependencies": {
     "@astrojs/check": "^0.5.9",
     "@astrojs/mdx": "^2.2.0",
-    "@astrojs/react": "^4.0.0",
+    "@astrojs/node": "^9.0.0",
     "@astrojs/rss": "^4.0.5",
     "@astrojs/sitemap": "^3.1.1",
     "@astrojs/tailwind": "^5.1.0",
@@ -25,6 +25,7 @@
     "@fontsource/inter": "^5.0.17",
     "@fontsource/lora": "^5.0.16",
     "astro": "^4.4.0",
+    "canvas": "^3.0.1",
     "clsx": "^2.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
