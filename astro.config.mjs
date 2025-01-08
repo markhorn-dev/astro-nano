@@ -6,14 +6,9 @@ import node from '@astrojs/node';
 
 export default defineConfig({
   site: 'https://szkudelski.dev/',
-  output: 'hybrid',
+  output: 'static',
   adapter: node({
     mode: 'standalone',
   }),
-  server: {
-    routes: [
-      '/api/*',
-    ],
-  },
   integrations: [mdx(), sitemap(), tailwind()],
 });
