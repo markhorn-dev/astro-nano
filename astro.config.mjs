@@ -8,6 +8,14 @@ import netlify from '@astrojs/netlify';
 export default defineConfig({
   site: 'https://szkudelski.dev/',
   output: 'static',
-  adapter: netlify(),
+  adapter: netlify({
+    builders: true,
+    binaryMediaTypes: ["image/*", "application/pdf"],
+  }),
   integrations: [mdx(), sitemap(), tailwind()],
+  vite: {
+    ssr: {
+      external: ['canvas']
+    }
+  }
 });
