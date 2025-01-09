@@ -23,7 +23,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const { title, description, hashtags = [] } = Astro.props;
 
 const ogImage = new URL(
-  `/og?title=${encodeURIComponent(title)}${hashtags.length ? `&hashtags=${encodeURIComponent(hashtags.slice(0, 5).join(','))}` : ''}`,
+  `/api/og?title=${encodeURIComponent(title)}${hashtags.length ? `&hashtags=${encodeURIComponent(hashtags.slice(0, 5).join(','))}` : ''}`,
   Astro.site,
 );
 
