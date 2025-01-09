@@ -4,7 +4,6 @@ import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import SenderForm from "@components/SenderForm.astro";
 import CookieConsent from "@components/CookieConsent.astro";
-import { SITE } from "@consts";
 
 type Props = {
   title: string;
@@ -18,11 +17,7 @@ const { title, description, hashtags } = Astro.props;
 <!doctype html>
 <html lang="pl">
   <head>
-    <Head
-      title={`${title} | ${SITE.NAME}`}
-      description={description}
-      hashtags={hashtags}
-    />
+    <Head title={title} description={description} hashtags={hashtags} />
   </head>
   <body>
     <Header />
