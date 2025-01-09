@@ -7,3 +7,16 @@
 
 [[plugins]]
   package = "@netlify/plugin-functions-install-core"
+
+[functions]
+  node_bundler = "esbuild"
+  included_files = ["public/fonts/**"]
+
+[build.lifecycle]
+  onBuild = """
+    mkdir -p .netlify/functions-serve/og/public/fonts && \
+    cp -r public/fonts/* .netlify/functions-serve/og/public/fonts/ && \
+    apt-get update && \
+    apt-get install -y fontconfig && \
+    fc-cache -f -v
+  """

@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
-import { createCanvas, loadImage, CanvasRenderingContext2D, Canvas } from 'canvas';
+import { createCanvas, loadImage, CanvasRenderingContext2D, Canvas, registerFont } from 'canvas';
+import path from 'path';
 
 const DARK_BACKGROUND = '#020617';
 const DARK_TEXT = '#e2e8f0';
@@ -8,6 +9,12 @@ const CANVAS_HEIGHT = 630;
 const DECORATIVE = '#a5b4fc';
 
 export const prerender = false;
+
+const FONT_FAMILY = 'Mona Sans';
+
+registerFont(path.join(process.cwd(), 'public', 'fonts', 'Inter.ttf'), {
+    family: FONT_FAMILY
+});
 
 export const GET: APIRoute = async ({ request }) => {
     try {
@@ -74,7 +81,7 @@ export const GET: APIRoute = async ({ request }) => {
             ctx.drawImage(photo, photoX, photoY, photoSize, photoSize);
             ctx.restore();
 
-            ctx.font = 'bold 28px sans-serif';
+            ctx.font = `bold 28px ${FONT_FAMILY}`;
             ctx.fillStyle = DECORATIVE;
             ctx.textAlign = 'right';
             ctx.fillText('https://szkudelski.dev', photoX - 20, CANVAS_HEIGHT - padding - photoSize / 2 + 8);
@@ -89,7 +96,7 @@ export const GET: APIRoute = async ({ request }) => {
             ).slice(0, 5)
 
         if (hashtags) {
-            ctx.font = 'bold 18px sans-serif';
+            ctx.font = `bold 18px ${FONT_FAMILY}`;
             ctx.fillStyle = DECORATIVE;
             ctx.textAlign = 'left';
             const hashtagPadding = 40;
@@ -142,7 +149,7 @@ export const GET: APIRoute = async ({ request }) => {
         const y = (CANVAS_HEIGHT / 2) - 80;
 
         ctx.fillStyle = DARK_TEXT;
-        ctx.font = 'bold 48px sans-serif';
+        ctx.font = `bold 48px ${FONT_FAMILY}`;
         const titleLinesAmount = wrapText(ctx, title, x, y, maxWidth, lineHeight);
 
         ctx.strokeStyle = DECORATIVE;
@@ -153,7 +160,7 @@ export const GET: APIRoute = async ({ request }) => {
         ctx.lineTo(CANVAS_WIDTH / 2 + 50, accentY);
         ctx.stroke();
 
-        ctx.font = 'bold 32px sans-serif';
+        ctx.font = `bold 32px ${FONT_FAMILY}`;
         ctx.fillText("Marek Szkudelski", CANVAS_WIDTH / 2, y + (titleLinesAmount * 40) + 40);
 
         return new Response(canvas.toBuffer('image/png'), {
