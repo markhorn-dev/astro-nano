@@ -77,7 +77,7 @@ html.scrolled #back-to-top {
 }
 
 .tag-filter {
-  @apply flex flex-wrap gap-4 mb-8;
+  @apply flex flex-wrap gap-4 my-8;
 }
 
 .button {

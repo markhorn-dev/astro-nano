@@ -2,11 +2,12 @@
 import { getCollection } from "astro:content";
 import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
-import ArrowCard from "@components/ArrowCard.astro";
+import { ArrowCard } from "@components/ArrowCard";
 import Link from "@components/Link.astro";
 import { dateRange } from "@lib/utils";
 import { SITE, HOME, SOCIALS } from "@consts";
 import EmailProtect from "@components/EmailProtect.astro";
+import SenderForm from "@components/SenderForm.astro";
 
 const blog = (await getCollection("blog"))
   .filter((post) => !post.data.draft)
@@ -156,6 +157,8 @@ const work = await Promise.all(
           </li>
         </ul>
       </section>
+
+      <SenderForm transition:persist />
     </div>
   </Container>
 </PageLayout>

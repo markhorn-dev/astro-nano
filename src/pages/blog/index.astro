@@ -2,8 +2,11 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
-import ArrowCard from "@components/ArrowCard.astro";
+import { ArrowCard } from "@components/ArrowCard";
 import { BLOG } from "@consts";
+import { PostsList } from "@components/PostsList";
+import { FilterButtons } from "@components/FilterButtons";
+import SenderForm from "@components/SenderForm.astro";
 
 const filters = [
   { id: "self-develop", label: "Rozwój" },
@@ -35,81 +38,13 @@ const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
 <PageLayout title={BLOG.TITLE} description={BLOG.DESCRIPTION}>
   <Container>
     <div class="space-y-10">
-      <div class="animate font-semibold text-black dark:text-white">Blog</div>
+      <div class="font-semibold text-black dark:text-white">Blog</div>
 
-      <div class="tag-filter animate">
-        {
-          filters.map((filter) => (
-            <button class="button" data-filter={filter.id}>
-              {filter.label}
-            </button>
-          ))
-        }
-      </div>
+      <SenderForm />
 
-      <div class="space-y-4">
-        {
-          years.map((year) => (
-            <section class="year-section animate space-y-4">
-              <div class="font-semibold text-black dark:text-white">{year}</div>
-              <div>
-                <ul class="flex flex-col gap-4">
-                  {posts[year].map((post) => (
-                    <li
-                      data-tags={post.data.tags && post.data.tags.join(" ")}
-                      class="post-item"
-                    >
-                      <ArrowCard entry={post} />
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </section>
-          ))
-        }
-      </div>
+      <FilterButtons client:load />
+
+      <PostsList posts={posts} years={years} client:load />
     </div>
   </Container>
-
-  <script is:inline>
-    // Astro client-side script
-    window.addEventListener("load", () => {
-      const filterButtons = document.querySelectorAll(".button");
-      const posts = document.querySelectorAll(".post-item");
-      const yearSections = document.querySelectorAll(".year-section");
-      let activeFilter = null;
-
-      const updateVisibility = () => {
-        posts.forEach((post) => {
-          const tags = post.getAttribute("data-tags")?.split(" ") || [];
-          post.style.display =
-            !activeFilter || tags.includes(activeFilter) ? "" : "none";
-        });
-
-        yearSections.forEach((section) => {
-          const visiblePosts = Array.from(
-            section.querySelectorAll(".post-item"),
-          ).some((post) => post.style.display !== "none");
-          section.style.display = visiblePosts ? "" : "none";
-        });
-      };
-
-      filterButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-          const filter = button.getAttribute("data-filter");
-
-          filterButtons.forEach((btn) => btn.classList.remove("active"));
-
-          if (activeFilter === filter) {
-            activeFilter = null;
-          } else {
-            activeFilter = filter;
-            button.classList.add("active");
-          }
-
-          updateVisibility();
-        });
-      });
-    });
-  </script>
 </PageLayout>
