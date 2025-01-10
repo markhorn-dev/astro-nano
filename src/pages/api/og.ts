@@ -67,7 +67,7 @@ export const GET: APIRoute = async ({ request }) => {
             const photo = await loadImage(photoBuffer).catch((error: unknown) => {
                 throw new Error(`Failed to load image: ${(error as Error).message}, Content-Type: ${contentType}`);
             });
-            const photoSize = 100;
+            const photoSize = 240;
             const padding = 40;
             const photoX = CANVAS_WIDTH - photoSize - padding;
             const photoY = CANVAS_HEIGHT - photoSize - padding;
@@ -81,10 +81,11 @@ export const GET: APIRoute = async ({ request }) => {
             ctx.drawImage(photo, photoX, photoY, photoSize, photoSize);
             ctx.restore();
 
-            ctx.font = `bold 28px ${FONT_FAMILY}`;
+            const linkSize = 48;
+            ctx.font = `bold ${linkSize}px ${FONT_FAMILY}`;
             ctx.fillStyle = DECORATIVE;
             ctx.textAlign = 'right';
-            ctx.fillText('https://szkudelski.dev', photoX - 20, CANVAS_HEIGHT - padding - photoSize / 2 + 8);
+            ctx.fillText('szkudelski.dev', CANVAS_WIDTH - padding, padding + linkSize);
         } catch (imageError: unknown) {
             console.error('Failed to load profile image:', imageError);
             console.error('Image URL attempted:', photoUrl);
@@ -96,7 +97,8 @@ export const GET: APIRoute = async ({ request }) => {
             ).slice(0, 5)
 
         if (hashtags) {
-            ctx.font = `bold 18px ${FONT_FAMILY}`;
+            const tagsSize = 32;
+            ctx.font = `bold ${tagsSize}px ${FONT_FAMILY}`;
             ctx.fillStyle = DECORATIVE;
             ctx.textAlign = 'left';
             const hashtagPadding = 40;
@@ -144,24 +146,24 @@ export const GET: APIRoute = async ({ request }) => {
         };
 
         const maxWidth = CANVAS_WIDTH - 160;
-        const lineHeight = 48;
+        const lineHeight = 64;
         const x = CANVAS_WIDTH / 2;
         const y = (CANVAS_HEIGHT / 2) - 80;
 
         ctx.fillStyle = DARK_TEXT;
-        ctx.font = `bold 48px ${FONT_FAMILY}`;
+        ctx.font = `bold ${lineHeight}px ${FONT_FAMILY}`;
         const titleLinesAmount = wrapText(ctx, title, x, y, maxWidth, lineHeight);
 
         ctx.strokeStyle = DECORATIVE;
         ctx.lineWidth = 4;
-        const accentY = y + (titleLinesAmount * 40);
+        const accentY = y + (titleLinesAmount * (lineHeight * 0.75));
         ctx.beginPath();
         ctx.moveTo(CANVAS_WIDTH / 2 - 50, accentY);
         ctx.lineTo(CANVAS_WIDTH / 2 + 50, accentY);
         ctx.stroke();
 
-        ctx.font = `bold 32px ${FONT_FAMILY}`;
-        ctx.fillText("Marek Szkudelski", CANVAS_WIDTH / 2, y + (titleLinesAmount * 40) + 40);
+        ctx.font = `bold 48px ${FONT_FAMILY}`;
+        ctx.fillText("Marek Szkudelski", CANVAS_WIDTH / 2, accentY + lineHeight);
 
         return new Response(canvas.toBuffer('image/png'), {
             headers: {
