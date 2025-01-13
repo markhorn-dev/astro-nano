@@ -4,7 +4,7 @@ import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
 import { ArrowCard } from "@components/ArrowCard";
 import { PROJECTS } from "@consts";
-import SenderForm from "@components/SenderForm.astro";
+import { SenderFormWrapper } from "@components/SenderForm";
 
 const projects = (await getCollection("others")).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
@@ -25,6 +25,6 @@ const projects = (await getCollection("others")).sort(
         }
       </ul>
     </div>
-    <SenderForm />
+    <SenderFormWrapper client:load />
   </Container>
 </PageLayout>

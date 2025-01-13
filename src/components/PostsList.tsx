@@ -3,8 +3,6 @@ import { ArrowCard } from "./ArrowCard";
 import { useEffect, useState } from "react";
 import { activeFilterStore } from "@stores/filterStore";
 import { useStore } from '@nanostores/react'
-import SenderForm from "./SenderForm.astro";
-
 
 interface Props {
     posts: { [year: string]: CollectionEntry<"blog">[]; };

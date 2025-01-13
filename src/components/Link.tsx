@@ -1,22 +1,14 @@
----
+
 import { cn } from "@lib/utils";
 
-type Props = {
+type Props = React.PropsWithChildren<{
   href: string;
   external?: boolean;
   underline?: boolean;
   className?: string;
   variant?: "default" | "primary" | "secondary";
-};
+}>;
 
-const {
-  href,
-  external,
-  underline = true,
-  className,
-  variant = "default",
-  ...rest
-} = Astro.props;
 
 const variantStyles = {
   default: [
@@ -38,19 +30,29 @@ const variantStyles = {
     "hover:decoration-blue-500 dark:hover:decoration-blue-400",
   ],
 };
----
 
-<a
-  href={href}
-  target={external ? "_blank" : "_self"}
-  class={cn(
-    "inline-block",
-    variantStyles[variant],
-    "transition-colors duration-300 ease-in-out",
-    underline && "underline underline-offset-2",
-    className,
-  )}
-  {...rest}
->
-  <slot />
-</a>
+
+export const Link: React.FC<Props> = ({
+  href,
+  external,
+  underline = true,
+  className,
+  variant = "default",
+  children,
+  ...rest
+}) => (
+  <a
+    href={href}
+    target={external ? "_blank" : "_self"}
+    className={cn(
+      "inline-block",
+      variantStyles[variant],
+      "transition-colors duration-300 ease-in-out",
+      underline && "underline underline-offset-2",
+      className,
+    )}
+    {...rest}
+  >
+    {children}
+  </a>
+)

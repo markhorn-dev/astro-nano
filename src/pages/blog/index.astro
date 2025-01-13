@@ -2,11 +2,10 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
-import { ArrowCard } from "@components/ArrowCard";
 import { BLOG } from "@consts";
 import { PostsList } from "@components/PostsList";
 import { FilterButtons } from "@components/FilterButtons";
-import SenderForm from "@components/SenderForm.astro";
+import { SenderFormWrapper } from "@components/SenderForm";
 
 const filters = [
   { id: "self-develop", label: "Rozwój" },
@@ -40,7 +39,7 @@ const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
     <div class="space-y-10">
       <div class="font-semibold text-black dark:text-white">Blog</div>
 
-      <SenderForm />
+      <SenderFormWrapper client:load />
 
       <FilterButtons client:load />
 

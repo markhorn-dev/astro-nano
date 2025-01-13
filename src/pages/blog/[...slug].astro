@@ -5,6 +5,7 @@ import Container from "@components/Container.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import { readingTime } from "@lib/utils";
 import BackToPrev from "@components/BackToPrev.astro";
+import { SenderFormWrapper } from "@components/SenderForm";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("blog"))
@@ -47,5 +48,67 @@ const { Content } = await post.render();
     <article class="animate">
       <Content />
     </article>
+    <div
+      id="senderForm"
+      class="fixed w-full h-full flex items-center justify-center bottom-0 right-0 z-10 opacity-0 pointer-events-none transition-opacity duration-300 bg-black/50"
+    >
+      <div
+        class="bg-slate-50 dark:bg-slate-950 p-6 rounded-lg w-full max-w-md mx-4 relative"
+      >
+        <button
+          type="button"
+          aria-label="Close form"
+          class="absolute top-4 right-4 text-slate-600 dark:text-slate-300 hover:text-gray-700 dark:hover:text-gray-300 text-4xl leading-none"
+        >
+          &times;
+        </button>
+        <SenderFormWrapper client:load />
+      </div>
+    </div>
   </Container>
+  <script>
+    import { setCookie, getCookie } from "@lib/cookies";
+
+    const senderSubscribed = Boolean(getCookie("senderSubscribed"));
+
+    if (!senderSubscribed) {
+      const MODAL_CLOSED_KEY = "senderFormClosed";
+
+      const closeModal = () => {
+        const formEl = document.getElementById("senderForm");
+        if (!formEl) return;
+
+        formEl.classList.add("opacity-0", "pointer-events-none");
+        setCookie(MODAL_CLOSED_KEY, "true", 7);
+      };
+
+      const handleScroll = () => {
+        const formEl = document.getElementById("senderForm");
+        if (!formEl) return;
+
+        if (getCookie(MODAL_CLOSED_KEY) === "true") return;
+
+        const articleEl = document.querySelector("article");
+        if (!articleEl) return;
+
+        const { offsetHeight, offsetTop } = articleEl;
+        const scrolled =
+          ((window.scrollY + window.innerHeight - offsetTop) / offsetHeight) *
+          100;
+
+        if (scrolled >= 50) {
+          formEl.classList.remove("opacity-0", "pointer-events-none");
+        }
+      };
+
+      const closeButton = document.querySelector(
+        '#senderForm button[aria-label="Close form"]',
+      );
+      if (closeButton) {
+        closeButton.addEventListener("click", closeModal);
+      }
+
+      window.addEventListener("scroll", handleScroll);
+    }
+  </script>
 </PageLayout>
