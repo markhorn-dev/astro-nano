@@ -20,7 +20,7 @@ description: Postanowiłem podsumować swoją wiedzę na temat hooków. W pierws
 
 Hooki to stosunkowo nowy feature w ReactJS. Niedawno minęły dwa lata od ich wprowadzenia przez zespół rozwijający ten framework. Było to dość rewolucyjne posunięcie, ponieważ zupełnie zmieniło postrzeganie komponentów funkcyjnych. Kiedy jakiś czas temu zmieniałem projekt z Angularowego na Reactowy, to właśnie hooki były tym, co wprowadzało najwięcej zamieszania w moim zrozumieniu, jak działa React. Postanowiłem podsumować swoją wiedzę na ich temat. Jeśli zastanawiasz się jaka historia kryje się za hasłem, jakim są hooki i chcesz poznać podstawowe z nich, to zapraszam.
 
-> Jest to pierwszy artykuł z [serii o hookach](/series/reactjs-hooks). Jeśli interesuje Cię bardziej praktyczna wiedza, to pojawi się ona w kolejnych artykułach! 
+> Jest to pierwszy artykuł z [serii o hookach](/series/reactjs-hooks). Jeśli interesuje Cię bardziej praktyczna wiedza, to pojawi się ona w kolejnych artykułach!
 
 ## Po co te hooki? Krótka historia o stanie
 
