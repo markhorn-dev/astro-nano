@@ -255,6 +255,10 @@ if (require.main === module) {
 
 Podsumujmy, co udało nam się osiągnąć. Po utworzeniu PRa oraz przy każdym pushu, **odpali się workflow Version label**, który **doda labelkę** oznaczającą wagę podbicia wersji projektu. Można takiej akcji użyć **informacyjnie** (widać od razu, jaki jest rozmiar i konsekwencje zmian), albo w celu **automatycznego podbijania wersji** po zmergowaniu PRa.
 
+<Highlight type="tip" title="Zajrzyj do kodu!">
+Całość rozwiązania zaimplementowałem również na moim blogu. Tutaj znajdziesz <Link href="https://github.com/mszkudelski/blog2.0/blob/main/.github/workflows/add-label.yml" external>workflow</Link> oraz <Link href="https://github.com/mszkudelski/blog2.0/blob/main/scripts/addLabel.cjs" external>skrypt</Link>.
+</Highlight>
+
 Dowiedziałeś się też w tym wpisie, **jak tworzyć customowe akcje Githubowe** oraz jak manipulować labelkami PRa. Może to Cię zainspiruje do tworzenia podobnych akcji, które przydadzą się w Twoim projekcie 🙂
 
 Oczywiście pewnie jest dużo podobnych rozwiązań w internecie. Jednak nie zawsze możemy z nich korzystać. Czasami mamy narzucone ograniczenia na przykład od działu Security, jak to było w moim przypadku. **Dlatego warto wiedzieć jak samemu zaimplementować coś podobnego.**
