@@ -16,7 +16,7 @@ ogImage:
  url: ''
 level: ""
 published: 'true'
-description: ''
+description: 'Odkryj jak zautomatyzować proces labelkowania Pull Requestów w GitHubie przy użyciu Actions i JavaScript. Rozwiązanie automatycznie określa zmianę wersji semantycznej na podstawie Conventional Commits i dodaje odpowiednie labelki - oszczędzając czas i redukując ryzyko błędów ludzkich w procesie wdrożeń.'
 ---
 
 Jakiś czas temu realizowałem w pracy bardzo ciekawy projekt. Na podstawie nazw commitów określaliśmy, jak ma być podbita wersja projektu/usługi/komponentu. Commity musiały bazować na [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), a wersja była na podstawie [Semantic Versioning](https://semver.org/lang/pl/).
@@ -46,19 +46,26 @@ jobs:
       pull-requests: write
       repository-projects: write
     steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '22'
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - name: Install @actions/core dependency
-        run: npm --prefix $GITHUB_ACTION_PATH/../../ install --no-save @actions/core
+        run: npm install --no-save @actions/core
         shell: bash
       - name: Add version label
-        run: node $GITHUB_ACTION_PATH/../scripts/label.js ${{ github.event.pull_request.number }}
+        run: node scripts/label.js ${{ github.event.pull_request.number }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: bash
 ```
 
+
 Najważniejsze tutaj to ustalenie odpowiednich uprawnień. Bez nich nie będziemy mogli czytać, ani modyfikować pull requesta. Druga ważna rzecz to przekazanie numeru pull requesta. To na nim będziemy bazować w skrypcie.
 
-W pierwszym kroku instalujemy `@actions/core`.
+W pierwszych krokach setupujemy Node'a, robimy checkout w repo oraz instalujemy `@actions/core`. Następnie odpalamy nasz skrypt.
 
 ## Skrypt określający wagę podbicia wersji
 
@@ -82,7 +89,7 @@ addLabelToBasedOnCommits(prNumberArg);
 Samo pobranie danych dotyczących PRa odbywa się w prosty sposób poprzez Github CLI. Dzięki parametrowi `--json` możemy sobie wybrać, jakie dokładnie pola zostaną nam zwrócone:
 
 ```jsx
-const pullRequest = JSON.parse(
+const { commits } = JSON.parse(
 	(await execPromise(
 		`gh pr view ${prNumber} --json commits`
 	)).stdout
@@ -134,10 +141,9 @@ Ok, wiemy już, jaką powinniśmy dodać labelkę do PRa. Pozostaje rozpatrzyć 
 
 Aby dodać labelkę, potrzebujemy prostą funkcję, która wykona polecenie poprzez Github CLI.
 
-<aside>
-💡 Uwaga: Pamiętaj, że labelki muszą być wcześniej dodane w repozytorium, aby można było je dodać do PRa. Możesz to zrobić ręcznie albo na początku skryptu sprawdzić i ewentualnie dodać je poprzez CLI. Jeśli pracujesz nad rozwiązaniem dla wielu projektów, to automatyczne dodawanie będzie bardzo pomocne w ich wdrażaniu.
-
-</aside>
+<Highlight title="Uwaga">
+  Pamiętaj, że labelki muszą być wcześniej dodane w repozytorium, aby można było je dodać do PRa. Możesz to zrobić ręcznie albo na początku skryptu sprawdzić i ewentualnie dodać je poprzez CLI. Jeśli pracujesz nad rozwiązaniem dla wielu projektów, to automatyczne dodawanie będzie bardzo pomocne w ich wdrażaniu.
+</Highlight>
 
 Wykorzystamy tutaj exec “spromisowany”, czyli taki, który zwraca Promise, zamiast tworzyć callback hell. Czekamy, aż polecenie się wykona. Jeśli zakończy się sukcesem, to dodajemy info do logów Github Actions. Ciekawostka - dla zwykłego odpalenia skryptu w terminalu lub testach `core.info` zadziała tak jak `console.log`. Tak pokryliśmy przypadek nr 1.
 
@@ -151,6 +157,8 @@ async function addLabel(prNumber, newLabel) {
 Aby przejść do przypadków nr 2 i 3, to potrzebujemy funkcji, która znajdzie nam najwyższą labelkę dotyczącą wersji dla danego PRa. Bardzo podobny algorytm jak w przypadku mapowania listy commitów na labelkę. Tutaj dochodzi również sprawdzenie, czy labelka dotyczy w ogóle wersji projektu. Domyślna wartość to pusty string, więc mamy jasność co do tego, że nie znaleźliśmy żadnej pasującej labelki.
 
 ```jsx
+const versionLabels = Object.keys(labelPriority);
+
 function findHighestPriorityLabel(labelNames) {
     return labelNames.reduce((highestLabel, labelName) => {
 		    const isHigherPriority = labelsMap[labelName].priority >= labelsMap[highestLabel].priority; 
@@ -176,11 +184,11 @@ async function replaceLabel(prNumber, currentVersionLabel, versionLabelFromCommi
 Czas wrócić do pierwotnego algorytmu i zaimplementować te 3 przypadki. Dodajmy tu proste mapowanie labelek, żeby ładnie je wypisać w logach oraz uprościć algorytm w `findHighestPriorityLabel`.
 
 ```jsx
-if (pullRequest.labels.length === 0) {
+if (labels.length === 0) {
     core.info(`No labels found for PR #${prNumber}`);
     return addLabel(prNumber, versionLabelFromCommit);
 }
-const labelNames = pullRequest.labels.map(label => label.name);
+const labelNames = labels.map(label => label.name);
 core.info(`PR labels: ${labelNames.join(', ')}`);
 
 const currentVersionLabel = findHighestPriorityLabel(labelNames);
@@ -196,7 +204,7 @@ return replaceLabel(prNumber, currentVersionLabel, versionLabelFromCommit);
 Pozostaje nam rozróżnienie jeszcze przypadku 3a oraz 3b, czyli zważenie poprzedniej i nowej labelki. Na tej podstawie zdecydujemy, czy podmieniać ją czy nie. Linijkę z `replaceLabel` podmieniamy na prosty `if..else`.
 
 ```jsx
-const isCurrentVersionLabelHigher = labelPriority[currentVersionLabel].priority >= labelPriority[versionLabelFromCommit].priority;
+const isCurrentVersionLabelHigher = labelPriority[currentVersionLabel] >= labelPriority[versionLabelFromCommit];
 
 if (isCurrentVersionLabelHigher) {
     core.info(`Version label not updated. Current version label is ${currentVersionLabel}`);
@@ -205,10 +213,9 @@ if (isCurrentVersionLabelHigher) {
 }
 ```
 
-<aside>
-💡 Uwaga: Pamiętaj, żeby dopisać `labels` do argumentu polecenia pobierającego dane o PRze!
-
-</aside>
+<Highlight title="Uwaga">
+  Pamiętaj, żeby dopisać `labels` do argumentu polecenia pobierającego dane o PRze!
+</Highlight>
 
 Zwróć uwagę na to, że każde zakończenie skryptu jasno komunikuje userowi o jego rezultacie. Przy edge case’ach, błędach lub złym wykorzystaniu jest to kluczowe, żeby dowiedzieć się, co poszło nie tak.
 

@@ -1,0 +1,27 @@
+---
+interface Props {
+    title?: string;
+    type?: "warning" | "tip" | "info";
+}
+
+const { title, type = "info" } = Astro.props;
+
+const borderColors = {
+    warning: "border-yellow-500",
+    tip: "border-green-500",
+    info: "border-blue-500",
+};
+
+const bgColors = {
+    warning: "bg-yellow-50 dark:bg-yellow-950/30",
+    tip: "bg-green-50 dark:bg-green-950/30",
+    info: "bg-blue-50 dark:bg-blue-950/30",
+};
+---
+
+<section
+    class={`p-4 my-4 border-l-4 ${borderColors[type]} ${bgColors[type]} dark:text-gray-200`}
+>
+    {title && <strong class="block mb-2">{title}</strong>}
+    <slot />
+</section>
