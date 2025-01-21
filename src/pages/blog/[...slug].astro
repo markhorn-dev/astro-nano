@@ -7,6 +7,7 @@ import { readingTime } from "@lib/utils";
 import BackToPrev from "@components/BackToPrev.astro";
 import { SenderFormWrapper } from "@components/SenderForm";
 import Highlight from "@components/Highlight.astro";
+import { Link } from "@components/Link";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("blog"))
@@ -22,7 +23,7 @@ type Props = CollectionEntry<"blog">;
 const post = Astro.props;
 const { Content } = await post.render();
 
-const components = { Highlight };
+const components = { Highlight, Link };
 ---
 
 <PageLayout
@@ -56,7 +57,6 @@ const components = { Highlight };
       <BackToPrev href="/blog"> Wróć do bloga </BackToPrev>
     </div>
 
-    <Highlight title="Uwaga">asd</Highlight>
     <SenderFormWrapper client:load />
     <div
       id="senderForm"
