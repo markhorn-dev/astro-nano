@@ -1,0 +1,30 @@
+name: Version labels
+
+on: [pull_request]
+
+jobs:
+  version_labels:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      repository-projects: write
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '22'
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: pnpm add @actions/core
+        shell: bash
+      - name: Add version label
+        run: node scripts/addLabel.cjs ${{ github.event.pull_request.number }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash

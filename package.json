@@ -13,6 +13,7 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "@actions/core": "^1.11.1",
     "@astrojs/check": "^0.9.4",
     "@astrojs/netlify": "^6.0.1",
     "@astrojs/react": "^4.1.2",

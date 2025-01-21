@@ -1,0 +1,243 @@
+---
+title: "Automatyczne labelkowanie Pull Requesta w Githubie"
+date: "2025-01-20"
+categories: 
+  - "javascript"
+tags: 
+  - "rozwój"
+  - "javascript"
+  - "self-develop"
+  - "github"
+  - "automatyzacja"
+author:
+   name: Marek Szkudelski
+   picture: '/assets/blog/authors/face.png'
+ogImage:
+ url: ''
+level: ""
+published: 'true'
+description: ''
+---
+
+Jakiś czas temu realizowałem w pracy bardzo ciekawy projekt. Na podstawie nazw commitów określaliśmy, jak ma być podbita wersja projektu/usługi/komponentu. Commity musiały bazować na [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), a wersja była na podstawie [Semantic Versioning](https://semver.org/lang/pl/).
+
+Jest to część czegoś większego. W skrócie automatycznie podbijamy wersję w projekcie w zależności od tego, jak są nazwane commity zmergowane do domyślnego brancha. Potem tworzymy na podstawie tej wersji Github Release, które automatycznie generuje Release Notes, którymi zastąpiliśmy changelog.
+
+Tutaj opiszę, w jaki sposób za pomocą Github Actions i prostego skryptu określamy podbicie wersji i dodajemy odpowiednią labelkę do Pull Requesta (PR). Następny etap, czyli automatyczne podbicie wersji oraz tworzenie Github Release poruszę w innym artykule.
+
+## Struktura workflow
+
+Na początek potrzebujemy określić, w jaki sposób wersja ma być podbita. Dla commitów `fix` będzie to semantyczny `patch`, i odpowiednio dla `feat` - `minor`, oraz dla `breaking` - `major`. Wagę nowej wersji będziemy przechowywać w postaci labelki do PRa, którą też user będzie mógł sobie zmienić wedle uznania przed merge’em. Tutaj właśnie dodajemy elastyczność do naszej automatyzacji.
+
+Technicznie stworzymy akcję Githubową, która będzie reagowała na eventy z grupy `pull_request`. Dzięki temu dodamy labelkę na otwarcie PRa, ale też na każdą zmianę, czyli nowy commit.
+
+Sam skrypt piszę w JavaScript, bo ten język najlepiej znam i dobrze się sprawdza do pisania małych programów. Nasza akcja będzie początkowo wyglądała mniej więcej tak:
+
+```yaml
+name: Version labels
+
+on: [pull_request]
+
+jobs:
+  version_labels:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      repository-projects: write
+    steps:
+      - name: Install @actions/core dependency
+        run: npm --prefix $GITHUB_ACTION_PATH/../../ install --no-save @actions/core
+        shell: bash
+      - name: Add version label
+        run: node $GITHUB_ACTION_PATH/../scripts/label.js ${{ github.event.pull_request.number }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+```
+
+Najważniejsze tutaj to ustalenie odpowiednich uprawnień. Bez nich nie będziemy mogli czytać, ani modyfikować pull requesta. Druga ważna rzecz to przekazanie numeru pull requesta. To na nim będziemy bazować w skrypcie.
+
+W pierwszym kroku instalujemy `@actions/core`.
+
+## Skrypt określający wagę podbicia wersji
+
+Przejdźmy do skryptu. Potrzebujemy pobrać aktualne commity powiązane z tym PR-em. Do tego celu użyjemy Github CLI oraz funkcji exec - najlepiej w wersji zwracającej Promise. Korzystam tutaj z exec oraz z promisify, które są natywne dla NodeJs. Numer PRa będzie przychodził jako argument poprzez proces. Sam skrypt zamkniemy sobie w funkcji, żeby było go łatwiej testować.
+
+```jsx
+const core = require('@actions/core');
+const { exec } = require('child_process');
+const util = require('util');
+const execPromise = util.promisify(exec);
+
+const prNumberArg = process.argv[2];
+
+async function addLabelToBasedOnCommits(prNumber) {
+
+}
+
+addLabelToBasedOnCommits(prNumberArg);
+```
+
+Samo pobranie danych dotyczących PRa odbywa się w prosty sposób poprzez Github CLI. Dzięki parametrowi `--json` możemy sobie wybrać, jakie dokładnie pola zostaną nam zwrócone:
+
+```jsx
+const pullRequest = JSON.parse(
+	(await execPromise(
+		`gh pr view ${prNumber} --json commits`
+	)).stdout
+);
+```
+
+### Określanie labelki dla commit messages
+
+Dobra, mamy commity z PRa, to teraz musimy je przejrzeć i zobaczyć, jaką labelkę powinniśmy ustawić. Chcemy uciągnąć możliwie najwyższą labelkę z commitów. Np. jeśli mam w PRze 3 fixy, 2 feature’y i jeden breaking change, to chcemy podbić major. Musi to być niezależne od kolejności commitów. W dalszej części skryptu będziemy ustalać labelkę dla danego commita i porównywać ją do poprzedniej. Nie porównujemy prefixów commita, ponieważ dajemy sobie elastyczność. Być może później będziemy chcieli dodać prefix np. `docs` lub `chore` do patcha.
+
+W tym celu potrzebujemy prostą funkcję, jak poniższa. Po kolei sprawdzamy, czy w commit message nie ma na początku i przed dwukropkiem słowa kluczowego. Jeśli tak, to zwracamy odpowiednią labelkę.
+
+```jsx
+function getVersionLabelFromCommitMessage(commitMessage) {
+    if (/^(breaking:)/.test(commitMessage)) {
+        return 'major';
+    }
+    if (/^feat:/.test(commitMessage)) {
+        return 'minor';
+    }
+    if (/^fix:/.test(commitMessage)) {
+        return 'patch';
+    }
+}
+```
+
+Następnie musimy przeiterować się po liście commitów, żeby sprawdzić, jaka jest najwyższa labelka. Używamy metody `reduce` na tablicy, żeby uzyskać pojedynczą wartość z iteracji po tablicy. Prosta mapa pozwala nam określić priorytet, czy też wagę labelki. Jeśli aktualnie sprawdzany commit ma wyższą labelkę niż poprzednio wyliczona, to zwracamy właśnie ją. W innym przypadku zostajemy przy poprzedniej. Na końcu będziemy mieli najwyższą labelkę dla danej listy commitów.
+
+```jsx
+const labelPriority = { patch: 1, minor: 2, major: 3 };
+
+const versionLabel = commits.reduce((highestLabel, commit) => {
+    const label = getVersionLabelFromCommitMessage(commit.messageHeadline);
+    const isHigherPriority = labelPriority[label] >= labelPriority[highestLabel];
+
+    return isHigherPriority ? label : highestLabel;
+}, 'patch')
+```
+
+### Rozpatrywanie różnych przypadków
+
+Ok, wiemy już, jaką powinniśmy dodać labelkę do PRa. Pozostaje rozpatrzyć parę przypadków:
+
+1. PR nie ma żadnych labelek - po prostu dodajemy nową
+2. PR ma labelki, ale niezwiązane z wersją - musimy to sprawdzić i dodać nową
+3. PR ma labelkę związaną z wersją
+    a. Jest ona niższa od naszej właśnie wyliczonej - powinniśmy usunąć poprzednią i dodać nową
+    b. Jest ona równa naszej lub wyższa - wtedy nie chcemy robić nic
+
+Aby dodać labelkę, potrzebujemy prostą funkcję, która wykona polecenie poprzez Github CLI.
+
+<aside>
+💡 Uwaga: Pamiętaj, że labelki muszą być wcześniej dodane w repozytorium, aby można było je dodać do PRa. Możesz to zrobić ręcznie albo na początku skryptu sprawdzić i ewentualnie dodać je poprzez CLI. Jeśli pracujesz nad rozwiązaniem dla wielu projektów, to automatyczne dodawanie będzie bardzo pomocne w ich wdrażaniu.
+
+</aside>
+
+Wykorzystamy tutaj exec “spromisowany”, czyli taki, który zwraca Promise, zamiast tworzyć callback hell. Czekamy, aż polecenie się wykona. Jeśli zakończy się sukcesem, to dodajemy info do logów Github Actions. Ciekawostka - dla zwykłego odpalenia skryptu w terminalu lub testach `core.info` zadziała tak jak `console.log`. Tak pokryliśmy przypadek nr 1.
+
+```jsx
+async function addLabel(prNumber, newLabel) {
+    await execPromise(`gh pr edit ${prNumber} --add-label ${newLabel}`);
+    core.info(`Updated PR #${prNumber} with label: ${newLabel}`);
+}
+```
+
+Aby przejść do przypadków nr 2 i 3, to potrzebujemy funkcji, która znajdzie nam najwyższą labelkę dotyczącą wersji dla danego PRa. Bardzo podobny algorytm jak w przypadku mapowania listy commitów na labelkę. Tutaj dochodzi również sprawdzenie, czy labelka dotyczy w ogóle wersji projektu. Domyślna wartość to pusty string, więc mamy jasność co do tego, że nie znaleźliśmy żadnej pasującej labelki.
+
+```jsx
+function findHighestPriorityLabel(labelNames) {
+    return labelNames.reduce((highestLabel, labelName) => {
+		    const isHigherPriority = labelsMap[labelName].priority >= labelsMap[highestLabel].priority; 
+        if (versionLabels.includes(labelName) && (!highestLabel || isHigherPriority)) {
+            return labelName;
+        }
+        return highestLabel;
+    }, '');
+}
+```
+
+Dzięki tej funkcji rozróżnimy przypadek 2 i 3. Potrzebujemy jeszcze jednej funkcji, która nam podmieni labelkę. Jest bardzo podobna do `addLabel` i ją też tutaj wykorzystujemy. Jedyne co to musimy przekazać parametr więcej, czyli labelkę do usunięcia.
+
+```jsx
+async function replaceLabel(prNumber, currentVersionLabel, versionLabelFromCommit) {
+    await execPromise(`gh pr edit ${prNumber} --remove-label ${currentVersionLabel}`);
+    return addLabel(prNumber, versionLabelFromCommit)
+}
+```
+
+### Struktura algorytmu
+
+Czas wrócić do pierwotnego algorytmu i zaimplementować te 3 przypadki. Dodajmy tu proste mapowanie labelek, żeby ładnie je wypisać w logach oraz uprościć algorytm w `findHighestPriorityLabel`.
+
+```jsx
+if (pullRequest.labels.length === 0) {
+    core.info(`No labels found for PR #${prNumber}`);
+    return addLabel(prNumber, versionLabelFromCommit);
+}
+const labelNames = pullRequest.labels.map(label => label.name);
+core.info(`PR labels: ${labelNames.join(', ')}`);
+
+const currentVersionLabel = findHighestPriorityLabel(labelNames);
+
+if (!currentVersionLabel) {
+    return addLabel(prNumber, versionLabelFromCommit);
+}
+
+return replaceLabel(prNumber, currentVersionLabel, versionLabelFromCommit);
+
+```
+
+Pozostaje nam rozróżnienie jeszcze przypadku 3a oraz 3b, czyli zważenie poprzedniej i nowej labelki. Na tej podstawie zdecydujemy, czy podmieniać ją czy nie. Linijkę z `replaceLabel` podmieniamy na prosty `if..else`.
+
+```jsx
+const isCurrentVersionLabelHigher = labelPriority[currentVersionLabel].priority >= labelPriority[versionLabelFromCommit].priority;
+
+if (isCurrentVersionLabelHigher) {
+    core.info(`Version label not updated. Current version label is ${currentVersionLabel}`);
+} else {
+    return replaceLabel(prNumber, currentVersionLabel, versionLabelFromCommit);
+}
+```
+
+<aside>
+💡 Uwaga: Pamiętaj, żeby dopisać `labels` do argumentu polecenia pobierającego dane o PRze!
+
+</aside>
+
+Zwróć uwagę na to, że każde zakończenie skryptu jasno komunikuje userowi o jego rezultacie. Przy edge case’ach, błędach lub złym wykorzystaniu jest to kluczowe, żeby dowiedzieć się, co poszło nie tak.
+
+I to jest tak naprawdę koniec :) Jedyne co musimy teraz dodać to sensowną obsługę błędów i ewentualnie testy (nie ewentualnie - w realnym projekcie - koniecznie ;) )
+
+### Struktura skryptu i obsługa błędów
+
+Całość zamkniemy sobie w `try..catch`, a w catch’u ustawimy akcję jako zakończoną niepowodzeniem. UWAGA! wracamy teraz do top-level funkcji. Dla łatwiejszego testowania dodajemy funkcję do `exports`, a wywołujemy ją tylko jak skrypt jest wywoływany bezpośrednio przez Node’a.
+
+```jsx
+module.exports = {
+    addLabelToPRBasedOnCommits,
+}
+
+if (require.main === module) {
+		try {
+		    addLabelToPRBasedOnCommits(prNumberArg);
+	  } catch (error) {
+	      core.setFailed(error.message);
+	  }
+}
+```
+
+## Podsumowanie
+
+Podsumujmy, co udało nam się osiągnąć. Po utworzeniu PRa oraz przy każdym pushu, odpali się workflow Version label, który doda labelkę oznaczającą wagę podbicia wersji projektu. Można takiej akcji użyć informacyjnie (widać od razu, jaki jest rozmiar i konsekwencje zmian), albo w celu automatycznego podbijania wersji po zmergowaniu PRa.
+
+Dowiedziałeś się też w tym wpisie, jak tworzyć customowe akcje Githubowe oraz jak manipulować labelkami PRa. Może to Cię zainspiruje do tworzenia podobnych akcji, które przydadzą się w Twoim projekcie 🙂
+
+Oczywiście pewnie jest dużo podobnych rozwiązań w internecie. Jednak nie zawsze możemy z nich korzystać. Czasami mamy narzucone ograniczenia na przykład od działu Security, jak to było w moim przypadku. Dlatego warto wiedzieć jak samemu zaimplementować coś podobnego.
+
+Następny krokiem dla usera będzie zmergowanie PRa do domyślnego brancha, co odpali workflow, który utworzy Github Release. Na tym etapie user może jeszcze ręcznie zmienić labelkę i wymusić inne podbicie wersji. O automatycznym tworzeniu release’ów napiszę w kolejnym artykule, więc Stay Tuned! 🙂
