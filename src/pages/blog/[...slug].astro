@@ -48,6 +48,12 @@ const { Content } = await post.render();
     <article class="animate">
       <Content />
     </article>
+
+    <div class="animate">
+      <BackToPrev href="/blog"> Wróć do bloga </BackToPrev>
+    </div>
+
+    <SenderFormWrapper client:load />
     <div
       id="senderForm"
       class="fixed w-full h-full flex items-center justify-center bottom-0 right-0 z-10 opacity-0 pointer-events-none transition-opacity duration-300 bg-black/50"
