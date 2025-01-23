@@ -1,5 +1,5 @@
 ---
-title: "Notatki z \"Czystej architektury\" Roberta C. Martina"
+title: 'Notatki z "Czystej architektury" Roberta C. Martina'
 date: "2022-08-30"
 categories: 
   - "architecture"
@@ -76,9 +76,9 @@ Jeśli opakujemy funkcjonalność tej bilioteki w nasze własne funkcje, albo kl
 
 Wrając do początkowej myśli, nie musimy debatować przez pierwsze 2 tygodnie projektu nad wyborem pomniejszych narzędzi. Może skupić się na implementacji, a takie decyzje podjąć później, kiedy już lepiej będziemy wiedzieć czego potrzebujemy.
 
-Napisałem w pierwszym zdaniu "Dobry architekt", ale nie trzeba być architektem, żeby mieć wpływ na architekturę systemu 🙂 Każdy z deweloperów w zespole może mieć wpływ na podejmowane decyzje techniczne. Jeśli twój zespół zbyt długo zastanawia się nad danym rozwiązaniem, to zaproponuj użycie jakiegokolwiek narzędzie, opakowanie go we wrapper i zrobienie w między czasie researchu w poszukiwaniu najlepszego rozwiązania. 
+Napisałem w pierwszym zdaniu "Dobry architekt", ale nie trzeba być architektem, żeby mieć wpływ na architekturę systemu 🙂 Każdy z deweloperów w zespole może mieć wpływ na podejmowane decyzje techniczne. Jeśli twój zespół zbyt długo zastanawia się nad danym rozwiązaniem, to zaproponuj użycie jakiegokolwiek narzędzie, opakowanie go we wrapper i zrobienie w między czasie researchu w poszukiwaniu najlepszego rozwiązania.
 
-## Dobra architektura uwzględnia strukturę organizacyjną zespołu deweloperskiego.
+## Dobra architektura uwzględnia strukturę organizacyjną zespołu deweloperskiego
 
 Kolejna cenna myśl z książki 🙂
 

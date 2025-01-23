@@ -11,12 +11,12 @@
     "astro": "astro",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "prebuild": "tsx scripts/generate-og-images.ts"
+    "gen:og": "tsx scripts/saveAllOgImages.ts",
+    "postbuild": "pnpm run gen:og"
   },
   "dependencies": {
     "@actions/core": "^1.11.1",
     "@astrojs/check": "^0.9.4",
-    "@astrojs/netlify": "^6.0.1",
     "@astrojs/react": "^4.1.2",
     "@astrojs/rss": "^4.0.11",
     "@babel/core": "^7.24.0",
