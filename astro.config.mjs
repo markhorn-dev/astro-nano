@@ -10,8 +10,7 @@ export default defineConfig({
   integrations: [mdx(), sitemap(), tailwind()],
   markdown: {
     rehypePlugins: [
-      addMermaidClass,
-      rehypeMermaid,
+      ["rehype-mermaid", { launchOptions: { executablePath: null } }]
     ],
   },
 });
