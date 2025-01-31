@@ -75,12 +75,18 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
     devDependencies:
+      '@types/hast':
+        specifier: ^3.0.4
+        version: 3.0.4
       gh-pages:
         specifier: ^6.3.0
         version: 6.3.0
       playwright:
         specifier: ^1.50.0
         version: 1.50.1
+      unified:
+        specifier: ^11.0.5
+        version: 11.0.5
 
 packages:
 
