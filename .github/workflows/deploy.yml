@@ -25,6 +25,11 @@ jobs:
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
+        with:
+          version: 10.1.0
+
+      - name: Check pnpm version
+        run: pnpm -v
 
       - name: Install dependencies with pnpm
         run: pnpm install --no-frozen-lockfile
@@ -34,6 +39,7 @@ jobs:
 
       - name: Build site with Astro
         uses: withastro/action@v3
+
 
   deploy:
     needs: build
