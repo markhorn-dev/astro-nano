@@ -25,10 +25,16 @@ jobs:
             cache: 'npm'
       - name: Install dependencies
         run: npm install
+
       - name: Install Playwright
         run: npm install -D @playwright/test@latest
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
+        
       - name: Install, build, and upload your site
         uses: withastro/action@v3
         # with:
