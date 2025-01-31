@@ -7,8 +7,6 @@
     "dev:network": "astro dev --host",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
     "preview:network": "astro preview --host",
     "astro": "astro",
     "lint": "eslint .",
