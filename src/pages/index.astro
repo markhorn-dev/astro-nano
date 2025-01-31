@@ -37,38 +37,25 @@ const allwork = (await getCollection("work_samples"))
             using engineering principles, such as <a href="https://dataskillviz.streamlit.app/" target="_target">DataSkillVizz</a>. 
           </p>
 
-          
-          <ul class="animate">
-            
-            <p style="margin-block-end: 0px;">
-              Feel free to connect with me on social media or drop me an email 
-            </p>
-            <div class="flex gap-x-2 justify-center" style="margin-top:-10px;">
-              
-              {
-              SOCIALS.map((SOCIAL) => (
-                <li class="line-clamp-1">
-                  <Link
-                    href={SOCIAL.HREF}
-                    external
-                    aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}
-                  >
-                    {SOCIAL.NAME}
+          <div class='animate'>
+
+            <p style="margin-block-end: 0px">
+              Feel free to connect with me on
+              {SOCIALS.map((social, index) => (
+                <>
+                  <Link href={social.HREF} external aria-label={`Visit my ${social.NAME} profile`}>
+                    {social.NAME}
                   </Link>
-                  {"-"}
-                </li>
-              ))
-            }
-            <li class="line-clamp-1">
-              <Link
-              href={`mailto:${SITE.EMAIL}`}
-              aria-label={`Email ${SITE.NAME}`}
-              >
-              {SITE.EMAIL}
-            </Link>
-          </li>
-        </div>
-        </ul>
+                  {index < SOCIALS.length - 1 && ", "}
+                </>
+              ))}
+              or drop me an email at 
+              <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
+                {SITE.EMAIL}
+              </Link>
+            </p>
+          </div>
+            
     </article>
       </section>
 
