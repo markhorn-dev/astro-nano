@@ -20,10 +20,12 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
-  
+      
+      - name: Install dependencies
+        run: pnpm install
       - name: Install Playwright Browsers
         run: pnpm exec playwright install --with-deps
-        
+
       - name: Install, build, and upload your site
         uses: withastro/action@v3
         # with:
