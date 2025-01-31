@@ -7,6 +7,8 @@
     "dev:network": "astro dev --host",
     "build": "astro check && astro build",
     "preview": "astro preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "preview:network": "astro preview --host",
     "astro": "astro",
     "lint": "eslint .",
@@ -28,9 +30,15 @@
     "eslint": "^8.57.0",
     "eslint-plugin-astro": "^0.32.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
+    "rehype-mermaid": "^3.0.0",
+    "remark-external-links": "^10.0.0",
     "sharp": "^0.33.3",
     "tailwind-merge": "^2.2.2",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.4.2"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0",
+    "playwright": "^1.50.0"
   }
 }

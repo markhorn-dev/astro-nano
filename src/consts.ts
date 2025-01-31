@@ -1,8 +1,8 @@
 import type { Site, Metadata, Socials } from "@types";
 
 export const SITE: Site = {
-  NAME: "Astro Nano",
-  EMAIL: "markhorn.dev@gmail.com",
+  NAME: "Ahmad Muhammad",
+  EMAIL: "ahmadmuhammadgd@gmail.com",
   NUM_POSTS_ON_HOMEPAGE: 3,
   NUM_WORKS_ON_HOMEPAGE: 2,
   NUM_PROJECTS_ON_HOMEPAGE: 3,
@@ -10,35 +10,42 @@ export const SITE: Site = {
 
 export const HOME: Metadata = {
   TITLE: "Home",
-  DESCRIPTION: "Astro Nano is a minimal and lightweight blog and portfolio.",
+  DESCRIPTION: "Portfolio home.",
 };
 
 export const BLOG: Metadata = {
-  TITLE: "Blog",
-  DESCRIPTION: "A collection of articles on topics I am passionate about.",
+  TITLE: "Blogs",
+  DESCRIPTION: "Collection of articles on topics I am passionate about.",
 };
 
-export const WORK: Metadata = {
-  TITLE: "Work",
-  DESCRIPTION: "Where I have worked and what I have done.",
+// export const WORK: Metadata = {
+//   TITLE: "Work",
+//   DESCRIPTION: "Where I have worked and what I have done.",
+// };
+
+export const ABOUT: Metadata = {
+  TITLE: "About",
+  DESCRIPTION: "Get to know me better.",
 };
 
 export const PROJECTS: Metadata = {
-  TITLE: "Projects",
-  DESCRIPTION: "A collection of my projects, with links to repositories and demos.",
+  TITLE: "Live Projects",
+  DESCRIPTION: "A collection of my projects, with links to repositories.",
+};
+
+
+export const WORK_SAMPLES: Metadata = {
+  TITLE: "Work Samples",
+  DESCRIPTION: "A collection of my work samples, with links to repositories.",
 };
 
 export const SOCIALS: Socials = [
   { 
-    NAME: "twitter-x",
-    HREF: "https://twitter.com/markhorn_dev",
+    NAME: "GitHub",
+    HREF: "https://github.com/ahmadmuhammadgd"
   },
   { 
-    NAME: "github",
-    HREF: "https://github.com/markhorn-dev"
-  },
-  { 
-    NAME: "linkedin",
-    HREF: "https://www.linkedin.com/in/markhorn-dev",
+    NAME: "LinkedIn",
+    HREF: "https://www.linkedin.com/in/ahmadmuhammadgd",
   }
 ];

@@ -8,7 +8,7 @@ import BackToPrev from "@components/BackToPrev.astro";
 import Link from "@components/Link.astro";
 
 export async function getStaticPaths() {
-  const projects = (await getCollection("projects"))
+  const projects = (await getCollection("work_samples"))
     .filter(post => !post.data.draft)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
   return projects.map((project) => ({
@@ -16,7 +16,8 @@ export async function getStaticPaths() {
     props: project,
   }));
 }
-type Props = CollectionEntry<"projects">;
+
+type Props = CollectionEntry<"work_samples">;
 
 const project = Astro.props;
 const { Content } = await project.render();
@@ -25,8 +26,8 @@ const { Content } = await project.render();
 <PageLayout title={project.data.title} description={project.data.description}>
   <Container>
     <div class="animate">
-      <BackToPrev href="/projects">
-        Back to projects
+      <BackToPrev href="/work_samples">
+        Back to work smaples
       </BackToPrev>
     </div>
     <div class="space-y-1 my-10">
@@ -42,14 +43,14 @@ const { Content } = await project.render();
       <div class="animate text-2xl font-semibold text-black dark:text-white">
         {project.data.title}
       </div>
-      {(project.data.liveURL || project.data.repoURL) && (
+      {(project.data.demoURL || project.data.repoURL) && (
         <nav class="animate flex gap-1">
-          {project.data.liveURL && (
-            <Link href={project.data.liveURL} external>
-              go live
+          {project.data.demoURL && (
+            <Link href={project.data.demoURL} external>
+              demo
             </Link>
           )}
-          {project.data.liveURL && project.data.repoURL && (
+          {project.data.demoURL && project.data.repoURL && (
             <span>/</span>
           )}
           {project.data.repoURL && (

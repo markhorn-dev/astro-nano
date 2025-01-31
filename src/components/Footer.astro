@@ -1,13 +1,14 @@
 ---
 import Container from "@components/Container.astro";
-import { SITE } from "@consts";
+import { SITE, SOCIALS } from "@consts";
 import BackToTop from "@components/BackToTop.astro";
+import Link from "@components/Link.astro";
 ---
 
 <footer class="animate">
   <Container>
     <div class="relative">
-      <div class="absolute right-0 -top-20">
+      <div class="absolute right-0 -top-40">
         <BackToTop />
       </div>
     </div>
@@ -15,6 +16,7 @@ import BackToTop from "@components/BackToTop.astro";
       <div>
         &copy; 2024 {`|`} {SITE.NAME}
       </div>
+
       <div class="flex flex-wrap gap-1 items-center">
         <button
           id="light-theme-button"
@@ -88,5 +90,18 @@ import BackToTop from "@components/BackToTop.astro";
         </button>
       </div>
     </div>
+    <li class="flex gap-x-2 text-nowrap">
+      {SITE.EMAIL}
+      {SOCIALS.map((social) => (
+          <Link
+            href={social.HREF}
+            external
+            aria-label={`${SITE.NAME} on ${social.NAME}`}
+          >
+            {social.NAME}
+          </Link>
+        ))
+      }
+      </li>
   </Container>
 </footer>

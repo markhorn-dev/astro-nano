@@ -1,0 +1,35 @@
+---
+import { getEntry } from "astro:content";
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+import BackToPrev from "@components/BackToPrev.astro";
+import { readingTime } from "@lib/utils";
+const aboutEntry = await getEntry("about", "index");
+const { Content } = await aboutEntry.render();
+const { title, description } = aboutEntry.data;
+---
+
+<PageLayout title={title} description={description}>
+  <Container>
+    <div class="animate">
+      <BackToPrev href="/">
+        Back to Home
+      </BackToPrev>
+    </div>
+    <div class="space-y-1 my-10">
+      <div class="animate text-2xl font-semibold text-black dark:text-white">
+        {aboutEntry.data.title}
+      </div>
+      <div class="animate flex items-center gap-1.5">
+        &bull;
+        <div class="font-base text-sm">
+          {readingTime(aboutEntry.body)}
+        </div>
+      </div>
+    </div>
+    <article class="animate">
+      <Content />
+    </article>
+  </Container>
+  
+</PageLayout>
