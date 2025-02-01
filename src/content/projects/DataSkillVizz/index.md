@@ -1,6 +1,6 @@
 ---
 title: "DataSkillVizz"
-description: "Live App! Have a Closer Look on Data Job Market"
+description: "Live App! Have a Closer Look at Data Job Market"
 date: "jan 20 2025"
 liveURL: "https://dataskillviz.streamlit.app/"
 repoURL: "https://github.com/ahmadMuhammadGd/dataskillviz-streamlit"
