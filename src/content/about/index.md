@@ -2,7 +2,7 @@
 title: "About"
 description: "Learn more about me."
 ---
-![it's me!](./me.jpg)
+![it's me!](./me.png)
 
 I’m a data engineer passionate about applying mathematics and software principles to solve real-world problems using data.
 As I mentioned on the homepage, I consider myself a **tool-agnostic** data engineer. I believe that theory and abstract science always take precedence—implementation is often the simpler part, especially with so many data solution companies creating tools with excellent user experiences to capture the community’s attention.

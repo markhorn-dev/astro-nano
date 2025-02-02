@@ -6,8 +6,6 @@ demoURL: "https://astro-nano-demo.vercel.app"
 repoURL: "https://github.com/markhorn-dev/astro-nano"
 ---
 
-# Data Quality with Nessie
-
 ![data quality using Nessie catalog, MinIO, mc, dbt, Soda, Airflow, Spark, and Iceberg](https://github.com/ahmadMuhammadGd/Data-Quality-with-Nessie/raw/main/md_assets/project_overview.png)
 # Disclaimer
 The configurations provided in this project are for **demonstration purposes only**. They should not be used in a production environment. **I do not take responsibility for any failures, issues, or consequences that may arise from using these settings in a production setup.**

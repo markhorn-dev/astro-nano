@@ -6,8 +6,6 @@ repoURL: "https://github.com/ahmadMuhammadGd/northwind-dbt"
 ---
 
 
-# Northwind-dbt 🔨
-
 
 ![ci/cd pipeline with dbt data pipeline](https://github.com/ahmadMuhammadGd/northwind-dbt/raw/main/readme_assets/Hero.png)
 

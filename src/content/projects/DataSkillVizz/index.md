@@ -37,7 +37,7 @@ Before thinking about a product that might fix the system, let’s take a quick 
 ### Project Features
 ![gif for the live app](./ezgif-14e2f8cb0c0ad.gif)
 
-`DataSkillViz` collects over `170` data-relevent tools and over `40,000` to perform:
+`DataSkillViz` collects over `400` data-relevent tools and over `40,000` data job postings to perform:
 -  **Tool Demand Analysis**, which provides insights into the prevalence of specific tools in job postings in addition to other sementicly relvent tool, helping users understand where to focus their learning. 
 -  **Association Graph**, uncovers co-occurring tools, offering a deeper view into how technologies complement one another in real-world roles.
 
