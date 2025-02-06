@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "packageManager": "pnpm@10.1.0",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "astro build && npm run postbuild && astro dev",
+    "postbuild": "pagefind --site dist/",
     "dev:network": "astro dev --host",
     "build": "astro check && astro build",
     "preview": "astro preview",
@@ -25,6 +26,7 @@
     "@typescript-eslint/eslint-plugin": "^7.3.1",
     "@typescript-eslint/parser": "^7.3.1",
     "astro": "^4.5.6",
+    "astro-pagefind": "^1.8.0",
     "clsx": "^2.1.0",
     "eslint": "^8.57.0",
     "eslint-plugin-astro": "^0.32.0",

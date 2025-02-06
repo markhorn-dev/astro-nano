@@ -1,0 +1,20 @@
+---
+import SearchComponent from "astro-pagefind/components/Search";
+---
+
+<div class = "animate">
+
+  <SearchComponent
+  id="search"
+  className="pagefind-ui"
+  uiOptions={{
+    element: "#search",
+    showSubResults: false,
+    resetStyles: false, // Use default styles as a base
+    showEmptyFilters: false,
+    showImages: false,
+    excerptLength: 10,
+  }}
+/>
+
+</div>
