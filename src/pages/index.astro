@@ -5,6 +5,7 @@ import PageLayout from "@layouts/PageLayout.astro";
 import ArrowCard from "@components/ArrowCard.astro";
 import Link from "@components/Link.astro";
 import { SITE, HOME, SOCIALS } from "@consts";
+import Search from "@components/SearchBar.astro";
 
 const blogs = (await getCollection("blogs"))
   .filter((post) => !post.data.draft)
@@ -26,17 +27,19 @@ const allwork = (await getCollection("work_samples"))
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
     <h2 class="animate font-semibold text-black dark:text-white text-center">
-      Hi, I'm Ahmad<span class="text-xl">👋🏻</span>
+      Hi, I'm Ahmad<span class="space-y-16 text-xl">👋🏻</span>
     </h2>
+    
     
     <div class="space-y-16">
       <section>
-        <article class="space-y-1 text-center">
+        <article class="text-center margin-block-end: 0px">
           <p class="animate">
             I'm a <strong>Tool Agnostic</strong> Data Engineer passionate about solving real-world problems 
             using engineering principles, such as <a href="https://dataskillviz.streamlit.app/" target="_target">DataSkillViz</a>. 
           </p>
-
+          
+          <Search />
           <div class='animate'>
 
             <p style="margin-block-end: 0px">
