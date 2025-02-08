@@ -11,3 +11,4 @@ README.md
 notes.txt
 db.sqlite3
 .vscode/
+__tests__

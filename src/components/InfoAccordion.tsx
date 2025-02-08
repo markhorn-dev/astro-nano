@@ -9,7 +9,7 @@ const InfoAccordion = () => {
     ) as HTMLTextAreaElement;
     const issue = formData.get("issue");
     try {
-      await fetch("/api/gifts/report-error", {
+      const response = await fetch("/api/gifts/report-error", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -18,7 +18,11 @@ const InfoAccordion = () => {
       });
       // clear textarea value
       textarea.value = "";
-      alert("Error report sent!");
+      if (response.ok) {
+        alert("Error report sent!");
+      } else {
+        alert("Issue delivering error report. Try again later");
+      }
     } catch (error) {
       console.error("Error submitting form:", error);
     }

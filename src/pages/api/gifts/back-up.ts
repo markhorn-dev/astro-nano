@@ -2,10 +2,12 @@ import type { APIRoute } from "astro";
 import { Resend } from "resend";
 import fs from "fs";
 import path from "path";
+import { rateLimit } from "@lib/server/ratelimit";
 
 export const POST: APIRoute = async ({ request }): Promise<Response> => {
   // add jwt auth to this route
-  if (request.method === "POST") {
+  const isNotRateLimited = rateLimit(request);
+  if (request.method === "POST" && isNotRateLimited) {
     try {
       const resend = new Resend(import.meta.env.RESEND_API_KEY);
       const email = import.meta.env.EMAIL_ADDRESS;
@@ -50,8 +52,8 @@ export const POST: APIRoute = async ({ request }): Promise<Response> => {
       );
     }
   } else {
-    return new Response(JSON.stringify({ message: "Method not allowed" }), {
-      status: 405,
+    return new Response(JSON.stringify({ message: "Internal Server Error" }), {
+      status: 500,
       headers: {
         "Content-Type": "application/json",
       },
