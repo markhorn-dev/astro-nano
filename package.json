@@ -52,8 +52,11 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
     "@types/better-sqlite3": "^7.6.12",
+    "@types/jsdom": "^21.1.7",
     "@types/node": "^22.10.2",
+    "@vitejs/plugin-react": "^4.3.4",
     "astro-eslint-parser": "^1.1.0",
     "daisyui": "^4.12.23",
     "drizzle-kit": "^0.27.2",
@@ -62,11 +65,13 @@
     "eslint-plugin-astro": "^0.32.0",
     "eslint-plugin-prettier": "^5.2.1",
     "husky": "^9.1.7",
+    "jsdom": "^26.0.0",
     "lint-staged": "^15.3.0",
     "prettier": "^3.4.2",
     "prettier-plugin-astro": "^0.14.1",
     "ts-node": "^10.9.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "vitest": "^3.0.5"
   },
   "lint-staged": {
     "*.ts": [

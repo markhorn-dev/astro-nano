@@ -1,17 +1,20 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 
-const src = '/img/me.png';
-
+const src = "/img/me.png";
 ---
 
-<div class="flex items-center justify-center rounded-full border-4 border-gray-950">
-	<Image
-		src={src}
-		alt="Selfie of me"
-		width={156}
-		height={156}
-		class="size-36 animate-zoom-in-out rounded-full p-0.5 duration-300 md:size-40"
-		loading="eager"
-	/>
+<div
+  id="avatar-content"
+  class="flex items-center justify-center rounded-full border-4 border-gray-950"
+>
+  <Image
+    id="selfie"
+    src={src}
+    alt="Selfie of me"
+    width={156}
+    height={156}
+    class="size-36 animate-zoom-in-out rounded-full p-0.5 duration-300 md:size-40"
+    loading="eager"
+  />
 </div>
