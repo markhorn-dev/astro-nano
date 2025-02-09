@@ -57,6 +57,14 @@ jobs:
             docker logs test-container
             exit 1
           fi
+          # Check if the container is serving the website on the correct port (4321 in this case)
+          echo "Checking if the web server is responding..."
+          if ! curl --silent --fail http://localhost:4321; then
+            echo "Web server is not responding as expected."
+            docker logs test-container
+            docker rm -f test-container  # Clean up the container
+            exit 1
+          fi
           # Get container logs
           docker logs test-container
           
