@@ -2,7 +2,6 @@
 .husky/
 .DS_Store
 .git
-.github
 .gitignore
 CHANGELOG.md
 dist/
@@ -11,4 +10,6 @@ README.md
 notes.txt
 db.sqlite3
 .vscode/
-__tests__
+__tests__/
+local/
+.github/
