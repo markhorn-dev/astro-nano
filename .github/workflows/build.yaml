@@ -1,4 +1,4 @@
-name: Test branch build
+name: Merge branch build
 
 on:
   pull_request:
@@ -59,10 +59,20 @@ jobs:
           fi
           # Check if the container is serving the website on the correct port (4321 in this case)
           echo "Checking if the web server is responding..."
-          if ! curl --silent --fail http://localhost:4321; then
-            echo "Web server is not responding as expected."
+          # Retry curl 5 times with a 5-second delay between each attempt
+          for i in {1..5}; do
+            echo "Attempting to connect to web server..."
+            if curl --silent --fail http://localhost:4321; then
+              echo "Web server is responding successfully!"
+              break
+            fi
+            echo "Web server not responding. Retrying in 5 seconds..."
+            sleep 5
+          done
+          # If curl fails after 5 attempts, fail the step
+          if [ "$i" -eq 6 ]; then
+            echo "Web server is not responding as expected after multiple attempts."
             docker logs test-container
-            docker rm -f test-container  # Clean up the container
             exit 1
           fi
           # Get container logs
