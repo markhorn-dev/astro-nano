@@ -64,7 +64,7 @@ jobs:
           for i in {1..5}; do
             echo "Attempting to connect to web server..."
             if curl --silent --fail http://localhost:4321 > /dev/null 2>&1; then
-              echo "Web server is responding successfully!"
+              echo "Web server responded successfully!"
               success=1
               break
             fi
