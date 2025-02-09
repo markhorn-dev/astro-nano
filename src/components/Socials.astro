@@ -1,54 +1,34 @@
 ---
+import { socialsData as socials, socialsType as Type } from "@consts";
 
- enum Type {
-	linkedIn = 'LinkedIn',
-	gitHub = 'GitHub',
-	email = 'Email',
-}
-
-const socials = [
-	{
-		name: Type.gitHub,
-		url: 'https://github.com/rjhoppe',
-		icon: '/icons/github.svg',
-		color: 'bg-white',
-	},
-	{
-		name: Type.email,
-		url: 'rickjhoppe@email.com',
-		icon: '/icons/email.svg',
-		color: 'bg-lime-400',
-	},
-	{
-		name: Type.linkedIn,
-		url: 'https://www.linkedin.com/in/richardjhoppe/',
-		icon: '/icons/linkedin.svg',
-		color: 'bg-sky-700',
-	},
-];
-
-const getColor = (type: Type) => socials.find((social) => social.name === type)?.color;
+const getColor = (type: Type) =>
+  socials.find((social) => social.name === type)?.color;
 const getClass = (type: Type) =>
-	`scale-100 rounded-full border-2 border-gray-950 ${getColor(
-		type,
-	)} transition duration-300 hover:scale-110 animate-zoom-in`;
+  `scale-100 rounded-full border-2 border-gray-950 ${getColor(
+    type,
+  )} transition duration-300 hover:scale-110 animate-zoom-in`;
 ---
 
 <div class="grid grid-cols-3 gap-3 duration-500 md:grid-flow-col md:gap-2">
-	{
-		socials.map((social) => {
-			const href = social.name === Type.email ? `mailto:${social.url}` : social.url;
-			return (
-				<a
-					aria-label={social.name}
-					class={getClass(social.name)}
-					href={href}
-					target="_blank"
-					rel="nofollow noopner"
-				>
-					<img class="size-14 p-3 md:size-16" src={social.icon} alt={social.name} />
-				</a>
-			);
-		})
-	}
+  {
+    socials.map((social) => {
+      const href =
+        social.name === Type.email ? `mailto:${social.url}` : social.url;
+      return (
+        <a
+          aria-label={social.name}
+          class={getClass(social.name)}
+          href={href}
+          target="_blank"
+          rel="nofollow noopner"
+        >
+          <img
+            class="size-14 p-3 md:size-16"
+            src={social.icon}
+            alt={social.name}
+          />
+        </a>
+      );
+    })
+  }
 </div>

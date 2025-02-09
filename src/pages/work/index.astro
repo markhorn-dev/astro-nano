@@ -12,12 +12,10 @@ const collection = (await getCollection("work")).sort(
 
 const work = await Promise.all(
   collection.map(async (item) => {
-    const { Content } = await item.render();
+    const { Content }: any = await item.render();
     return { ...item, Content };
   }),
 );
-
-// fill in download resume function here
 ---
 
 <PageLayout title={WORK.TITLE} description={WORK.DESCRIPTION}>
@@ -29,6 +27,7 @@ const work = await Promise.all(
         </div>
         <button
           class="mr-12 relative group flex flex-nowrap py-1 px-3 rounded-lg border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out"
+          id="resume-dl"
         >
           Resume
         </button>
@@ -43,7 +42,10 @@ const work = await Promise.all(
               <div class="flex justify-between text-sm opacity-75">
                 <div>{entry.data.role}</div>
                 <div class="mr-6">
-                  {dateRange(entry.data.dateStart, entry.data.dateEnd)}
+                  {dateRange(
+                    new Date(entry.data.dateStart),
+                    entry.data.dateEnd,
+                  )}
                 </div>
               </div>
               <article>
@@ -54,5 +56,19 @@ const work = await Promise.all(
         }
       </ul>
     </div>
+    <script>
+      const dlBtn = document.getElementById("resume-dl");
+      dlBtn?.addEventListener("click", () => {
+        const link = document.createElement("a");
+        link.href = "/docs/Richard_Hoppe_Resume.pdf"; // Replace with your file's URL
+        link.download = "Richard_Hoppe_Resume"; // Name the downloaded file
+        // Append the link to the document body (it's required to trigger the click)
+        document.body.appendChild(link);
+        // Programmatically click the link to trigger the download
+        link.click();
+        // Remove the link from the document after the download
+        document.body.removeChild(link);
+      });
+    </script>
   </Container>
 </PageLayout>

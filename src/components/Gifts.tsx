@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import GiftsTable from "./GiftsTable";
-
-export interface GiftProps {
-  admin: boolean
-}
+import type { GiftProps } from "@models/type";
 
 const Gifts = ({ admin }: GiftProps) => {
   const [isAuthorized, setIsAuthorized] = useState(false);
@@ -11,14 +8,14 @@ const Gifts = ({ admin }: GiftProps) => {
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    const password = urlParams.get('password');
-    
+    const password = urlParams.get("password");
+
     if (password !== import.meta.env.PUBLIC_GIFTS_PASSWORD && !admin) {
-      window.location.href = '/forbidden';
+      window.location.href = "/forbidden";
     } else {
-      setIsAuthorized(true)
+      setIsAuthorized(true);
     }
-    setIsLoading(false)
+    setIsLoading(false);
   }, []);
 
   if (isLoading) {
@@ -27,14 +24,14 @@ const Gifts = ({ admin }: GiftProps) => {
   }
 
   if (!isAuthorized) {
-    return null;  // Don't show anything until we've checked authorization
+    return null; // Don't show anything until we've checked authorization
   }
 
-  return(
+  return (
     <div>
       <GiftsTable admin={admin} />
     </div>
-  )
-}
+  );
+};
 
-export default Gifts
+export default Gifts;

@@ -1,0 +1,87 @@
+name: Merge branch build
+
+on:
+  pull_request:
+    branches: [ main ]
+    # Only run this action when any of the files in specific paths are changed
+    paths:
+      - 'Dockerfile'
+      - '.github/workflows/docker-build.yml'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'src/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      # Step 2: Set up Docker Buildx (to use BuildKit for better caching and features)
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Cache Docker layers
+        uses: actions/cache@v4
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: false
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+
+      # Temp fix for cache size growth
+      - name: Move cache
+        run: |
+          rm -rf /tmp/.buildx-cache
+          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+
+      - name: Test container start
+        run: |
+          docker build -t astro-portfolio .
+          docker run --name test-container -p 4321:4321 -d astro-portfolio
+          # Wait for container to start
+          sleep 10
+          # Check if container is still running
+          CONTAINER_STATUS=$(docker inspect test-container --format='{{.State.Status}}')
+          if [ "$CONTAINER_STATUS" != "running" ]; then
+            echo "Container failed to start properly"
+            docker logs test-container
+            exit 1
+          fi
+          # Check if the container is serving the website on the correct port (4321 in this case)
+          echo "Checking if the web server is responding..."
+          # Retry curl 5 times with a 5 second delay between each attempt
+          success=0
+          for i in {1..5}; do
+            echo "Attempting to connect to web server..."
+            if curl --silent --fail http://localhost:4321 > /dev/null 2>&1; then
+              echo "Web server responded successfully!"
+              success=1
+              break
+            fi
+            echo "Web server not responding. Retrying in 5 seconds..."
+            sleep 5 > /dev/null 2>&1
+          done
+          # If curl fails after 5 attempts, fail the step
+          if [ "$success" -eq 0 ]; then
+            echo "Web server is not responding as expected after multiple attempts."
+            docker logs test-container
+            exit 1
+          fi
+          # Get container logs
+          docker logs test-container
+          
+      - name: Cleanup
+        if: always()
+        run: |
+          docker stop test-container || true
+          docker rm test-container || true

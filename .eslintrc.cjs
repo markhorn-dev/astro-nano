@@ -10,6 +10,7 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
   ],
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
@@ -18,7 +19,8 @@ module.exports = {
     semi: ["error", "always"],
     quotes: ["error", "double", { "allowTemplateLiterals": true }],
     "@typescript-eslint/triple-slash-reference": "off",
-    "prettier/prettier": "error",
+    "@typescript-eslint/no-explicit-any": "off",
+    "prettier/prettier": "off",
   },
   overrides: [
     {
