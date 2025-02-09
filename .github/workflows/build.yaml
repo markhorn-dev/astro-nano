@@ -63,13 +63,13 @@ jobs:
           success=0
           for i in {1..5}; do
             echo "Attempting to connect to web server..."
-            if curl --silent --fail http://localhost:4321; then
+            if curl --silent --fail http://localhost:4321 > /dev/null 2>&1; then
               echo "Web server is responding successfully!"
               success=1
               break
             fi
             echo "Web server not responding. Retrying in 5 seconds..."
-            sleep 5
+            sleep 5 > /dev/null 2>&1
           done
           # If curl fails after 5 attempts, fail the step
           if [ "$success" -eq 0 ]; then
