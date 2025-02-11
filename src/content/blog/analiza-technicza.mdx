@@ -1,0 +1,97 @@
+---
+title: "Analiza techniczna w pracy programisty"
+date: "2025-02-20"
+categories: 
+  - "rozwój"
+tags: 
+  - "rozwój"
+  - "self-develop"
+  - "analiza"
+  - "architektura"
+author:
+   name: Marek Szkudelski
+   picture: '/assets/blog/authors/face.png'
+ogImage:
+ url: ''
+level: ""
+published: 'true'
+description: 'Dowiedz się, dlaczego analiza techniczna jest kluczem do sukcesu w programowaniu. Poznaj sprawdzone praktyki, które pozwolą Ci uniknąć typowych pułapek projektowych, lepiej estymować zadania i dostarczać kod wysokiej jakości. Praktyczny przewodnik dla programistów, którzy chcą przestać działać na “hura” i zacząć pracować efektywniej.'
+---
+
+# Analiza techniczna w pracy programisty
+
+Czy zacząłeś kiedyś zadanie lub projekt bez zastanowienia się nad tym, jak go zrobić?
+
+Myślę, że każdy z programistów na jakimś etapie kariery podszedł do zadania lub projektu na "hura". Dostaję konkretne zadanie, super, to siadam do kodu.
+
+## Konsekwencje braku analizy
+
+Założę się, że prędzej czy później przy takim podejściu napotkałeś jeden z problemów:
+
+1. Zadanie się przeciąga ponad szacowany wcześniej czas
+2. Masz problem techniczny, który ciężko rozwiązać z użytą technologią
+3. Efekt zadania nie był tym, czego biznes oczekiwał i musisz zaczynać od nowa
+
+Dlaczego tak się dzieje? Bo zabrakło analizy technicznej. 
+
+Myślę, że jest to kluczowy element codziennej pracy programisty. Bez tego ciężko skutecznie dostarczać oprogramowanie.
+
+## Czym jest analiza techniczna?
+
+Podczas tego procesu zastanawiam się dokładnie, jak wykonać zadanie, jakie decyzje architektoniczne podejmę, jakich technologii użyję. A to wszystko jeszcze zanim w ogóle dotknę kodu.
+
+Ważne jest również, żeby określić wszystkie potencjalne zależności. Szczególnie jeśli organizacja składa się z wielu zespołów, które mają swoje własne serwisy i komponenty.
+
+## Co zyskujesz?
+
+1. Przewidzisz potencjalne problemy
+2. Lepiej oszacujesz czas, który potrzebujesz na realizację zadania lub projektu
+3. Lepiej zrozumiesz zadanie. Prawdopodobnie będziesz miał w trakcie analizy pytania do biznesu. Dzięki odpowiedziom możesz się upewnić, że jesteście na tej samej stronie
+4. Podejmiesz lepsze decyzje. Widząc potencjalne ograniczenia systemu lub technologii, możesz zawczasu się do nich przygotować lub zaproponować inne rozwiązanie
+5. Ustalony kontrakt pomiędzy serwisami. Dzięki temu jeden programista nie musi czekać, aż drugi skończy pracę
+
+## Etapy analizy
+
+1. Dokładne zrozumienie treści zadania
+2. Jeśli zadanie dotyczy istniejącego już projektu, to musisz zajrzeć do kodu. Warto zbadać, gdzie będziesz wprowadzał zmiany, albo czy będziesz tworzył nowy moduł
+3. Research. Konieczny punkt jeśli zaczynasz nowy projekt, tworzysz nowy serwis/moduł lub przygotowujesz się do refactoru. Zbadaj różne rozwiązania, technologie. Wypisz ich zalety lub wady
+4. Propozycja architektury rozwiązania. Warto sprawdzić z resztą zespołu, czy to rozwiązanie ma sens
+5. Rozbicie zadania na podzadania
+6. Rozpisanie podzadań. Musisz dokładnie wiedzieć co trzeba zrobić
+
+Oczywiście w zależności od wielkości zadania i złożoności projektu te etapy mogą być różne. Ich kolejność też może się zmieniać. Na przykład nie zawsze będziesz potrzebował researchu jeśli musisz bardziej ocenić co trzeba zrobić niż jak.
+
+## Dobre praktyki
+
+1. Zawsze notuj. Na spotkaniach, podczas przeglądania kodu. Nie polegaj na tym, że zapamiętasz każdy aspekt, który przeanalizowałeś. Już sam fakt notowania sprawia, że lepiej zapamiętujesz - nawet jak nie zaglądasz później do tych notatek
+2. Outputem takiej analizy powinien być zawsze dokument. Może to być opis zadania w Jirze, albo faktyczny dokument w przypadku większej analizy
+3. Zapisuj powody decyzji. Np. jeśli zastanawiasz się nad wyborem technologii, to wypisz wady i zalety każdego rozwiązania, uwzględniając założenia biznesowe
+
+## Głębokość analizy
+
+Zawsze zastanawiam się jak głęboko wchodzić w taką analizę. Czy muszę podczas takiej analizy wiedzieć, że w tej konkretnej klasie muszę dodać takie pole? Czy muszę wiedzieć jak będzie się nazywał ten dokładny parametr na tym endpoincie?
+
+Oczywiście - to zależy ;)
+
+To zależy od poziomu skomplikowania, albo wielkości zadania. Bardziej skomplikowane zadanie będzie wymagało głębszego zejścia w dół, żeby zbadać, czy nie ma żadnych potencjalnych problemów lub rzeczy, których nie przewidzimy.
+
+Zależy to też od architektury projektu. Dla architektury mikroserwisowej lub mikrofrontendowej analiza będzie bardziej skomplikowana i czasochłonna. Trzeba się dokładnie zastanowić w którym serwisie/komponencie umieścić logikę. Z jakimi serwisami musimy się skomunikować? Czy trzeba utworzyć nowy serwis?
+
+Zależy to też od wielkości organizacji. Jeśli masz jeden zespół deweloperski, to często wystarczy jedno spotkanie, żeby ustalić wszystko od A do Z. A jeśli coś zostało niedopowiedziane, to łatwo można później uzyskać odpowiedź podczas daily albo na kanale zespołowym. Jeśli jest wiele zespołów, a każdy z nich ma pod opieką różne serwisy i komponenty, to tym bardziej trzeba głębiej wejść, żeby zawczasu odkryć ukryte zależności. 
+
+Generalna zasada, którą się staram kierować, to schodzić najgłębiej podczas analizy jak się da. Oczywiście do tego stopnia do którego ma to sens, biorąc pod uwagę powyższe czynniki.
+
+## Kluczowe czynniki
+
+1. Łatwość rozwiązania. Oczywiście im łatwiejsze rozwiązanie, tym mniejszy koszt
+2. Przyszłość. Duże znaczenie ma to czy rozwiązanie ma być utrzymywane długo, czy jest to tymczasowy eksperyment. Zastanów się jak rozwiązać problem, żeby system można było skalować i modyfikować
+3. Założenia biznesowe. Tutaj musisz ściśle współpracować z biznesem. Dowiedz się czy rozwiązanie ma być szybkie, tanie, skalowalne, czy pewne parametry będą się dynamicznie zmieniać w przyszłości
+
+Nie twierdzę, że teraz musisz poświęcać cały dzień roboczy, żeby przeanalizować szczegółowo każde, nawet najmniejsze zadanie. Czasami zdarzy się jednolinijkowy fix, albo zmiana w konfiguracji i dużo prościej będzie to po prostu zrobić niż analizować wszystkie aspekty.
+
+Warto założyć sobie jakiś czas na analizę, który będzie proporcjonalny do wielkości zadania. Unikniesz wtedy over-engineeringu przy analizie i nie przepalisz zbyt dużo czasu zanim jeszcze zaczniesz zadanie.
+
+## Podsumowanie
+
+Analiza techniczna to fundamentalny element procesu wytwarzania oprogramowania, który pozwala uniknąć wielu typowych problemów projektowych. Kluczem do sukcesu jest znalezienie odpowiedniego balansu w głębokości analizy, dopasowanego do skali projektu i złożoności zadania. Dobrze przeprowadzona analiza techniczna nie tylko oszczędza czas i zasoby, ale także przyczynia się do tworzenia lepszej jakości oprogramowania, które spełnia oczekiwania biznesowe i jest łatwiejsze w utrzymaniu.
+
