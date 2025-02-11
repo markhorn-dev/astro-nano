@@ -8,6 +8,7 @@ import BackToPrev from "@components/BackToPrev.astro";
 import { SenderFormWrapper } from "@components/SenderForm";
 import Highlight from "@components/Highlight.astro";
 import { Link } from "@components/Link";
+import RecommendedArticles from "@components/RecommendedArticles.astro";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("blog"))
@@ -75,6 +76,7 @@ const components = { Highlight, Link };
         <SenderFormWrapper client:load />
       </div>
     </div>
+    <RecommendedArticles currentPost={post} />
   </Container>
   <script>
     import { setCookie, getCookie } from "@lib/cookies";

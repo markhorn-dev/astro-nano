@@ -1,0 +1,53 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import FormattedDate from "./FormattedDate.astro";
+import ExpandableText from "./ExpandableText.astro";
+import { ArrowCard } from "./ArrowCard";
+
+interface Props {
+    currentPost: CollectionEntry<"blog">;
+}
+
+const { currentPost } = Astro.props;
+
+const posts = await getCollection("blog");
+let recommendedArticles = posts
+    .filter(
+        (post) =>
+            post.data.categories[0] === currentPost.data.categories[0] &&
+            post.slug !== currentPost.slug,
+    )
+    .sort(
+        (a, b) =>
+            new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+    )
+    .slice(0, 3);
+
+if (recommendedArticles.length === 0) {
+    recommendedArticles = posts
+        .filter((post) => post.slug !== currentPost.slug)
+        .sort(
+            (a, b) =>
+                new Date(b.data.date).getTime() -
+                new Date(a.data.date).getTime(),
+        )
+        .slice(0, 3);
+}
+---
+
+<section class="mt-16 mb-8">
+    {
+        recommendedArticles.length > 0 && (
+            <>
+                <h2 class="text-xl font-semibold mb-6 text-black dark:text-white">
+                    Podobne artykuły:
+                </h2>
+                <div class="grid gap-4">
+                    {recommendedArticles.map((article) => (
+                        <ArrowCard entry={article} />
+                    ))}
+                </div>
+            </>
+        )
+    }
+</section>
