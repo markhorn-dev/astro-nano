@@ -3,7 +3,7 @@ import { renderAstroComponent } from "./helpers";
 import Avatar from "@components/Avatar.astro";
 
 describe("Avatar", () => {
-  test("Avatar component is rendered", async () => {
+  test("Should render Avatar component correctly", async () => {
     const result = await renderAstroComponent(Avatar);
 
     const img = result.querySelector("img");

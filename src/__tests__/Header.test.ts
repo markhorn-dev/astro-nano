@@ -3,7 +3,7 @@ import { renderAstroComponent } from "./helpers";
 import Header from "@components/Header.astro";
 
 describe("Header", () => {
-  test("Default Header component is rendered", async () => {
+  test("Should render the default Header component correctly", async () => {
     const locals: App.Locals = {
       user: null,
       session: null,
@@ -23,7 +23,7 @@ describe("Header", () => {
     expect(resultText).not.toContain("upload");
     expect(resultText).not.toContain("logout");
   });
-  test("Admin Header component is rendered when isAdmin is set to true", async () => {
+  test("Should render the admin Header component when isAdmin is set to true", async () => {
     const locals: App.Locals = {
       user: { id: 1, name: "Admin" },
       session: true,

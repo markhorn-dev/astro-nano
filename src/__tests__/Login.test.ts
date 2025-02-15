@@ -3,7 +3,7 @@ import { renderAstroComponent } from "./helpers";
 import Login from "@components/Login.astro";
 
 describe("Login", () => {
-  test("Login component is rendered", async () => {
+  test("Should render the Login component correctly", async () => {
     const result = await renderAstroComponent(Login);
 
     const link = result.querySelector("#link");

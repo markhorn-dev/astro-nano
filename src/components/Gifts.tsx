@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import GiftsTable from "./GiftsTable";
 import type { GiftProps } from "@models/type";
 
-const Gifts = ({ admin }: GiftProps) => {
+export const Gifts = ({ admin }: GiftProps) => {
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -28,10 +28,8 @@ const Gifts = ({ admin }: GiftProps) => {
   }
 
   return (
-    <div>
+    <div id="gifts-container">
       <GiftsTable admin={admin} />
     </div>
   );
 };
-
-export default Gifts;

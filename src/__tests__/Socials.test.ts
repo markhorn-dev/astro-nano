@@ -4,7 +4,7 @@ import Socials from "@components/Socials.astro";
 import { socialsData } from "@consts";
 
 describe("Socials", () => {
-  test("Socials component is rendered", async () => {
+  test("Should render the Socials component correctly", async () => {
     const result = await renderAstroComponent(Socials);
 
     const anchors = result.querySelectorAll("a");
