@@ -22,43 +22,70 @@ import { SITE, HOME, LINKS } from "@consts";
   <Container>
     <div class="space-y-16">
       <section>
-        <article class="space-y-4">
-          We are a collective of curious individuals who build software
+        <article class="space-y-4 flex flex-col">
+          <h2 class="text-lg">We’re a collective of curious builders</h2>
+          <span>
+            We design and develop web applications - using
+            <Link href="https://svelte.dev/" external> Svelte </Link>
+            - for teams and founders who want their ideas to work well and stand
+            up over time.
+          </span>
+
           <br />
-          We like to tell stories. They're often a little long
+
+          <h2 class="text-lg">We believe in local-first software</h2>
+          <span>
+            Our work is inspired by the idea that apps should work offline, sync
+            seamlessly, and respect user autonomy. We see local-first as the new
+            default - and we feel a responsibility to promote these values in
+            everything we build.
+          </span>
+
           <br />
-          We respect the kind of software that help us organise our communication
-          <br />
-          like
-          <Link href="https://obsidian.md/" external> obsidian </Link>
-          {"/"}
-          <Link href="https://www.discourse.org/" external> discourse </Link>
+
+          <h2 class="text-lg">Some things we've been building</h2>
+          <ul>
+            <li>
+              <Link href="https://github.com/librocco/librocco" external>
+                Librocco
+              </Link>
+              is an open-source inventory system for independent bookshops. Built
+              with
+              <Link href="https://github.com/vlcn-io/cr-sqlite" external>
+                cr-sqlite
+              </Link>, it enables accurate stock tracking across multiple
+              terminals - even when one drops offline.
+            </li>
+
+            <li>
+              <Link href="https://whatisedible.com" external>
+                What is Edible
+              </Link>
+              is a digital menu builder that aims to change the way restaurants communicate
+              allergen and dietary information. It’s core objective is to help its
+              founder (who suffers from 28 allergens) find a good place for dinner.
+              It includes a
+              <Link href="https://dietprofile.whatisedible.com/" external>
+                diet profile tracker
+              </Link> that puts privacy first - data stays local by default, and
+              is encrypted when shared.
+            </li>
+          </ul>
 
           <br />
           <br />
 
-          We are working on a few projects
-          <br />
-          We hope they will have a positive social impact
-          <br />
-          <Link href="https://github.com/librocco/librocco" external>
-            Librocco
-          </Link>
-          {"/"}
-          <Link href="https://menus.whatisedible.com/fresh/" external>
-            What is Edible
-          </Link>
-
-          <br />
-          <br />
-
-          We share the stories that interest us
-          <Link href="https://forum.codemyriad.io/" external> here </Link>
-
-          <br />
-          <br />
-
-          <Link href="mailto:team@codemyriad.io" external> Hire us. </Link>
+          <span>
+            Got a project in mind?
+            <Link href="mailto:team@codemyriad.io" external> Hire us </Link>
+          </span>
+          <span>
+            Just want to lurk or say hi?
+            <Link href="https://forum.codemyriad.io/" external>
+              The forum
+            </Link>
+            is open — expect ramblings.
+          </span>
         </article>
       </section>
 
