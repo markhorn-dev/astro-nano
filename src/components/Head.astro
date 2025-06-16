@@ -8,7 +8,8 @@ import inter400 from "@fontsource/inter/files/inter-latin-400-normal.woff2";
 import inter600 from "@fontsource/inter/files/inter-latin-600-normal.woff2";
 import lora400 from "@fontsource/lora/files/lora-latin-400-normal.woff2";
 import lora600 from "@fontsource/lora/files/lora-latin-600-normal.woff2";
-import { ViewTransitions } from "astro:transitions";
+
+import { ClientRouter } from "astro:transitions";
 import { SITE } from "@consts";
 
 interface Props {
@@ -58,10 +59,10 @@ const { title, description, image = "/nano.png" } = Astro.props;
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
+<ClientRouter  />
+
 <!-- RSS Link -->
 <link rel="alternate" type="application/rss+xml" title={SITE.NAME} href={new URL("rss.xml", Astro.site)} />
-
-<ViewTransitions  />
 
 <script>
   import type { TransitionBeforeSwapEvent } from "astro:transitions/client";
