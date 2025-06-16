@@ -8,7 +8,9 @@ import inter400 from "@fontsource/inter/files/inter-latin-400-normal.woff2";
 import inter600 from "@fontsource/inter/files/inter-latin-600-normal.woff2";
 import lora400 from "@fontsource/lora/files/lora-latin-400-normal.woff2";
 import lora600 from "@fontsource/lora/files/lora-latin-600-normal.woff2";
+
 import { ClientRouter } from "astro:transitions";
+import { SITE } from "@consts";
 
 interface Props {
   title: string;
@@ -59,6 +61,9 @@ const { title, description, image = "/nano.png" } = Astro.props;
 
 <ClientRouter  />
 
+<!-- RSS Link -->
+<link rel="alternate" type="application/rss+xml" title={SITE.NAME} href={new URL("rss.xml", Astro.site)} />
+
 <script>
   import type { TransitionBeforeSwapEvent } from "astro:transitions/client";
   document.addEventListener("astro:before-swap", (e) =>
@@ -102,7 +107,7 @@ const { title, description, image = "/nano.png" } = Astro.props;
 
     window.matchMedia("(prefers-color-scheme: dark)")
       .addEventListener("change", event => {
-        if (localStorage.theme === "system") {
+        if (localStorage.theme === "system" || !localStorage.theme) {
           toggleTheme(event.matches);
         }
       }
