@@ -1,46 +1,76 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-html {
-  overflow-y: scroll;
-  color-scheme: light;
+@plugin '@tailwindcss/typography';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans:
+    Inter, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-serif:
+    Lora, ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
 }
 
-html.dark {
-  color-scheme: dark;
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
 }
 
-html,
-body {
-  @apply size-full;
-}
+@layer utilities {
+  html {
+    overflow-y: scroll;
+    color-scheme: light;
+  }
 
-body {
-  @apply font-sans antialiased;
-  @apply flex flex-col;
-  @apply bg-stone-100 dark:bg-stone-900;
-  @apply text-black/50 dark:text-white/75;
-}
+  html.dark {
+    color-scheme: dark;
+  }
 
-header {
-  @apply fixed top-0 left-0 right-0 z-50 py-5;
-  @apply bg-stone-100/75 dark:bg-stone-900/25;
-  @apply backdrop-blur-sm saturate-200;
-}
+  html,
+  body {
+    @apply size-full;
+  }
 
-main {
-  @apply flex-1 py-32;
-}
+  body {
+    @apply font-sans antialiased;
+    @apply flex flex-col;
+    @apply bg-stone-100 dark:bg-stone-900;
+    @apply text-black/50 dark:text-white/75;
+  }
 
-footer {
-  @apply py-5 text-sm;
-}
+  header {
+    @apply fixed top-0 left-0 right-0 z-50 py-5;
+    @apply bg-stone-100/75 dark:bg-stone-900/25;
+    @apply backdrop-blur-xs saturate-200;
+  }
 
-article {
-  @apply max-w-full prose dark:prose-invert prose-img:mx-auto prose-img:my-auto;
-  @apply prose-headings:font-semibold prose-p:font-serif;
-  @apply prose-headings:text-black prose-headings:dark:text-white;
+  main {
+    @apply flex-1 py-32;
+  }
+
+  footer {
+    @apply py-5 text-sm;
+  }
+
+  article {
+    @apply max-w-full prose dark:prose-invert prose-img:mx-auto prose-img:my-auto;
+    @apply prose-headings:font-semibold prose-p:font-serif;
+    @apply prose-headings:text-black dark:prose-headings:text-white;
+  }
 }
 
 @layer utilities {
