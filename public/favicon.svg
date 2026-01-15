@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <radialGradient id="richFlowerGlow" cx="50%" cy="50%" r="54%" fx="50%" fy="50%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="35%" style="stop-color:#fdb813;stop-opacity:1" />
+       <stop offset="75%" style="stop-color:#ff8c00;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d35400;stop-opacity:1" />
+    </radialGradient>
+    
+    <filter id="softGlow" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
+    </filter>
+  </defs>
+  
+  <path d="M32,4 C 37,12 46,14 53,19 C 60,24 56,33 59,41 C 62,49 50,53 45,59 C 40,65 29,57 20,59 C 11,61 9,49 5,41 C 1,33 11,25 12,16 C 13,7 27,12 32,4 Z" 
+        fill="#d35400" opacity="0.3" filter="url(#softGlow)" />
+
+  <path d="M32,4 C 37,12 46,14 53,19 C 60,24 56,33 59,41 C 62,49 50,53 45,59 C 40,65 29,57 20,59 C 11,61 9,49 5,41 C 1,33 11,25 12,16 C 13,7 27,12 32,4 Z" 
+        fill="url(#richFlowerGlow)" />
+        
+  <circle cx="32" cy="31" r="5" fill="#ffffff" opacity="0.4" />
+</svg>
