@@ -8,7 +8,9 @@ It was designed as an even more minimal theme than my popular theme [Astro Spher
 
 ## 🚀 Deploy your own
 
-[![Deploy with Vercel](_deploy_vercel.svg)](https://vercel.com/new/clone?repository-url=https://github.com/markhorn-dev/astro-nano)  [![Deploy with Netlify](_deploy_netlify.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/markhorn-dev/astro-nano)
+[![Deploy with Vercel](_deploy_vercel.svg)](https://vercel.com/new/clone?repository-url=https://github.com/markhorn-dev/astro-nano)  [![Deploy with Netlify](_deploy_netlify.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/markhorn-dev/astro-nano)  [![Deploy to Wasmer](https://img.shields.io/badge/Deploy%20to-Wasmer-171717?logo=wasmer&logoColor=white)](https://wasmer.io/apps/create?github=markhorn-dev%2Fastro-nano)
+
+The Wasmer link imports this public repository so Wasmer can build it; it does not copy the repository into your GitHub account. To customize your site and redeploy on push, import your own copy or fork instead.
 
 ## 📋 Features
 
